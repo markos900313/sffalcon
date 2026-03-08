@@ -57,8 +57,8 @@ export default function LandingPage() {
           background: rgba(255, 255, 255, 0.03);
           backdrop-filter: blur(12px);
           -webkit-backdrop-filter: blur(12px);
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+          border: 1px solid rgba(255, 255, 255, 0.05);
+          box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.2);
           -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
           -webkit-transform: translate3d(0, 0, 0);
@@ -229,8 +229,7 @@ export default function LandingPage() {
         {/* 2. HERO SECTION */}
         <section className="relative min-h-dvh flex items-center pt-24 overflow-hidden">
           {/* Fondo Mesh Gradient Orbs */}
-          <div className="absolute top-[10%] left-[5%] w-[40%] h-[40%] orb-blue animate-pulse-slow z-0"></div>
-          <div className="absolute bottom-[10%] right-[5%] w-[40%] h-[40%] orb-cyan animate-pulse-slow z-0" style={{ animationDelay: '3s' }}></div>
+
 
           <div className="container mx-auto px-6 grid md:grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
             <div className="reveal-hidden text-center lg:text-left pt-10" style={{ transitionDelay: '0.1s' }}>
@@ -286,7 +285,7 @@ export default function LandingPage() {
                 </div>
               </div>
 
-              <div className="absolute -bottom-6 right-0 lg:-right-6 glass-card py-4 px-6 rounded-2xl flex items-center gap-4 animate-float sm:z-30 shadow-2xl border-cyan-500/20" style={{ animationDelay: '2s' }}>
+              <div className="absolute -bottom-6 right-0 lg:-right-6 glass-card py-4 px-6 rounded-2xl flex items-center gap-4 animate-float sm:z-30 shadow-xl border-white/5" style={{ animationDelay: '2s' }}>
                 <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse shadow-[0_0_12px_rgba(34,197,94,0.6)]"></div>
                 <span className="text-xs font-black uppercase tracking-widest">Proyectos Activos</span>
               </div>
