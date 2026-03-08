@@ -15,6 +15,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "SFFALCON | Agencia Web para Negocios Locales",
   description: "Diseñamos y construimos tu web profesional para que los clientes te encuentren, confíen en ti y te contacten.",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
