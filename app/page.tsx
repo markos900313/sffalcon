@@ -59,6 +59,10 @@ export default function LandingPage() {
           -webkit-backdrop-filter: blur(12px);
           border: 1px solid rgba(255, 255, 255, 0.08);
           box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+          -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+          transform: translateZ(0);
+          -webkit-transform: translateZ(0);
         }
 
         .glass-nav {
@@ -66,6 +70,10 @@ export default function LandingPage() {
           backdrop-filter: blur(12px);
           -webkit-backdrop-filter: blur(12px);
           border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+          -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+          transform: translateZ(0);
+          -webkit-transform: translateZ(0);
         }
 
         /* Animaciones */
@@ -87,10 +95,18 @@ export default function LandingPage() {
 
         .animate-float {
           animation: float 6s ease-in-out infinite;
+          -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+          transform: translateZ(0);
+          -webkit-transform: translateZ(0);
         }
 
         .animate-pulse-slow {
           animation: pulse-slow 10s ease-in-out infinite;
+          -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+          transform: translateZ(0);
+          -webkit-transform: translateZ(0);
         }
 
         .text-gradient {
@@ -390,7 +406,7 @@ export default function LandingPage() {
                   Resultados tangibles en menos de lo que imaginas. Escríbenos ahora.
                 </p>
                 <div className="flex flex-col sm:flex-row justify-center gap-4">
-                  <a href="mailto:hola@sffalcon.com" className="bg-[#0070f3] hover:bg-[#0060e0] text-white px-10 py-5 rounded-2xl text-sm font-black uppercase tracking-widest transition-all active:scale-95 shadow-2xl shadow-blue-500/30">
+                  <a href="mailto:markos900313@gmail.com" className="bg-[#0070f3] hover:bg-[#0060e0] text-white px-10 py-5 rounded-2xl text-sm font-black uppercase tracking-widest transition-all active:scale-95 shadow-2xl shadow-blue-500/30">
                     Enviar Email
                   </a>
                   <a href="https://wa.me/34604989742?text=Hola%20Marco,%20me%20gustar%C3%ADa%20digitalizar%20mi%20negocio%20con%20SFFALCON." className="glass-card hover:bg-white/5 text-white px-10 py-5 rounded-2xl text-sm font-black uppercase tracking-widest transition-all active:scale-95 border border-white/10">
