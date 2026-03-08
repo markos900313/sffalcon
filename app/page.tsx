@@ -188,13 +188,12 @@ export default function LandingPage() {
         </div>
       </nav>
 
-      {/* BOTÓN WHATSAPP FLOTANTE */}
       <div className="fixed bottom-6 right-6 z-[999] group flex items-center">
         <div className="absolute right-full mr-3 px-3 py-1 bg-black text-white text-[10px] uppercase font-black tracking-widest rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap border border-white/10">
           WhatsApp
         </div>
         <a
-          href="https://wa.me/34604989742"
+          href="https://wa.me/34604989742?text=Hola%20Marco,%20me%20gustar%C3%ADa%20digitalizar%20mi%20negocio%20con%20SFFALCON."
           target="_blank"
           rel="noopener noreferrer"
           className="w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-2xl shadow-green-500/40 hover:scale-110 active:scale-95 transition-transform"
@@ -219,11 +218,11 @@ export default function LandingPage() {
                 Agencia Web para Negocios Locales
               </div>
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-plus-jakarta font-extrabold leading-[1.05] mb-8">
-                Tu negocio merece una{" "}
-                <span className="text-gradient">Presencia Digital Real</span>
+                Creamos tu{" "}
+                <span className="text-gradient">web profesional en 7 días</span> para que tú te enfoques en vender.
               </h1>
               <p className="text-lg sm:text-xl text-gray-400 mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium">
-                Diseñamos y construimos tu web profesional para que los clientes te encuentren, confíen en ti y te contacten. Sin rodeos.
+                Especialistas en digitalizar negocios españoles. Rapidez, confianza y tecnología de vanguardia (Next.js + IA).
               </p>
               <div className="flex flex-wrap justify-center lg:justify-start gap-4">
                 <Link href="#servicios" className="bg-[#0070f3] hover:bg-[#0060e0] text-white px-8 py-4 rounded-xl text-sm font-bold transition-all shadow-xl shadow-blue-500/25 flex items-center gap-2 active:scale-95">
@@ -286,22 +285,22 @@ export default function LandingPage() {
               {[
                 {
                   title: "Landing Pages",
-                  desc: "Páginas verticales optimizadas para convertir visitas en ventas inmediatas.",
+                  desc: "Convierte desconocidos en clientes recurrentes con un diseño imbatible.",
                   icon: <path d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5" />
                 },
                 {
                   title: "Alojamientos",
-                  desc: "Webs para casas rurales y hoteles con sistema de reserva directa sin comisiones.",
+                  desc: "Llena tus habitaciones con venta directa, sin comisiones de terceros.",
                   icon: <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
                 },
                 {
                   title: "Restaurantes",
-                  desc: "Menú digital dinámico y gestión de reservas integrada para tu local.",
+                  desc: "Tu carta y tus reservas, bajo tu control y sin intermediarios.",
                   icon: <path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3" />
                 },
                 {
                   title: "IA integrada",
-                  desc: "Automatizamos tus procesos con agentes de IA que atienden a tus clientes 24/7.",
+                  desc: "Atención al cliente 24/7 que trabaja mientras tú descansas.",
                   icon: <path d="M13 10V3L4 14h7v7l9-11h-7z" />
                 }
               ].map((s, idx) => (
@@ -348,6 +347,34 @@ export default function LandingPage() {
           </div>
         </section>
 
+        {/* NUEVA SECCIÓN: CONFIANZA EN 3 PASOS */}
+        <section className="py-32 relative overflow-hidden">
+          <div className="container mx-auto px-6 relative z-10">
+            <div className="text-center mb-20 reveal-hidden">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-plus-jakarta font-bold mb-6 tracking-tight text-gradient">Confianza en 3 Pasos</h2>
+              <div className="w-24 h-1 bg-blue-600 mx-auto rounded-full"></div>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              {[
+                { step: "1", title: "Llamada", desc: "Entendemos tu negocio y objetivos desde el primer minuto.", icon: "M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" },
+                { step: "2", title: "Diseño en 7 días", desc: "Tu web lista y optimizada sin esperas eternas ni complicaciones.", icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" },
+                { step: "3", title: "Lanzamiento", desc: "Empieza a captar clientes y domina tu mercado local de inmediato.", icon: "M13 10V3L4 14h7v7l9-11h-7z" }
+              ].map((c, idx) => (
+                <div key={idx} className="glass-card p-10 rounded-[2.5rem] text-center reveal-hidden group hover:border-blue-500/30 transition-all" style={{ transitionDelay: `${idx * 0.2}s` }}>
+                  <div className="w-16 h-16 bg-blue-600/10 rounded-2xl flex items-center justify-center mx-auto mb-8 border border-blue-500/20 group-hover:scale-110 transition-transform">
+                    <svg className="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={c.icon}></path>
+                    </svg>
+                  </div>
+                  <h3 className="text-2xl font-plus-jakarta font-bold mb-4">{c.title}</h3>
+                  <p className="text-gray-400 font-medium">{c.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* CTA FINAL RESPONSIVE */}
         <section id="contacto" className="py-24 sm:py-32 overflow-hidden">
           <div className="container mx-auto px-6">
@@ -363,10 +390,10 @@ export default function LandingPage() {
                   Resultados tangibles en menos de lo que imaginas. Escríbenos ahora.
                 </p>
                 <div className="flex flex-col sm:flex-row justify-center gap-4">
-                  <a href="mailto:marcosk903@gmail.com" className="bg-[#0070f3] hover:bg-[#0060e0] text-white px-10 py-5 rounded-2xl text-sm font-black uppercase tracking-widest transition-all active:scale-95 shadow-2xl shadow-blue-500/30">
+                  <a href="mailto:hola@sffalcon.com" className="bg-[#0070f3] hover:bg-[#0060e0] text-white px-10 py-5 rounded-2xl text-sm font-black uppercase tracking-widest transition-all active:scale-95 shadow-2xl shadow-blue-500/30">
                     Enviar Email
                   </a>
-                  <a href="https://wa.me/34604989742" className="glass-card hover:bg-white/5 text-white px-10 py-5 rounded-2xl text-sm font-black uppercase tracking-widest transition-all active:scale-95 border border-white/10">
+                  <a href="https://wa.me/34604989742?text=Hola%20Marco,%20me%20gustar%C3%ADa%20digitalizar%20mi%20negocio%20con%20SFFALCON." className="glass-card hover:bg-white/5 text-white px-10 py-5 rounded-2xl text-sm font-black uppercase tracking-widest transition-all active:scale-95 border border-white/10">
                     WhatsApp
                   </a>
                 </div>
