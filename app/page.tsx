@@ -61,8 +61,9 @@ export default function LandingPage() {
           box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
           -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
-          transform: translateZ(0);
-          -webkit-transform: translateZ(0);
+          -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+          outline: 1px solid transparent;
         }
 
         .glass-nav {
@@ -72,8 +73,8 @@ export default function LandingPage() {
           border-bottom: 1px solid rgba(255, 255, 255, 0.05);
           -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
-          transform: translateZ(0);
-          -webkit-transform: translateZ(0);
+          -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
         }
 
         /* Animaciones */
@@ -97,16 +98,16 @@ export default function LandingPage() {
           animation: float 6s ease-in-out infinite;
           -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
-          transform: translateZ(0);
-          -webkit-transform: translateZ(0);
+          -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
         }
 
         .animate-pulse-slow {
           animation: pulse-slow 10s ease-in-out infinite;
           -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
-          transform: translateZ(0);
-          -webkit-transform: translateZ(0);
+          -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
         }
 
         .text-gradient {
@@ -141,12 +142,16 @@ export default function LandingPage() {
           background: radial-gradient(circle, var(--brand-blue) 0%, transparent 65%);
           filter: blur(80px);
           -webkit-filter: blur(80px);
+          overflow: hidden;
+          pointer-events: none;
         }
 
         .orb-cyan {
           background: radial-gradient(circle, var(--brand-cyan) 0%, transparent 65%);
           filter: blur(80px);
           -webkit-filter: blur(80px);
+          overflow: hidden;
+          pointer-events: none;
         }
       `}</style>
 
@@ -256,7 +261,7 @@ export default function LandingPage() {
             </div>
 
             <div className="relative flex justify-center items-center reveal-hidden lg:block" style={{ transitionDelay: '0.3s' }}>
-              <div className="glass-card p-8 sm:p-10 rounded-[2.5rem] w-full max-w-[380px] animate-float relative z-20 mx-auto">
+              <div className="glass-card p-8 sm:p-10 rounded-[2.5rem] w-full max-w-[380px] animate-float relative z-20 mx-auto" style={{ WebkitBackfaceVisibility: 'hidden', backfaceVisibility: 'hidden', transform: 'translate3d(0,0,0)', WebkitTransform: 'translate3d(0,0,0)' }}>
                 <div className="flex items-center gap-5 mb-8">
                   <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-600/20 to-cyan-400/20 flex items-center justify-center border border-white/5">
                     <svg className="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -405,12 +410,9 @@ export default function LandingPage() {
                 <p className="text-lg text-gray-400 mb-12 font-medium">
                   Resultados tangibles en menos de lo que imaginas. Escríbenos ahora.
                 </p>
-                <div className="flex flex-col sm:flex-row justify-center gap-4">
+                <div className="flex justify-center">
                   <a href="mailto:markos900313@gmail.com" className="bg-[#0070f3] hover:bg-[#0060e0] text-white px-10 py-5 rounded-2xl text-sm font-black uppercase tracking-widest transition-all active:scale-95 shadow-2xl shadow-blue-500/30">
                     Enviar Email
-                  </a>
-                  <a href="https://wa.me/34604989742?text=Hola%20Marco,%20me%20gustar%C3%ADa%20digitalizar%20mi%20negocio%20con%20SFFALCON." className="glass-card hover:bg-white/5 text-white px-10 py-5 rounded-2xl text-sm font-black uppercase tracking-widest transition-all active:scale-95 border border-white/10">
-                    WhatsApp
                   </a>
                 </div>
               </div>
