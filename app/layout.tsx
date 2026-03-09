@@ -17,7 +17,6 @@ export const metadata: Metadata = {
   description: "Diseñamos y construimos tu web profesional para que los clientes te encuentren, confíen en ti y te contacten.",
   icons: {
     icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
     apple: "/favicon.ico",
   },
 };

@@ -10,7 +10,6 @@ const plusJakarta = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-pl
 
 export default function LandingPage() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Manejar el efecto de scroll para la navegación
   useEffect(() => {
@@ -55,26 +54,27 @@ export default function LandingPage() {
         /* Estilos Glassmorphism - Safari Optimized */
         .glass-card {
           background: rgba(255, 255, 255, 0.03);
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
-          border: 1px solid rgba(255, 255, 255, 0.05);
-          box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.2);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.2);
           -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
-          -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
+          -webkit-transform: translateZ(0);
+          transform: translateZ(0);
           outline: 1px solid transparent;
         }
 
         .glass-nav {
-          background: rgba(5, 5, 5, 0.85);
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
+          background: rgba(5, 5, 5, 0.8);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
           border-bottom: 1px solid rgba(255, 255, 255, 0.05);
           -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
-          -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
+          -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+          outline: 1px solid transparent;
         }
 
         /* Animaciones */
@@ -137,75 +137,41 @@ export default function LandingPage() {
           border-color: rgba(0, 223, 216, 0.4);
         }
 
-        /* Orbs de fondo */
-        .orb-blue {
-          background: radial-gradient(circle, var(--brand-blue) 0%, transparent 65%);
-          filter: blur(80px);
-          -webkit-filter: blur(80px);
-          overflow: hidden;
-          pointer-events: none;
-        }
 
-        .orb-cyan {
-          background: radial-gradient(circle, var(--brand-cyan) 0%, transparent 65%);
-          filter: blur(80px);
-          -webkit-filter: blur(80px);
-          overflow: hidden;
-          pointer-events: none;
-        }
       `}</style>
 
       {/* 1. NAVEGACIÓN */}
-      <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 ${isScrolled || isMenuOpen ? "py-3 glass-nav shadow-2xl" : "py-6 bg-transparent"}`}>
+      <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 ${isScrolled ? "py-2 glass-nav shadow-2xl" : "py-4 bg-transparent"}`}>
         <div className="container mx-auto px-6 flex justify-between items-center">
           <Link href="/" className="flex items-center gap-2 group cursor-pointer z-50">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-tr from-[#0070f3] to-[#00dfd8] flex items-center justify-center font-bold text-xl shadow-lg shadow-blue-500/20 group-hover:rotate-6 transition-transform">
-              <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-white">
+            <div className="w-8 h-8 rounded-lg bg-[#0070f3] flex items-center justify-center font-bold text-lg group-hover:rotate-6 transition-transform">
+              <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 text-white">
                 <path d="M21 3L12.5 8.5L9 4L3 7l4 3.5L3 21l7-4 1.5 3.5L21 3z" />
               </svg>
             </div>
-            <span className="font-plus-jakarta font-bold text-xl tracking-tight">SFFALCON</span>
+            <span className="font-plus-jakarta font-bold text-base sm:text-lg tracking-tight text-white">SFFALCON</span>
           </Link>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-10 text-sm font-semibold text-gray-400">
-            <Link href="#servicios" prefetch={true} className="hover:text-white transition-colors relative group">
-              Servicios
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all group-hover:w-full"></span>
-            </Link>
-            <Link href="#transformación" prefetch={true} className="hover:text-white transition-colors relative group">
-              Transformación
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all group-hover:w-full"></span>
-            </Link>
-            <Link href="#proceso" prefetch={true} className="hover:text-white transition-colors relative group">
-              Proceso
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all group-hover:w-full"></span>
-            </Link>
-            <Link href="#contacto" prefetch={true} className="bg-[#0070f3] hover:bg-[#0060e0] text-white px-6 py-3 rounded-xl text-sm font-bold transition-all shadow-lg shadow-blue-500/30 active:scale-95">
+          {/* Desktop & Mobile Menu */}
+          <div className="flex items-center gap-3 sm:gap-10">
+            <div className="hidden md:flex items-center gap-10 text-xs font-semibold text-gray-400">
+              <Link href="#servicios" className="hover:text-white transition-colors relative group">
+                Servicios
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 transition-all group-hover:w-full"></span>
+              </Link>
+              <Link href="#transformación" className="hover:text-white transition-colors relative group">
+                Transformación
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 transition-all group-hover:w-full"></span>
+              </Link>
+              <Link href="#proceso" className="hover:text-white transition-colors relative group">
+                Proceso
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 transition-all group-hover:w-full"></span>
+              </Link>
+            </div>
+            <Link href="#contacto" className="bg-[#0070f3] hover:bg-[#0060e0] text-white px-4 py-2 rounded-lg text-[9px] sm:text-xs font-black uppercase tracking-widest transition-all active:scale-95 whitespace-nowrap">
               Empezar Ahora
             </Link>
           </div>
-
-          {/* Mobile Hamburguer Toggle */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden z-50 p-2 text-white focus:outline-none"
-            aria-label="Toggle menu"
-          >
-            <div className="w-6 h-5 flex flex-col justify-between relative overflow-hidden">
-              <span className={`w-full h-0.5 bg-white rounded-full transition-all duration-300 ${isMenuOpen ? "rotate-45 translate-y-2.2" : ""}`}></span>
-              <span className={`w-full h-0.5 bg-white rounded-full transition-all duration-300 ${isMenuOpen ? "opacity-0 -translate-x-full" : ""}`}></span>
-              <span className={`w-full h-0.5 bg-white rounded-full transition-all duration-300 ${isMenuOpen ? "-rotate-45 -translate-y-2.2" : ""}`}></span>
-            </div>
-          </button>
-        </div>
-
-        {/* Mobile Menu Overlay */}
-        <div className={`fixed inset-0 bg-[#050505]/98 backdrop-blur-xl z-[40] transition-all duration-500 md:hidden flex flex-col items-center justify-center gap-8 ${isMenuOpen ? "opacity-100 visible pointer-events-auto" : "opacity-0 invisible pointer-events-none"}`}>
-          <Link href="#servicios" onClick={() => setIsMenuOpen(false)} className="text-3xl font-plus-jakarta font-bold hover:text-[#00dfd8]">Servicios</Link>
-          <Link href="#transformación" onClick={() => setIsMenuOpen(false)} className="text-3xl font-plus-jakarta font-bold hover:text-[#00dfd8]">Transformación</Link>
-          <Link href="#proceso" onClick={() => setIsMenuOpen(false)} className="text-3xl font-plus-jakarta font-bold hover:text-[#00dfd8]">Proceso</Link>
-          <Link href="#contacto" onClick={() => setIsMenuOpen(false)} className="bg-[#0070f3] text-white px-10 py-5 rounded-2xl text-xl font-bold shadow-2xl shadow-blue-500/40">Empezar Ahora</Link>
         </div>
       </nav>
 
@@ -244,11 +210,11 @@ export default function LandingPage() {
               <p className="text-lg sm:text-xl text-gray-400 mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium">
                 Especialistas en digitalizar negocios españoles. Rapidez, confianza y tecnología de vanguardia (Next.js + IA).
               </p>
-              <div className="flex flex-wrap justify-center lg:justify-start gap-4">
-                <Link href="#servicios" className="bg-[#0070f3] hover:bg-[#0060e0] text-white px-8 py-4 rounded-xl text-sm font-bold transition-all shadow-xl shadow-blue-500/25 flex items-center gap-2 active:scale-95">
+              <div className="flex flex-wrap justify-center lg:justify-start gap-3">
+                <Link href="#servicios" className="bg-[#0070f3] hover:bg-[#0060e0] text-white px-5 py-2.5 rounded-lg text-xs font-bold transition-all shadow-lg shadow-blue-500/10 flex items-center gap-2 active:scale-95">
                   Ver Servicios
                 </Link>
-                <Link href="#contacto" className="glass-card hover:bg-white/5 px-8 py-4 rounded-xl text-sm font-bold transition-all border border-white/10 flex items-center gap-2 active:scale-95">
+                <Link href="#contacto" className="glass-card hover:bg-white/5 px-5 py-2.5 rounded-lg text-xs font-bold transition-all border border-white/10 flex items-center gap-2 active:scale-95">
                   Contactar Ahora
                 </Link>
               </div>
@@ -260,26 +226,26 @@ export default function LandingPage() {
             </div>
 
             <div className="relative flex justify-center items-center reveal-hidden lg:block" style={{ transitionDelay: '0.3s' }}>
-              <div className="glass-card p-8 sm:p-10 rounded-[2.5rem] w-full max-w-[380px] animate-float relative z-20 mx-auto" style={{ WebkitBackfaceVisibility: 'hidden', backfaceVisibility: 'hidden', transform: 'translate3d(0,0,0)', WebkitTransform: 'translate3d(0,0,0)' }}>
-                <div className="flex items-center gap-5 mb-8">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-600/20 to-cyan-400/20 flex items-center justify-center border border-white/5">
-                    <svg className="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="glass-card p-6 sm:p-8 rounded-[2rem] w-full max-w-[340px] animate-float relative z-20 mx-auto" style={{ WebkitBackfaceVisibility: 'hidden', backfaceVisibility: 'hidden', transform: 'translateZ(0)', WebkitTransform: 'translate3d(0,0,0)' }}>
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 rounded-2xl bg-blue-600/10 flex items-center justify-center border border-white/5">
+                    <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-bold text-xl sm:text-2xl font-plus-jakarta italic">Tu web hoy</h3>
-                    <p className="text-[10px] text-gray-500 font-black tracking-widest uppercase">Entrega High-Speed</p>
+                    <h3 className="font-bold text-lg sm:text-xl font-plus-jakarta italic">Tu web hoy</h3>
+                    <p className="text-[9px] text-gray-500 font-black tracking-widest uppercase">Entrega High-Speed</p>
                   </div>
                 </div>
-                <div className="space-y-6">
+                <div className="space-y-4">
                   <div className="space-y-2">
-                    <div className="flex justify-between text-[10px] font-black text-gray-400 uppercase tracking-widest">
+                    <div className="flex justify-between text-[9px] font-black text-gray-400 uppercase tracking-widest">
                       <span>Optimización SEO</span>
                       <span className="text-cyan-400">100%</span>
                     </div>
-                    <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden p-[2px]">
-                      <div className="h-full w-full bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-500 bg-[length:200%_auto] animate-[bg-gradient-x_3s_linear_infinite] rounded-full shadow-[0_0_10px_rgba(0,112,243,0.4)]"></div>
+                    <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden p-[1px]">
+                      <div className="h-full w-full bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-500 bg-[length:200%_auto] animate-[bg-gradient-x:3s_linear_infinite] rounded-full shadow-[0_0_10px_rgba(0,112,243,0.4)]"></div>
                     </div>
                   </div>
                 </div>
@@ -410,7 +376,7 @@ export default function LandingPage() {
                   Resultados tangibles en menos de lo que imaginas. Escríbenos ahora.
                 </p>
                 <div className="flex justify-center">
-                  <a href="mailto:markos900313@gmail.com" className="bg-[#0070f3] hover:bg-[#0060e0] text-white px-10 py-5 rounded-2xl text-sm font-black uppercase tracking-widest transition-all active:scale-95 shadow-2xl shadow-blue-500/30">
+                  <a href="mailto:markos900313@gmail.com" className="bg-[#0070f3] hover:bg-[#0060e0] text-white px-6 py-2.5 rounded-xl text-xs font-black uppercase tracking-widest transition-all active:scale-95 shadow-xl shadow-blue-500/20">
                     Enviar Email
                   </a>
                 </div>
