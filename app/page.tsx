@@ -193,7 +193,7 @@ export default function LandingPage() {
 
       <main>
         {/* 2. HERO SECTION */}
-        <section className="relative min-h-dvh flex items-center pt-24 overflow-hidden">
+        <section className="relative min-h-dvh flex items-center pt-28 pb-32 md:pb-0 overflow-visible md:overflow-hidden">
           {/* Fondo Mesh Gradient Orbs */}
 
 
@@ -225,7 +225,7 @@ export default function LandingPage() {
               </div>
             </div>
 
-            <div className="relative flex justify-center items-center reveal-hidden lg:block" style={{ transitionDelay: '0.3s' }}>
+            <div className="relative flex justify-center items-center reveal-hidden lg:block mt-12 lg:mt-0" style={{ transitionDelay: '0.3s' }}>
               <div className="glass-card p-6 sm:p-8 rounded-[2rem] w-full max-w-[340px] animate-float relative z-20 mx-auto" style={{ WebkitBackfaceVisibility: 'hidden', backfaceVisibility: 'hidden', transform: 'translateZ(0)', WebkitTransform: 'translate3d(0,0,0)' }}>
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-12 h-12 rounded-2xl bg-blue-600/10 flex items-center justify-center border border-white/5">
