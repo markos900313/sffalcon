@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -23,4 +24,13 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Hide Next.js Dev Tooling */
+#nextjs-portal,
+.nextjs-static-indicator-container,
+nextjs-static-indicator,
+[data-nextjs-toast],
+[data-nextjs-dialog-overlay] {
+  display: none !important;
 }

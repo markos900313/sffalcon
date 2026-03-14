@@ -1,410 +1,325 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import React from "react";
 import Link from "next/link";
+import { Inter } from "next/font/google";
+import {
+  CheckCircle2, LayoutTemplate, Smartphone, BarChart3,
+  Bot, Phone, Clock, Rocket, Mail, ArrowRight, Sparkles, Zap, Globe
+} from "lucide-react";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
-// Configuración de fuentes de Google
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const plusJakarta = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-plus-jakarta" });
 
 export default function LandingPage() {
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  // Manejar el efecto de scroll para la navegación
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // Animación de Scroll Reveal
-  useEffect(() => {
-    const observerOptions = { threshold: 0.1 };
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("reveal-visible");
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll(".reveal-hidden").forEach((el) => observer.observe(el));
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
-
   return (
-    <div className={`${inter.variable} ${plusJakarta.variable} font-sans bg-[#050505] text-white selection:bg-[#0070f3]/30 min-h-screen overflow-x-hidden w-full`}>
-      <style jsx global>{`
-        :root {
-          --brand-blue: #0070f3;
-          --brand-cyan: #00dfd8;
-          --brand-violet: #7928ca;
-        }
-
-        html {
-          scroll-behavior: smooth;
-        }
-
-        /* Estilos Glassmorphism - Safari Optimized */
-        .glass-card {
-          background: rgba(255, 255, 255, 0.03);
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.2);
-          -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-          -webkit-transform: translateZ(0);
-          transform: translateZ(0);
-          outline: 1px solid transparent;
-        }
-
+    <div className={`${inter.variable} font-sans bg-[#f5f7f8] text-slate-900 selection:bg-[#0f3460]/30 min-h-[max(884px,100dvh)]`}>
+      <style dangerouslySetInnerHTML={{
+        __html: `
         .glass-nav {
-          background: rgba(5, 5, 5, 0.8);
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
-          border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-          -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-          -webkit-transform: translateZ(0);
-          transform: translateZ(0);
-          outline: 1px solid transparent;
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(15, 52, 96, 0.08);
         }
-
-        /* Animaciones */
-        @keyframes float {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-20px); }
+        .hero-gradient {
+            background: 
+              radial-gradient(circle at 100% 0%, rgba(15, 52, 96, 0.08) 0%, transparent 50%),
+              radial-gradient(circle at 0% 100%, rgba(15, 52, 96, 0.05) 0%, transparent 50%),
+              #f5f7f8;
         }
-
-        @keyframes pulse-slow {
-          0%, 100% { transform: scale(1); opacity: 0.3; }
-          50% { transform: scale(1.15); opacity: 0.5; }
-        }
-
-        @keyframes bg-gradient-x {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-
-        .animate-float {
-          animation: float 6s ease-in-out infinite;
-          -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-          -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
-        }
-
-        .animate-pulse-slow {
-          animation: pulse-slow 10s ease-in-out infinite;
-          -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-          -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
-        }
-
         .text-gradient {
-          background: linear-gradient(90deg, var(--brand-blue), var(--brand-cyan), var(--brand-blue));
-          background-clip: text;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          color: transparent;
-          background-size: 200% auto;
-          animation: bg-gradient-x 5s linear infinite;
+            background: linear-gradient(135deg, #0f3460 0%, #1a508b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-
-        /* Scroll Reveal */
-        .reveal-hidden {
-          opacity: 0;
-          transform: translateY(20px);
-          transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 
+              0 20px 40px -15px rgba(15, 52, 96, 0.1),
+              0 0 0 1px rgba(15, 52, 96, 0.02);
         }
-
-        .reveal-visible {
-          opacity: 1;
-          transform: translateY(0);
+        .floating {
+            animation: floating 6s ease-in-out infinite;
         }
-
-        .neon-glow:hover {
-          box-shadow: 0 0 25px rgba(0, 112, 243, 0.25);
-          border-color: rgba(0, 223, 216, 0.4);
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
         }
+        .glow-blob {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(15, 52, 96, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(40px);
+            z-index: 0;
+        }
+      `}} />
 
+      <Navbar />
 
-      `}</style>
+      {/* Hero Section */}
+      <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 hero-gradient overflow-hidden">
+        {/* Glow Blobs */}
+        <div className="glow-blob top-[-100px] right-[-100px] animate-pulse"></div>
+        <div className="glow-blob bottom-[-100px] left-[-100px] opacity-60"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-20 items-center">
+            <div className="space-y-10">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-sm border border-slate-100 group transition-all hover:border-[#0f3460]/20 cursor-default">
+                <Sparkles className="w-3.5 h-3.5 text-[#0f3460] animate-pulse" />
+                <span className="text-[#0f3460] text-[11px] font-bold uppercase tracking-widest">
+                  Tecnología que Captase Clientes · SFFALCON
+                </span>
+              </div>
 
-      {/* 1. NAVEGACIÓN */}
-      <nav className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 ${isScrolled ? "py-2 glass-nav shadow-2xl" : "py-4 bg-transparent"}`}>
-        <div className="container mx-auto px-6 flex justify-between items-center">
-          <Link href="/" className="flex items-center gap-2 group cursor-pointer z-50">
-            <div className="w-8 h-8 rounded-lg bg-[#0070f3] flex items-center justify-center font-bold text-lg group-hover:rotate-6 transition-transform">
-              <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 text-white">
-                <path d="M21 3L12.5 8.5L9 4L3 7l4 3.5L3 21l7-4 1.5 3.5L21 3z" />
-              </svg>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 leading-[1.1] tracking-tight">
+                <span className="block">La tecnología que hace</span>
+                <span className="block text-gradient">crecer tu negocio</span>
+                <span className="block">mientras tú lo diriges.</span>
+              </h1>
+
+              <p className="text-lg md:text-xl text-slate-600 max-w-xl leading-relaxed font-medium opacity-90">
+                Soluciones de software personalizadas, IA y marketing que trabajan 24/7 para aumentar tu rentabilidad y liberar tu tiempo.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-5">
+                <Link className="inline-flex items-center justify-center px-8 py-4 bg-[#0f3460] text-white text-sm font-bold rounded-2xl shadow-2xl shadow-[#0f3460]/30 hover:-translate-y-1 transition-all active:scale-95 group" href="#servicios">
+                  Ver cómo podemos ayudarte
+                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <Link className="inline-flex items-center justify-center px-8 py-4 bg-white border border-slate-200 text-slate-900 text-sm font-bold rounded-2xl hover:bg-slate-50 hover:border-slate-300 transition-all shadow-sm" href="#contacto">
+                  Quiero mi presupuesto gratis hoy
+                </Link>
+              </div>
+
+              <div className="flex flex-wrap gap-8 pt-4">
+                <div className="flex items-center gap-2.5 text-xs font-bold text-slate-500 uppercase tracking-wider">
+                  <CheckCircle2 className="w-5 h-5 text-green-500" strokeWidth={2.5} />
+                  Sin permanencia
+                </div>
+                <div className="flex items-center gap-2.5 text-xs font-bold text-slate-500 uppercase tracking-wider">
+                  <CheckCircle2 className="w-5 h-5 text-green-500" strokeWidth={2.5} />
+                  Entrega 15–30 días
+                </div>
+                <div className="flex items-center gap-2.5 text-xs font-bold text-slate-500 uppercase tracking-wider">
+                  <CheckCircle2 className="w-5 h-5 text-green-500" strokeWidth={2.5} />
+                  Soporte directo y real
+                </div>
+              </div>
             </div>
-            <span className="font-plus-jakarta font-bold text-base sm:text-lg tracking-tight text-white">SFFALCON</span>
-          </Link>
 
-          {/* Desktop & Mobile Menu */}
-          <div className="flex items-center gap-3 sm:gap-10">
-            <div className="hidden md:flex items-center gap-10 text-xs font-semibold text-gray-400">
-              <Link href="#servicios" className="hover:text-white transition-colors relative group">
-                Servicios
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 transition-all group-hover:w-full"></span>
-              </Link>
-              <Link href="#transformación" className="hover:text-white transition-colors relative group">
-                Transformación
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 transition-all group-hover:w-full"></span>
-              </Link>
-              <Link href="#proceso" className="hover:text-white transition-colors relative group">
-                Proceso
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 transition-all group-hover:w-full"></span>
-              </Link>
+            <div className="relative lg:ml-auto lg:max-w-[460px] lg:justify-self-end">
+              {/* Floating Element 1 */}
+              <div className="absolute -top-10 -left-10 z-20 floating">
+                <div className="glass-card p-3 rounded-2xl flex items-center gap-2.5">
+                  <div className="bg-blue-500/10 p-2 rounded-xl">
+                    <Zap className="w-4 h-4 text-blue-600" />
+                  </div>
+                  <div>
+                    <p className="text-[9px] font-bold text-blue-600 uppercase tracking-tighter">Rendimiento</p>
+                    <p className="text-xs font-black text-slate-900">High Performance</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Main Preview Card */}
+              <div className="relative z-10 glass-card rounded-[2rem] p-8 overflow-hidden group hover:shadow-3xl transition-all duration-500">
+                <div className="absolute top-0 right-0 w-24 h-24 bg-[#0f3460]/5 rounded-bl-[4rem] -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
+
+                <div className="flex justify-between items-start mb-10">
+                  <div>
+                    <h3 className="text-xl font-black text-[#0f3460] tracking-tight">Ecosistema Pro</h3>
+                    <p className="text-[10px] font-bold text-[#0f3460]/60 uppercase tracking-widest mt-1 flex items-center gap-1.5">
+                      <span className="w-1 h-1 bg-[#0f3460] rounded-full animate-ping"></span>
+                      Desarrollo Ágil
+                    </p>
+                  </div>
+                  <div className="bg-green-500/10 px-3 py-1.5 rounded-full flex items-center gap-2 border border-green-500/20">
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                    </span>
+                    <span className="text-[10px] font-black text-green-700 uppercase tracking-tighter">Activo Ahora</span>
+                  </div>
+                </div>
+
+                <div className="space-y-10">
+                  <div>
+                    <div className="flex justify-between items-center text-sm font-black mb-3 text-[#0f3460]">
+                      <span className="flex items-center gap-2">
+                        <Globe className="w-4 h-4" />
+                        Visibilidad en Google
+                      </span>
+                      <span className="bg-[#0f3460] text-white px-2 py-0.5 rounded text-[10px]">OBJETIVO 90+</span>
+                    </div>
+                    <div className="w-full bg-slate-100 h-3 rounded-full overflow-hidden p-0.5">
+                      <div className="bg-gradient-to-r from-[#0f3460] to-[#1a508b] h-full rounded-full w-[100%] transition-all duration-1000 shadow-sm"></div>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-6">
+                    <div className="bg-slate-50/50 border border-slate-100 p-6 rounded-[2rem] hover:bg-white transition-colors">
+                      <span className="text-[10px] uppercase font-bold text-slate-400 block mb-2 tracking-widest">Saturación IA</span>
+                      <p className="text-3xl font-black text-[#0f3460]">Full</p>
+                    </div>
+                    <div className="bg-slate-50/50 border border-slate-100 p-6 rounded-[2rem] hover:bg-white transition-colors">
+                      <span className="text-[10px] uppercase font-bold text-slate-400 block mb-2 tracking-widest">UX Factor</span>
+                      <p className="text-3xl font-black text-[#0f3460]">A++</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating Element 2 */}
+              <div className="absolute -bottom-8 -right-8 z-20 floating [animation-delay:1s]">
+                <div className="glass-card p-5 rounded-2xl flex items-center gap-4 border-l-4 border-l-[#0f3460]">
+                  <div className="flex -space-x-2">
+                    {[1, 2, 3].map((i) => (
+                      <div key={i} className="w-8 h-8 rounded-full border-2 border-white bg-slate-100 overflow-hidden flex items-center justify-center text-[10px] font-black text-[#0f3460]">
+                        UI
+                      </div>
+                    ))}
+                  </div>
+                  <p className="text-xs font-bold text-slate-700">Diseño Exclusivo</p>
+                </div>
+              </div>
             </div>
-            <Link href="#contacto" className="bg-[#0070f3] hover:bg-[#0060e0] text-white px-4 py-2 rounded-lg text-[9px] sm:text-xs font-black uppercase tracking-widest transition-all active:scale-95 whitespace-nowrap">
-              Empezar Ahora
+          </div>
+        </div>
+      </section>
+
+      {/* Soluciones Reales Section */}
+      <section className="py-24 bg-white" id="servicios">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-center text-center mb-20">
+            <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-6">Soluciones que generan impacto real</h2>
+            <div className="h-2 w-24 bg-gradient-to-r from-[#0f3460] to-[#1a508b] rounded-full"></div>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Card 1 */}
+            <Link href="/servicios/webs-landing" className="group p-8 rounded-2xl border border-slate-100 bg-[#f5f7f8] hover:bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-start">
+              <LayoutTemplate className="w-8 h-8 text-[#0f3460] mb-6" strokeWidth={1.5} />
+              <h3 className="text-xl font-bold text-slate-900 mb-2">Webs y Landing Pages</h3>
+              <p className="text-sm text-slate-500 mb-6 leading-relaxed">Diseño profesional de alta conversión para que tus campañas y anuncios se traduzcan en clientes.</p>
+              <div className="text-[#0f3460] font-bold text-sm flex items-center gap-2 group-hover:gap-3 transition-all mt-auto">Explorar <ArrowRight className="w-4 h-4" strokeWidth={2} /></div>
+            </Link>
+            {/* Card 2 */}
+            <Link href="/servicios/aplicaciones-moviles" className="group p-8 rounded-2xl border border-slate-100 bg-[#f5f7f8] hover:bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-start">
+              <Smartphone className="w-8 h-8 text-[#0f3460] mb-6" strokeWidth={1.5} />
+              <h3 className="text-xl font-bold text-slate-900 mb-2">Aplicaciones móviles y web</h3>
+              <p className="text-sm text-slate-500 mb-6 leading-relaxed">Apps nativas y multiplataforma a medida para que tus clientes te lleven siempre en el bolsillo.</p>
+              <div className="text-[#0f3460] font-bold text-sm flex items-center gap-2 group-hover:gap-3 transition-all mt-auto">Explorar <ArrowRight className="w-4 h-4" strokeWidth={2} /></div>
+            </Link>
+            {/* Card 3 */}
+            <Link href="/servicios/saas-paneles" className="group p-8 rounded-2xl border border-slate-100 bg-[#f5f7f8] hover:bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-start">
+              <BarChart3 className="w-8 h-8 text-[#0f3460] mb-6" strokeWidth={1.5} />
+              <h3 className="text-xl font-bold text-slate-900 mb-2">SaaS y paneles de gestión</h3>
+              <p className="text-sm text-slate-500 mb-6 leading-relaxed">Plataformas con panel propio para gestionar reservas, clientes y operaciones sin depender de terceros.</p>
+              <div className="text-[#0f3460] font-bold text-sm flex items-center gap-2 group-hover:gap-3 transition-all mt-auto">Explorar <ArrowRight className="w-4 h-4" strokeWidth={2} /></div>
+            </Link>
+            {/* Card 4 */}
+            <Link href="/servicios/ia-integrada" className="group p-8 rounded-2xl border border-slate-100 bg-[#f5f7f8] hover:bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-start">
+              <Bot className="w-8 h-8 text-[#0f3460] mb-6" strokeWidth={1.5} />
+              <h3 className="text-xl font-bold text-slate-900 mb-2">IA integrada</h3>
+              <p className="text-sm text-slate-500 mb-6 leading-relaxed">Agentes y automatizaciones 24/7 que atienden, responden y ejecutan tareas mientras tú te centras en dirigir.</p>
+              <div className="text-[#0f3460] font-bold text-sm flex items-center gap-2 group-hover:gap-3 transition-all mt-auto">Explorar <ArrowRight className="w-4 h-4" strokeWidth={2} /></div>
             </Link>
           </div>
         </div>
-      </nav>
+      </section>
 
-      <div className="fixed bottom-6 right-6 z-[999] group flex items-center">
-        <div className="absolute right-full mr-3 px-3 py-1 bg-black text-white text-[10px] uppercase font-black tracking-widest rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap border border-white/10">
-          WhatsApp
+      {/* Metodología Section */}
+      <section className="py-24 bg-[#f5f7f8]" id="proceso">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-16">
+            <h2 className="text-4xl font-black text-slate-900 mb-2">Metodología</h2>
+            <p className="text-lg text-slate-500">De la idea al sistema digital que trabaja por ti</p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="relative">
+              <span className="text-7xl font-black text-slate-200 absolute -top-10 left-0 -z-10">01</span>
+              <h3 className="text-xl font-bold text-slate-900 mb-3 mt-4">Entendemos tu día a día</h3>
+              <p className="text-sm text-slate-600 leading-relaxed">Analizamos tu negocio y tus procesos actuales para detectar dónde podemos ahorrarte más tiempo y dinero.</p>
+            </div>
+            <div className="relative">
+              <span className="text-7xl font-black text-slate-200 absolute -top-10 left-0 -z-10">02</span>
+              <h3 className="text-xl font-bold text-slate-900 mb-3 mt-4">Trazamos el plan de ataque</h3>
+              <p className="text-sm text-slate-600 leading-relaxed">Definimos la hoja de ruta clara: qué vamos a construir, por qué y cómo va a impactar en tus resultados.</p>
+            </div>
+            <div className="relative">
+              <span className="text-7xl font-black text-slate-200 absolute -top-10 left-0 -z-10">03</span>
+              <h3 className="text-xl font-bold text-slate-900 mb-3 mt-4">Lo hacemos realidad</h3>
+              <p className="text-sm text-slate-600 leading-relaxed">Desarrollamos tu solución digital con la tecnología más avanzada, siempre enfocados en que sea fácil de usar.</p>
+            </div>
+            <div className="relative">
+              <span className="text-7xl font-black text-slate-200 absolute -top-10 left-0 -z-10">04</span>
+              <h3 className="text-xl font-bold text-slate-900 mb-3 mt-4">Crecemos contigo</h3>
+              <p className="text-sm text-slate-600 leading-relaxed">Lanzamos y optimizamos. No te soltamos la mano hasta que la herramienta sea el motor de tu negocio.</p>
+            </div>
+          </div>
         </div>
-        <a
-          href="https://wa.me/34604989742?text=Hola%20Marco,%20me%20gustar%C3%ADa%20digitalizar%20mi%20negocio%20con%20SFFALCON."
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-2xl shadow-green-500/40 hover:scale-110 active:scale-95 transition-transform"
-        >
-          <svg className="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 32 32">
-            <path d="M16 0C7.163 0 0 7.163 0 16c0 2.833.738 5.494 2.027 7.807L0 32l8.418-2.004A15.938 15.938 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.27 13.27 0 01-6.788-1.858l-.486-.29-5.004 1.192 1.215-4.875-.317-.5A13.267 13.267 0 012.667 16C2.667 8.821 8.821 2.667 16 2.667S29.333 8.821 29.333 16 23.179 29.333 16 29.333zm7.273-9.874c-.398-.199-2.354-1.162-2.719-1.295-.365-.133-.631-.199-.897.2-.266.398-1.03 1.294-1.263 1.56-.232.265-.465.299-.863.1-.398-.2-1.68-.619-3.2-1.976-1.183-1.056-1.981-2.36-2.213-2.758-.232-.399-.025-.614.174-.812.179-.178.398-.465.597-.698.2-.232.266-.398.399-.664.133-.266.066-.498-.033-.697-.1-.2-.897-2.162-1.229-2.96-.324-.777-.653-.672-.897-.684l-.764-.013c-.266 0-.697.1-1.063.498-.365.399-1.395 1.363-1.395 3.325s1.428 3.857 1.627 4.123c.2.265 2.81 4.29 6.808 6.018.951.411 1.693.656 2.271.84.954.303 1.823.26 2.51.158.766-.114 2.354-.963 2.686-1.893.333-.93.333-1.727.233-1.893-.1-.166-.366-.265-.764-.464z" />
+      </section>
+
+      {/* Confianza Section */}
+      <section className="py-24 bg-white" id="transformación">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center gap-4 mb-16">
+            <div className="w-1.5 h-10 bg-[#0f3460] rounded-full"></div>
+            <h2 className="text-3xl md:text-4xl font-black text-slate-900">Confianza en 3 Pasos</h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-12">
+            <div className="flex flex-col items-start space-y-4">
+              <div className="w-12 h-12 bg-[#f1f5f9] rounded-xl flex items-center justify-center">
+                <Phone className="w-5 h-5 text-[#0f3460]" strokeWidth={2} />
+              </div>
+              <h3 className="text-xl font-bold text-slate-900">Llamada</h3>
+              <p className="text-slate-500 leading-relaxed">Entendemos tu necesidad en 15 minutos y te damos un presupuesto cerrado para web, app o SaaS según tu caso.</p>
+            </div>
+            <div className="flex flex-col items-start space-y-4">
+              <div className="w-12 h-12 bg-[#f1f5f9] rounded-xl flex items-center justify-center">
+                <Clock className="w-5 h-5 text-[#0f3460]" strokeWidth={2} />
+              </div>
+              <h3 className="text-xl font-bold text-slate-900">Construcción por fases</h3>
+              <p className="text-slate-500 leading-relaxed">Lanzamos lo esencial para que empieces a vender pronto, y luego escalamos con automatizaciones e IA.</p>
+            </div>
+            <div className="flex flex-col items-start space-y-4">
+              <div className="w-12 h-12 bg-[#f1f5f9] rounded-xl flex items-center justify-center">
+                <Rocket className="w-5 h-5 text-[#0f3460]" strokeWidth={2} />
+              </div>
+              <h3 className="text-xl font-bold text-slate-900">Lanzamiento</h3>
+              <p className="text-slate-500 leading-relaxed">Publicamos tu sitio o plataforma, configuramos el SEO básico y te formamos para que manejes tu panel con autonomía.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-24 bg-[#0f3460] relative overflow-hidden" id="contacto">
+        <div className="absolute inset-0 opacity-10 pointer-events-none">
+          <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 100">
+            <path d="M0 100 L100 0 L100 100 Z" fill="white"></path>
           </svg>
-        </a>
-      </div>
-
-      <main>
-        {/* 2. HERO SECTION */}
-        <section className="relative min-h-dvh flex items-center pt-28 pb-32 md:pb-0 overflow-visible md:overflow-hidden">
-          {/* Fondo Mesh Gradient Orbs */}
-
-
-          <div className="container mx-auto px-6 grid md:grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
-            <div className="reveal-hidden text-center lg:text-left pt-10" style={{ transitionDelay: '0.1s' }}>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-blue-500/20 bg-blue-500/5 text-blue-400 text-[10px] font-black tracking-widest mb-8 uppercase">
-                <span className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-pulse"></span>
-                Agencia Web para Negocios Locales
-              </div>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-plus-jakarta font-extrabold leading-[1.05] mb-8">
-                Creamos tu{" "}
-                <span className="text-gradient">web profesional en 7 días</span> para que tú te enfoques en vender.
-              </h1>
-              <p className="text-lg sm:text-xl text-gray-400 mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium">
-                Especialistas en digitalizar negocios españoles. Rapidez, confianza y tecnología de vanguardia (Next.js + IA).
-              </p>
-              <div className="flex flex-wrap justify-center lg:justify-start gap-3">
-                <Link href="#servicios" className="bg-[#0070f3] hover:bg-[#0060e0] text-white px-5 py-2.5 rounded-lg text-xs font-bold transition-all shadow-lg shadow-blue-500/10 flex items-center gap-2 active:scale-95">
-                  Ver Servicios
-                </Link>
-                <Link href="#contacto" className="glass-card hover:bg-white/5 px-5 py-2.5 rounded-lg text-xs font-bold transition-all border border-white/10 flex items-center gap-2 active:scale-95">
-                  Contactar Ahora
-                </Link>
-              </div>
-              <div className="mt-10 flex flex-wrap justify-center lg:justify-start gap-6 text-[10px] text-gray-500 font-black uppercase tracking-widest opacity-60">
-                <span className="flex items-center gap-1.5">✓ Sin permanencia</span>
-                <span className="flex items-center gap-1.5">✓ Entrega en 7 días</span>
-                <span className="flex items-center gap-1.5">✓ Consulta gratis</span>
-              </div>
-            </div>
-
-            <div className="relative flex justify-center items-center reveal-hidden lg:block mt-12 lg:mt-0" style={{ transitionDelay: '0.3s' }}>
-              <div className="glass-card p-6 sm:p-8 rounded-[2rem] w-full max-w-[340px] animate-float relative z-20 mx-auto" style={{ WebkitBackfaceVisibility: 'hidden', backfaceVisibility: 'hidden', transform: 'translateZ(0)', WebkitTransform: 'translate3d(0,0,0)' }}>
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 rounded-2xl bg-blue-600/10 flex items-center justify-center border border-white/5">
-                    <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-lg sm:text-xl font-plus-jakarta italic">Tu web hoy</h3>
-                    <p className="text-[9px] text-gray-500 font-black tracking-widest uppercase">Entrega High-Speed</p>
-                  </div>
-                </div>
-                <div className="space-y-4">
-                  <div className="space-y-2">
-                    <div className="flex justify-between text-[9px] font-black text-gray-400 uppercase tracking-widest">
-                      <span>Optimización SEO</span>
-                      <span className="text-cyan-400">100%</span>
-                    </div>
-                    <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden p-[1px]">
-                      <div className="h-full w-full bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-500 bg-[length:200%_auto] animate-[bg-gradient-x:3s_linear_infinite] rounded-full shadow-[0_0_10px_rgba(0,112,243,0.4)]"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="absolute -bottom-6 right-0 lg:-right-6 glass-card py-4 px-6 rounded-2xl flex items-center gap-4 animate-float sm:z-30 shadow-xl border-white/5" style={{ animationDelay: '2s' }}>
-                <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse shadow-[0_0_12px_rgba(34,197,94,0.6)]"></div>
-                <span className="text-xs font-black uppercase tracking-widest">Proyectos Activos</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* 4. SERVICIOS */}
-        <section id="servicios" className="py-32 md:py-40 relative">
-          <div className="container mx-auto px-6 relative z-10">
-            <div className="text-center mb-20 reveal-hidden">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-plus-jakarta font-bold mb-6 tracking-tight">Soluciones Reales</h2>
-              <div className="w-32 h-1 bg-gradient-to-r from-[#0070f3] to-[#00dfd8] mx-auto rounded-full"></div>
-            </div>
-
-            <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8">
-              {[
-                {
-                  title: "Landing Pages",
-                  desc: "Convierte desconocidos en clientes recurrentes con un diseño imbatible.",
-                  icon: <path d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5" />
-                },
-                {
-                  title: "Alojamientos",
-                  desc: "Llena tus habitaciones con venta directa, sin comisiones de terceros.",
-                  icon: <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
-                },
-                {
-                  title: "Restaurantes",
-                  desc: "Tu carta y tus reservas, bajo tu control y sin intermediarios.",
-                  icon: <path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3" />
-                },
-                {
-                  title: "IA integrada",
-                  desc: "Atención al cliente 24/7 que trabaja mientras tú descansas.",
-                  icon: <path d="M13 10V3L4 14h7v7l9-11h-7z" />
-                }
-              ].map((s, idx) => (
-                <div key={idx} className="glass-card p-8 rounded-[2rem] neon-glow transition-all duration-500 group reveal-hidden relative overflow-hidden" style={{ transitionDelay: `${idx * 0.1}s` }}>
-                  <div className="size-12 bg-blue-500/10 border border-blue-500/20 rounded-xl flex items-center justify-center text-blue-400 mb-6 transform group-hover:rotate-12 transition-transform">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      {s.icon}
-                    </svg>
-                  </div>
-                  <h3 className="text-lg font-bold mb-4 group-hover:text-cyan-400 transition-colors uppercase tracking-tight font-plus-jakarta">{s.title}</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed mb-6 font-medium">{s.desc}</p>
-                  <Link href="#contacto" className="text-blue-400 font-black text-[10px] uppercase tracking-widest flex items-center gap-2 group/link">
-                    Info
-                    <span className="group-hover/link:translate-x-2 transition-transform">→</span>
-                  </Link>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* PROCESO COMPACTO */}
-        <section id="proceso" className="py-32 bg-[#0a0a0c] relative">
-          <div className="container mx-auto px-6 relative z-10">
-            <div className="text-center mb-20 reveal-hidden">
-              <h2 className="text-3xl md:text-5xl font-plus-jakarta font-bold mb-4 tracking-tight">Metodología SFFALCON</h2>
-              <p className="text-gray-500 text-sm uppercase font-black tracking-widest">Simplificamos lo complejo</p>
-            </div>
-
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[
-                { num: "01", title: "Análisis", desc: "Entendemos tu sector y competencia." },
-                { num: "02", title: "Estrategia", desc: "Definimos el camino al éxito." },
-                { num: "03", title: "Ejecución", desc: "Construimos con tecnología punta." },
-                { num: "04", title: "Éxito", desc: "Lanzamos y escalamos tu web." }
-              ].map((p, idx) => (
-                <div key={idx} className="relative p-8 rounded-[1.5rem] glass-card border-white/5 reveal-hidden hover:bg-white/[0.05] transition-colors" style={{ transitionDelay: `${idx * 0.1}s` }}>
-                  <span className="absolute -top-6 right-6 text-5xl font-black text-white/[0.05]">{p.num}</span>
-                  <h3 className="text-xl font-bold mb-3 text-white font-plus-jakarta italic">{p.title}</h3>
-                  <p className="text-gray-500 text-xs font-medium leading-relaxed">{p.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* NUEVA SECCIÓN: CONFIANZA EN 3 PASOS */}
-        <section className="py-32 relative overflow-hidden">
-          <div className="container mx-auto px-6 relative z-10">
-            <div className="text-center mb-20 reveal-hidden">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-plus-jakarta font-bold mb-6 tracking-tight text-gradient">Confianza en 3 Pasos</h2>
-              <div className="w-24 h-1 bg-blue-600 mx-auto rounded-full"></div>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              {[
-                { step: "1", title: "Llamada", desc: "Entendemos tu negocio y objetivos desde el primer minuto.", icon: "M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" },
-                { step: "2", title: "Diseño en 7 días", desc: "Tu web lista y optimizada sin esperas eternas ni complicaciones.", icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" },
-                { step: "3", title: "Lanzamiento", desc: "Empieza a captar clientes y domina tu mercado local de inmediato.", icon: "M13 10V3L4 14h7v7l9-11h-7z" }
-              ].map((c, idx) => (
-                <div key={idx} className="glass-card p-10 rounded-[2.5rem] text-center reveal-hidden group hover:border-blue-500/30 transition-all" style={{ transitionDelay: `${idx * 0.2}s` }}>
-                  <div className="w-16 h-16 bg-blue-600/10 rounded-2xl flex items-center justify-center mx-auto mb-8 border border-blue-500/20 group-hover:scale-110 transition-transform">
-                    <svg className="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={c.icon}></path>
-                    </svg>
-                  </div>
-                  <h3 className="text-2xl font-plus-jakarta font-bold mb-4">{c.title}</h3>
-                  <p className="text-gray-400 font-medium">{c.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CTA FINAL RESPONSIVE */}
-        <section id="contacto" className="py-24 sm:py-32 overflow-hidden">
-          <div className="container mx-auto px-6">
-            <div className="glass-card relative rounded-[3rem] p-10 sm:p-20 overflow-hidden text-center reveal-hidden">
-              <div className="absolute top-0 right-0 w-64 h-64 orb-blue opacity-10"></div>
-              <div className="absolute bottom-0 left-0 w-64 h-64 orb-cyan opacity-10"></div>
-
-              <div className="relative z-10 max-w-2xl mx-auto">
-                <h2 className="text-3xl sm:text-5xl md:text-6xl font-plus-jakarta font-bold mb-8 leading-tight tracking-tighter">
-                  ¿Hacemos algo grande juntos?
-                </h2>
-                <p className="text-lg text-gray-400 mb-12 font-medium">
-                  Resultados tangibles en menos de lo que imaginas. Escríbenos ahora.
-                </p>
-                <div className="flex justify-center">
-                  <a href="mailto:markos900313@gmail.com" className="bg-[#0070f3] hover:bg-[#0060e0] text-white px-6 py-2.5 rounded-xl text-xs font-black uppercase tracking-widest transition-all active:scale-95 shadow-xl shadow-blue-500/20">
-                    Enviar Email
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-      </main>
-
-      {/* FOOTER OPTIMIZADO */}
-      <footer className="py-12 border-t border-white/5 bg-[#0a0a0c] text-center sm:text-left">
-        <div className="container mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-8">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white">
-              <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
-                <path d="M21 3L12.5 8.5L9 4L3 7l4 3.5L3 21l7-4 1.5 3.5L21 3z" />
-              </svg>
-            </div>
-            <span className="font-plus-jakarta font-black text-xl tracking-tighter italic">SFFALCON</span>
-          </div>
-          <div className="flex gap-8 text-[9px] font-black uppercase tracking-[3px] text-gray-600">
-            <Link href="/terminos" className="hover:text-cyan-400">Legal</Link>
-            <Link href="/privacidad" className="hover:text-cyan-400">Privacidad</Link>
-          </div>
-          <p className="text-gray-700 text-[10px] font-bold">© 2026 SFFALCON SYSTEM</p>
         </div>
-      </footer>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+          <h2 className="text-4xl md:text-5xl font-black text-white mb-6">Hablemos de cómo hacer crecer tu negocio hoy mismo</h2>
+          <p className="text-xl text-white/80 mb-10 leading-relaxed">Si estás cansado de soluciones que no entienden tu operativa, escríbeme. Te daré un presupuesto sin compromiso y una hoja de ruta clara.</p>
+          <a className="inline-flex items-center gap-3 px-8 py-4 bg-white text-[#0f3460] font-bold rounded-2xl hover:scale-105 transition-all shadow-2xl" href="mailto:admin@sffalcon.com">
+            <Mail className="w-5 h-5" strokeWidth={2} />
+            Quiero mi diagnóstico gratuito
+          </a>
+        </div>
+      </section>
+
+      <Footer />
+      <WhatsAppButton />
     </div>
   );
 }

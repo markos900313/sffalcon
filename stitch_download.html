@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SFFALCON | Agencia Web para Negocios Locales</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0f3460",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1823",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(15, 52, 96, 0.1);
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at top right, rgba(15, 52, 96, 0.05), transparent);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="font-display bg-background-light text-slate-900 selection:bg-primary/30">
+<!-- Fixed Top Nav -->
+<nav class="fixed top-0 left-0 right-0 z-50 glass-nav">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-20">
+<div class="flex items-center gap-2">
+<div class="bg-primary p-1.5 rounded-lg flex items-center justify-center shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-white text-2xl">bolt</span>
+</div>
+<span class="text-xl font-black tracking-tighter text-slate-900">SFFALCON</span>
+</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-sm font-semibold text-slate-600 hover:text-primary transition-colors" href="#servicios">Servicios</a>
+<a class="text-sm font-semibold text-slate-600 hover:text-primary transition-colors" href="#transformación">Transformación</a>
+<a class="text-sm font-semibold text-slate-600 hover:text-primary transition-colors" href="#proceso">Proceso</a>
+<a class="bg-primary text-white px-6 py-2.5 rounded-full text-sm font-bold hover:shadow-lg hover:shadow-primary/30 transition-all active:scale-95" href="#contacto">
+                        Empezar Ahora
+                    </a>
+</div>
+<div class="md:hidden flex items-center">
+<button class="text-slate-900">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="relative pt-32 pb-20 md:pt-48 md:pb-32 hero-gradient overflow-hidden">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid lg:grid-cols-2 gap-12 items-center">
+<div class="space-y-8">
+<span class="inline-flex items-center px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider">
+                        Agencia Web para Negocios Locales
+                    </span>
+<h1 class="text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 leading-[1.1] tracking-tight">
+                        Creamos tu <span class="text-primary underline decoration-8 underline-offset-4 decoration-[#0f3460]/20">web profesional en 7 días</span> para que tú te enfoques en vender
+                    </h1>
+<p class="text-lg text-slate-600 max-w-xl leading-relaxed">
+                        Especialistas en digitalizar negocios españoles. Rapidez, confianza y tecnología de vanguardia (Next.js + IA).
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="inline-flex items-center justify-center px-8 py-4 bg-primary text-white font-bold rounded-xl hover:shadow-xl hover:shadow-primary/40 transition-all active:scale-95" href="#servicios">
+                            Ver Servicios
+                        </a>
+<a class="inline-flex items-center justify-center px-8 py-4 bg-white border-2 border-slate-100 text-slate-900 font-bold rounded-xl hover:bg-slate-50 transition-all" href="#contacto">
+                            Contactar Ahora
+                        </a>
+</div>
+<div class="flex flex-wrap gap-6 pt-4">
+<div class="flex items-center gap-2 text-sm font-medium text-slate-500">
+<span class="material-symbols-outlined text-green-500 text-lg">check_circle</span>
+                            Sin permanencia
+                        </div>
+<div class="flex items-center gap-2 text-sm font-medium text-slate-500">
+<span class="material-symbols-outlined text-green-500 text-lg">check_circle</span>
+                            Entrega en 7 días
+                        </div>
+<div class="flex items-center gap-2 text-sm font-medium text-slate-500">
+<span class="material-symbols-outlined text-green-500 text-lg">check_circle</span>
+                            Consulta gratis
+                        </div>
+</div>
+</div>
+<div class="relative">
+<!-- Right Card -->
+<div class="relative z-10 bg-white rounded-3xl p-8 shadow-2xl border border-slate-100">
+<div class="flex justify-between items-start mb-8">
+<div>
+<h3 class="font-bold text-slate-900">Tu web hoy</h3>
+<p class="text-xs font-bold text-primary uppercase tracking-tighter">ENTREGA HIGH-SPEED</p>
+</div>
+<div class="bg-green-50 px-3 py-1 rounded-full flex items-center gap-2">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+</span>
+<span class="text-[10px] font-bold text-green-600">Proyectos Activos</span>
+</div>
+</div>
+<div class="space-y-6">
+<div>
+<div class="flex justify-between text-sm font-bold mb-2">
+<span class="text-slate-700">OPTIMIZACIÓN SEO</span>
+<span class="text-primary">100%</span>
+</div>
+<div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full w-[100%]"></div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-background-light p-4 rounded-xl">
+<span class="text-[10px] uppercase font-bold text-slate-400">Velocidad</span>
+<p class="text-xl font-black text-slate-900">99/100</p>
+</div>
+<div class="bg-background-light p-4 rounded-xl">
+<span class="text-[10px] uppercase font-bold text-slate-400">Conversión</span>
+<p class="text-xl font-black text-slate-900">+45%</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Decorative Elements -->
+<div class="absolute -top-10 -right-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-10 -left-10 w-60 h-60 bg-primary/5 rounded-full blur-3xl"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Soluciones Reales Section -->
+<section class="py-24 bg-white" id="servicios">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col items-center text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-black text-slate-900 mb-4">Soluciones Reales</h2>
+<div class="h-1.5 w-24 bg-gradient-to-r from-[#0f3460] to-[#1a508b] rounded-full"></div>
+</div>
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Card 1 -->
+<div class="group p-8 rounded-2xl border border-slate-100 bg-background-light hover:bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+<span class="material-symbols-outlined text-primary text-4xl mb-6">web</span>
+<h3 class="text-xl font-bold text-slate-900 mb-2">Landing Pages</h3>
+<p class="text-sm text-slate-500 mb-6 leading-relaxed">Diseño de alta conversión optimizado para campañas publicitarias.</p>
+<a class="text-primary font-bold text-sm flex items-center gap-2 group-hover:gap-3 transition-all" href="#contacto">Info <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+</div>
+<!-- Card 2 -->
+<div class="group p-8 rounded-2xl border border-slate-100 bg-background-light hover:bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+<span class="material-symbols-outlined text-primary text-4xl mb-6">apartment</span>
+<h3 class="text-xl font-bold text-slate-900 mb-2">Alojamientos</h3>
+<p class="text-sm text-slate-500 mb-6 leading-relaxed">Sistemas de reserva directos para hoteles y apartamentos turísticos.</p>
+<a class="text-primary font-bold text-sm flex items-center gap-2 group-hover:gap-3 transition-all" href="#contacto">Info <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+</div>
+<!-- Card 3 -->
+<div class="group p-8 rounded-2xl border border-slate-100 bg-background-light hover:bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+<span class="material-symbols-outlined text-primary text-4xl mb-6">restaurant</span>
+<h3 class="text-xl font-bold text-slate-900 mb-2">Restaurantes</h3>
+<p class="text-sm text-slate-500 mb-6 leading-relaxed">Menús digitales interactivos y sistemas de reserva de mesa.</p>
+<a class="text-primary font-bold text-sm flex items-center gap-2 group-hover:gap-3 transition-all" href="#contacto">Info <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+</div>
+<!-- Card 4 -->
+<div class="group p-8 rounded-2xl border border-slate-100 bg-background-light hover:bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+<span class="material-symbols-outlined text-primary text-4xl mb-6">smart_toy</span>
+<h3 class="text-xl font-bold text-slate-900 mb-2">IA integrada</h3>
+<p class="text-sm text-slate-500 mb-6 leading-relaxed">Automatización de procesos y chatbots para atención al cliente 24/7.</p>
+<a class="text-primary font-bold text-sm flex items-center gap-2 group-hover:gap-3 transition-all" href="#contacto">Info <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+</div>
+</div>
+</div>
+</section>
+<!-- Metodología Section -->
+<section class="py-24 bg-background-light" id="proceso">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="mb-16">
+<h2 class="text-4xl font-black text-slate-900 mb-2">Metodología SFFALCON</h2>
+<p class="text-lg text-slate-500">Simplificamos lo complejo</p>
+</div>
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="relative">
+<span class="text-7xl font-black text-slate-200 absolute -top-10 left-0 -z-10">01</span>
+<h3 class="text-xl font-bold text-slate-900 mb-3 mt-4">Análisis</h3>
+<p class="text-sm text-slate-600 leading-relaxed">Estudiamos tu modelo de negocio y competencia local para definir objetivos claros.</p>
+</div>
+<div class="relative">
+<span class="text-7xl font-black text-slate-200 absolute -top-10 left-0 -z-10">02</span>
+<h3 class="text-xl font-bold text-slate-900 mb-3 mt-4">Estrategia</h3>
+<p class="text-sm text-slate-600 leading-relaxed">Diseñamos la arquitectura de información enfocada 100% en la conversión de clientes.</p>
+</div>
+<div class="relative">
+<span class="text-7xl font-black text-slate-200 absolute -top-10 left-0 -z-10">03</span>
+<h3 class="text-xl font-bold text-slate-900 mb-3 mt-4">Ejecución</h3>
+<p class="text-sm text-slate-600 leading-relaxed">Desarrollamos tu web con Next.js e IA para garantizar velocidad extrema y escalabilidad.</p>
+</div>
+<div class="relative">
+<span class="text-7xl font-black text-slate-200 absolute -top-10 left-0 -z-10">04</span>
+<h3 class="text-xl font-bold text-slate-900 mb-3 mt-4">Éxito</h3>
+<p class="text-sm text-slate-600 leading-relaxed">Lanzamiento, monitorización y optimización continua de resultados.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Confianza Section -->
+<section class="py-24 bg-white" id="transformación">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center gap-4 mb-16">
+<div class="w-1.5 h-10 bg-primary rounded-full"></div>
+<h2 class="text-3xl md:text-4xl font-black text-slate-900">Confianza en 3 Pasos</h2>
+</div>
+<div class="grid md:grid-cols-3 gap-12">
+<div class="flex flex-col items-start space-y-4">
+<div class="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined">call</span>
+</div>
+<h3 class="text-xl font-bold text-slate-900">Llamada</h3>
+<p class="text-slate-500 leading-relaxed">Entendemos tu necesidad en 15 min y te damos presupuesto cerrado sin sorpresas.</p>
+</div>
+<div class="flex flex-col items-start space-y-4">
+<div class="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined">auto_fix_high</span>
+</div>
+<h3 class="text-xl font-bold text-slate-900">Diseño en 7 días</h3>
+<p class="text-slate-500 leading-relaxed">Trabajamos a toda velocidad. En una semana tienes tu web lista para revisión.</p>
+</div>
+<div class="flex flex-col items-start space-y-4">
+<div class="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined">rocket_launch</span>
+</div>
+<h3 class="text-xl font-bold text-slate-900">Lanzamiento</h3>
+<p class="text-slate-500 leading-relaxed">Publicamos tu sitio, configuramos el SEO y te entregamos el control total.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-24 bg-primary relative overflow-hidden" id="contacto">
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 100 100">
+<path d="M0 100 L100 0 L100 100 Z" fill="white"></path>
+</svg>
+</div>
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+<h2 class="text-4xl md:text-5xl font-black text-white mb-6">¿Hacemos algo grande juntos?</h2>
+<p class="text-xl text-white/80 mb-10 leading-relaxed">Resultados tangibles en menos de lo que imaginas. Escríbenos ahora.</p>
+<a class="inline-flex items-center gap-3 px-10 py-5 bg-white text-primary font-black rounded-2xl hover:scale-105 transition-all shadow-2xl" href="mailto:admin@sffalcon.com">
+<span class="material-symbols-outlined">mail</span>
+                Enviar Email
+            </a>
+</div>
+</section>
+<!-- Footer -->
+<footer class="py-12 bg-white border-t border-slate-100">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-2">
+<div class="bg-primary p-1.5 rounded-lg">
+<span class="material-symbols-outlined text-white text-xl">bolt</span>
+</div>
+<span class="text-lg font-black tracking-tighter text-slate-900">SFFALCON</span>
+</div>
+<div class="flex gap-8">
+<a class="text-sm font-semibold text-slate-500 hover:text-primary transition-colors" href="/terminos">Legal</a>
+<a class="text-sm font-semibold text-slate-500 hover:text-primary transition-colors" href="/privacidad">Privacidad</a>
+</div>
+<div class="text-sm font-bold text-slate-400">
+                    © 2026 SFFALCON SYSTEM
+                </div>
+</div>
+</div>
+</footer>
+<!-- Floating WhatsApp Button -->
+<a class="fixed bottom-6 right-6 z-50 group flex items-center" href="https://wa.me/34604989742?text=Hola%20Marco,%20me%20gustar%C3%ADa%20digitalizar%20mi%20negocio%20con%20SFFALCON." target="_blank">
+<div class="absolute right-full mr-4 bg-white px-4 py-2 rounded-lg shadow-xl border border-slate-100 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
+<p class="text-sm font-bold text-slate-900">WhatsApp</p>
+</div>
+<div class="bg-[#25D366] text-white w-16 h-16 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform">
+<svg class="w-8 h-8 fill-current" viewbox="0 0 24 24">
+<path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217s.231.001.332.005c.109.004.258-.041.404.308.158.386.541 1.32.588 1.416.046.096.078.208.014.336-.064.128-.106.183-.21.304-.103.12-.218.268-.312.36-.105.105-.214.22-.092.429.122.208.541.891 1.161 1.441.798.71 1.468.93 1.676 1.034.208.105.329.087.451-.052.122-.139.521-.607.66-.814.139-.208.277-.173.467-.104.19.069 1.201.567 1.409.671.208.104.346.156.398.242.053.086.053.497-.091.902zM12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2z"></path>
+</svg>
+</div>
+</a>
+</body></html>

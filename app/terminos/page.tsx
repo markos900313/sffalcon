@@ -1,11 +1,7 @@
 "use client";
 
 import React from "react";
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
-import Link from "next/link";
-
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const plusJakarta = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-plus-jakarta" });
+import LegalLayout from "@/components/LegalLayout";
 
 const sections = [
     {
@@ -58,149 +54,44 @@ SFFALCON no garantiza resultados concretos de negocio (ventas, posicionamiento S
         title: "Legislación aplicable y resolución de conflictos",
         content: `Los presentes Términos y Condiciones se rigen íntegramente por la legislación española. En caso de cualquier controversia o disputa derivada de la interpretación o aplicación de estos términos, ambas partes se someten, con renuncia expresa a cualquier otro fuero, a los juzgados y tribunales competentes del domicilio del prestador de servicios.
 
-Para cualquier reclamación o consulta, el cliente puede contactar previamente con SFFALCON a través del correo marcosk903@gmail.com, con el objetivo de resolver el conflicto de forma amistosa antes de acudir a la vía judicial.`,
+Para cualquier reclamación o consulta, el cliente puede contactar previamente con SFFALCON a través del correo admin@sffalcon.com, con el objetivo de resolver el conflicto de forma amistosa antes de acudir a la vía judicial.`,
     },
 ];
 
 export default function TerminosPage() {
     return (
-        <div
-            className={`${inter.variable} ${plusJakarta.variable} font-sans bg-[#050505] text-white min-h-screen`}
+        <LegalLayout
+            active="legal"
+            title="Términos y"
+            subtitle="Condiciones"
+            lastUpdated="enero 2026"
+            badgeTitle="Marco Legal"
+            badgeContent="Estos términos y condiciones rigen la relación comercial entre SFFALCON y sus clientes para asegurar la máxima calidad y transparencia en el servicio."
         >
-            <style jsx global>{`
-        .legal-gradient {
-          background: radial-gradient(at 20% 20%, rgba(0, 112, 243, 0.06) 0px, transparent 60%),
-            radial-gradient(at 80% 80%, rgba(0, 223, 216, 0.04) 0px, transparent 60%);
-        }
-      `}</style>
-
-            {/* Top bar */}
-            <div className="border-b border-white/5 bg-[#0a0a0c]">
-                <div className="max-w-4xl mx-auto px-6 py-5 flex items-center justify-between">
-                    <Link
-                        href="/"
-                        className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm font-semibold group"
+            <div className="space-y-12">
+                {sections.map((s) => (
+                    <div
+                        key={s.num}
+                        className="group relative"
                     >
-                        <svg
-                            className="w-4 h-4 group-hover:-translate-x-1 transition-transform"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            strokeWidth="2"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M15 19l-7-7 7-7"
-                            />
-                        </svg>
-                        Volver al inicio
-                    </Link>
-                    <div className="flex items-center gap-2">
-                        <div className="w-7 h-7 rounded-md bg-gradient-to-tr from-[#0070f3] to-[#00dfd8] flex items-center justify-center font-bold text-sm">
-                            <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 text-white">
-                                <path d="M21 3L12.5 8.5L9 4L3 7l4 3.5L3 21l7-4 1.5 3.5L21 3z" />
-                            </svg>
-                        </div>
-                        <span className="font-bold text-sm tracking-tight hidden sm:block">
-                            SFFALCON
+                        <span className="text-7xl font-black text-slate-200/50 absolute -top-10 left-0 -z-10 select-none">
+                            {s.num}
                         </span>
-                    </div>
-                </div>
-            </div>
-
-            <div className="legal-gradient">
-                <div className="max-w-4xl mx-auto px-6 py-20">
-                    {/* Header */}
-                    <div className="mb-16 pb-16 border-b border-white/5">
-                        <span className="text-[10px] text-blue-400 font-black uppercase tracking-[0.3em] mb-4 block">
-                            Documento legal · SFFALCON
-                        </span>
-                        <h1 className="text-5xl md:text-6xl font-plus-jakarta font-extrabold mb-6 leading-tight">
-                            Términos y{" "}
-                            <span
-                                style={{
-                                    backgroundImage:
-                                        "linear-gradient(90deg, #0070f3, #00dfd8)",
-                                    backgroundClip: "text",
-                                    WebkitBackgroundClip: "text",
-                                    color: "transparent",
-                                }}
-                            >
-                                Condiciones
-                            </span>
-                        </h1>
-                        <div className="flex flex-wrap gap-6 text-xs text-gray-500 font-medium">
-                            <span className="flex items-center gap-2">
-                                <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
-                                Última actualización: enero 2026
-                            </span>
-                            <span className="flex items-center gap-2">
-                                <span className="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>
-                                Aplicable en España
-                            </span>
-                            <span className="flex items-center gap-2">
-                                <span className="w-1.5 h-1.5 rounded-full bg-green-500"></span>
-                                SFFALCON · marcosk903@gmail.com
-                            </span>
-                        </div>
-                    </div>
-
-                    {/* Sections */}
-                    <div className="space-y-12">
-                        {sections.map((s) => (
-                            <div
-                                key={s.num}
-                                className="group grid md:grid-cols-[80px_1fr] gap-6 md:gap-10"
-                            >
-                                <div className="hidden md:block">
-                                    <span className="text-5xl font-black text-white/[0.04] font-plus-jakarta select-none">
-                                        {s.num}
-                                    </span>
-                                </div>
-                                <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 hover:border-blue-500/20 transition-colors">
-                                    <h2 className="text-base font-bold text-white uppercase tracking-widest mb-5 flex items-center gap-3">
-                                        <span className="md:hidden text-gray-700 font-black">
-                                            {s.num}.
-                                        </span>
-                                        {s.title}
-                                    </h2>
-                                    <div className="text-gray-400 text-sm leading-relaxed space-y-3">
-                                        {s.content.split("\n\n").map((para, i) => (
-                                            <p key={i} className="whitespace-pre-line">
-                                                {para}
-                                            </p>
-                                        ))}
-                                    </div>
-                                </div>
+                        <div className="bg-white border border-slate-100 rounded-2xl p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 mt-4">
+                            <h2 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+                                {s.title}
+                            </h2>
+                            <div className="text-slate-600 text-sm leading-relaxed space-y-4 font-medium opacity-90">
+                                {s.content.split("\n\n").map((para, i) => (
+                                    <p key={i} className="whitespace-pre-line">
+                                        {para}
+                                    </p>
+                                ))}
                             </div>
-                        ))}
-                    </div>
-
-                    {/* Footer de página */}
-                    <div className="mt-24 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-                        <div>
-                            <p className="text-gray-600 text-xs font-bold tracking-wider">
-                                © 2026 SFFALCON. Todos los derechos reservados.
-                            </p>
-                            <p className="text-gray-700 text-[10px] mt-1">
-                                sffalcon.com · España
-                            </p>
-                        </div>
-                        <div className="flex gap-6 text-xs text-gray-600 font-bold uppercase tracking-widest">
-                            <Link
-                                href="/privacidad"
-                                className="hover:text-cyan-400 transition-colors"
-                            >
-                                Privacidad
-                            </Link>
-                            <Link href="/" className="hover:text-white transition-colors">
-                                Inicio
-                            </Link>
                         </div>
                     </div>
-                </div>
+                ))}
             </div>
-        </div>
+        </LegalLayout>
     );
 }
