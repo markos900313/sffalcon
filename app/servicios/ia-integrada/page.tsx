@@ -130,7 +130,7 @@ export default function IaIntegratedShowcase() {
         </div>
 
         {/* Value Proposition */}
-        <div className="bg-indigo-600 rounded-[2.5rem] md:rounded-[3rem] p-12 text-white relative overflow-hidden isolate transform translate-z-0">
+        <div className="bg-indigo-600 bg-gradient-to-br from-indigo-600 to-indigo-700 rounded-[2.5rem] md:rounded-[3rem] p-12 text-white relative overflow-hidden shadow-2xl shadow-indigo-900/20">
             <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-[100px] -mr-48 -mt-48"></div>
             <div className="relative z-10 grid lg:grid-cols-2 gap-12 items-center">
                 <div>
