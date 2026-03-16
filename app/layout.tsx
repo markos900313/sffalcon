@@ -13,8 +13,62 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SFFALCON | Agencia Web para Negocios Locales",
-  description: "Diseñamos y construimos tu web profesional para que los clientes te encuentren, confíen en ti y te contacten.",
+  metadataBase: new URL('https://sffalcon.com'),
+  title: {
+    default: 'SFFALCON | Agencia Digital Murcia',
+    template: '%s | SFFALCON'
+  },
+  description: 'Agencia digital especializada en webs, apps y SaaS con IA para negocios locales españoles. Murcia.',
+  keywords: [
+    'agencia digital murcia',
+    'diseño web murcia',
+    'aplicaciones móviles murcia',
+    'SaaS empresas locales',
+    'inteligencia artificial negocios',
+    'SFFALCON',
+    'desarrollo web españa'
+  ],
+  authors: [{ 
+    name: 'Marcos Antonio Falcón Hernández' 
+  }],
+  creator: 'SFFALCON',
+  publisher: 'SFFALCON',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    }
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'es_ES',
+    url: 'https://sffalcon.com',
+    siteName: 'SFFALCON',
+    title: 'SFFALCON | Agencia Digital Murcia',
+    description: 'Transformamos negocios locales con tecnología digital. Webs, apps y SaaS con IA para empresas españolas.',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'SFFALCON Agencia Digital'
+      }
+    ]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'SFFALCON | Agencia Digital Murcia',
+    description: 'Webs, apps y SaaS con IA para negocios locales españoles.',
+    images: ['/og-image.jpg'],
+  },
+  verification: {
+    google: 'PENDIENTE',
+  },
+  alternates: {
+    canonical: 'https://sffalcon.com'
+  }
 };
 
 export default function RootLayout({
@@ -28,6 +82,43 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "SFFALCON",
+              "url": "https://sffalcon.com",
+              "logo": "https://sffalcon.com/icon.svg",
+              "email": "admin@sffalcon.com",
+              "telephone": "+34604989742",
+              "founder": {
+                "@type": "Person",
+                "name": "Marcos Antonio Falcón Hernández"
+              },
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Calle Párroco y Poeta Francisco Aroca 2",
+                "addressLocality": "Murcia",
+                "addressCountry": "ES"
+              },
+              "areaServed": {
+                "@type": "Country",
+                "name": "España"
+              },
+              "serviceType": [
+                "Diseño web",
+                "Desarrollo de aplicaciones móviles",
+                "SaaS",
+                "Inteligencia Artificial"
+              ],
+              "sameAs": [
+                "https://sffalcon.com"
+              ]
+            })
+          }}
+        />
       </body>
     </html>
   );

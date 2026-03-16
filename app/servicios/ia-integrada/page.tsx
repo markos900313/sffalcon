@@ -59,49 +59,51 @@ export default function IaIntegratedShowcase() {
   return (
     <div className={`min-h-screen bg-[#F8FAFC] selection:bg-indigo-100 pb-20 ${inter.className}`}>
       {/* Navigation Header */}
+      {/* Navigation Header */}
       <nav className="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-100 h-16 flex items-center shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 w-full flex justify-between items-center">
-          <Link href="/#servicios" className="flex items-center gap-2 group text-slate-900 font-bold text-sm">
+        <div className="max-w-7xl mx-auto px-4 w-full flex justify-between items-center gap-4">
+          <Link href="/#servicios" className="flex items-center gap-2 group text-slate-900 font-bold text-sm shrink-0">
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-            Volver a Servicios
+            <span className="hidden sm:inline">Volver a Servicios</span>
+            <span className="sm:hidden">Volver</span>
           </Link>
-          <div className="flex items-center gap-2">
-            <Sparkles className="w-4 h-4 text-indigo-600 fill-indigo-600" />
-            <span className="text-xs font-black tracking-widest text-slate-900 uppercase">IA Integrada · SFFALCON</span>
+          <div className="flex items-center gap-2 overflow-hidden">
+            <Sparkles className="w-3.5 h-3.5 text-indigo-600 fill-indigo-600 shrink-0" />
+            <span className="text-[10px] md:text-xs font-black tracking-widest text-slate-900 uppercase truncate text-right">IA Integrada · SFFALCON</span>
           </div>
         </div>
       </nav>
 
-      <div className="max-w-7xl mx-auto px-4 pt-16">
+      <div className="max-w-7xl mx-auto px-4 pt-12 md:pt-16">
         {/* Header Section */}
-        <div className="max-w-3xl mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-indigo-50 border border-indigo-100 rounded-full text-indigo-600 text-[10px] font-bold uppercase tracking-widest mb-6">
+        <div className="max-w-3xl mb-12 md:mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-indigo-50 border border-indigo-100 rounded-full text-indigo-600 text-[9px] md:text-[10px] font-bold uppercase tracking-widest mb-6">
             <Sparkles className="w-3 h-3" />
-            Tecnología Inteligente que Trabaja para tu Rentabilidad
+            Tecnología Inteligente para tu Empresa
           </div>
-          <h1 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tight mb-6 leading-[1.1]">
+          <h1 className="text-3xl md:text-6xl font-black text-slate-900 tracking-tight mb-6 leading-[1.1]">
             Deja de perder tiempo en tareas que <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-blue-500">una IA puede hacer por ti.</span>
           </h1>
-          <p className="text-lg md:text-xl text-slate-500 font-medium leading-relaxed">
-            Demos interactivas: descubre cómo integrar agentes inteligentes en tu operativa diaria para ahorrar cientos de horas de trabajo manual al mes.
+          <p className="text-base md:text-xl text-slate-500 font-medium leading-relaxed">
+            Demos interactivas: descubre cómo integrar agentes inteligentes en tu operativa diaria para ahorrar cientos de horas al mes.
           </p>
         </div>
 
         {/* Grid Demos */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16 md:mb-20">
           {aiExamples.map((example) => (
             <div 
               key={example.id}
               className={`group bg-white rounded-3xl border border-slate-200 shadow-sm transition-all duration-500 overflow-hidden flex flex-col h-full ${example.border} hover:shadow-xl hover:-translate-y-1`}
             >
               <div className={`h-2 bg-gradient-to-r ${example.color}`}></div>
-              <div className="p-8 flex-1">
-                <div className="w-14 h-14 bg-slate-50 rounded-2xl flex items-center justify-center border border-slate-100 text-slate-900 mb-6 group-hover:scale-110 transition-transform duration-500">
-                  <example.icon className="w-7 h-7" />
+              <div className="p-6 md:p-8 flex-1">
+                <div className="w-12 h-12 md:w-14 md:h-14 bg-slate-50 rounded-2xl flex items-center justify-center border border-slate-100 text-slate-900 mb-6 group-hover:scale-110 transition-transform duration-500">
+                  <example.icon className="w-6 h-6 md:w-7 md:h-7" />
                 </div>
                 
-                <p className={`text-[10px] font-black uppercase tracking-widest mb-1 ${example.accent}`}>{example.subtitle}</p>
-                <h2 className="text-2xl font-bold text-slate-900 mb-4">{example.title}</h2>
+                <p className={`text-[9px] md:text-[10px] font-black uppercase tracking-widest mb-1 ${example.accent}`}>{example.subtitle}</p>
+                <h2 className="text-xl md:text-2xl font-bold text-slate-900 mb-4">{example.title}</h2>
                 <p className="text-slate-500 text-sm font-medium mb-8 leading-relaxed">
                   {example.description}
                 </p>
@@ -110,13 +112,13 @@ export default function IaIntegratedShowcase() {
                   {example.features.map((feature, i) => (
                     <div key={i} className="flex items-center gap-2.5 text-slate-700 font-bold text-xs uppercase tracking-tight">
                       <CheckCircle2 className={`w-3.5 h-3.5 ${example.accent}`} />
-                      {feature}
+                      <span className="truncate">{feature}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="p-8 pt-0 mt-auto">
+              <div className="p-6 md:p-8 pt-0 mt-auto">
                 <Link 
                   href={example.href}
                   className="w-full py-4 bg-slate-900 text-white rounded-2xl font-bold text-sm flex items-center justify-center gap-2 hover:bg-indigo-600 transition-all group/btn shadow-lg shadow-slate-200"
