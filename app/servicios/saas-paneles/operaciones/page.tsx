@@ -15,7 +15,6 @@ import {
   Timer,
   Users,
   AlertCircle,
-  Menu,
   Bell,
   Search,
   Settings
@@ -120,7 +119,7 @@ export default function OperacionesPanel() {
   };
 
   const Column = ({ title, status, tasks: colTasks, icon: Icon }: any) => (
-    <div className="flex-1 min-w-[320px] bg-[#F1F5F9] rounded-2xl p-4 flex flex-col">
+    <div className="flex-1 min-w-[300px] xs:min-w-[320px] bg-[#F1F5F9] rounded-2xl p-3 md:p-4 flex flex-col">
       <div className="flex items-center justify-between mb-4 px-2">
         <div className="flex items-center gap-2">
           <div className={`w-2 h-2 rounded-full ${
@@ -156,30 +155,30 @@ export default function OperacionesPanel() {
   return (
     <div className={`min-h-screen bg-white text-[#0F172A] font-sans selection:bg-[#7C3AED]/10 ${inter.className}`}>
       {/* Topbar */}
-      <nav className="h-16 border-b border-[#E8ECF4] sticky top-0 bg-white/80 backdrop-blur-md z-40 px-6 flex items-center justify-between">
-        <div className="flex items-center gap-6">
-          <Link href="/servicios/saas-paneles" className="p-2 hover:bg-[#F8F9FC] rounded-lg transition-colors border border-[#E8ECF4]">
+      <nav className="h-auto min-h-16 py-3 md:py-0 border-b border-[#E8ECF4] sticky top-0 bg-white/80 backdrop-blur-md z-40 px-4 md:px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="flex items-center gap-4 md:gap-6 w-full md:w-auto">
+          <Link href="/servicios/saas-paneles" className="p-2 hover:bg-[#F8F9FC] rounded-lg transition-colors border border-[#E8ECF4] shrink-0">
             <ArrowLeft className="w-4 h-4 text-[#64748B]" />
           </Link>
-          <div className="flex flex-col">
-             <div className="flex items-center gap-2 text-[11px] font-bold text-[#64748B] uppercase tracking-widest">
+          <div className="flex flex-col min-w-0">
+             <div className="flex items-center gap-2 text-[9px] md:text-[11px] font-bold text-[#64748B] uppercase tracking-widest truncate">
                 <span>Operaciones</span>
                 <ChevronRight className="w-3 h-3" />
-                <span className="text-[#0F172A]">Panel Principal</span>
+                <span className="text-[#0F172A] truncate">Panel</span>
              </div>
-             <h1 className="text-lg font-black text-[#0F172A]">Gestión de Procesos y Equipo</h1>
+             <h1 className="text-sm md:text-lg font-black text-[#0F172A] truncate leading-tight">Gestión Procesos</h1>
           </div>
         </div>
 
-        <div className="flex items-center gap-6">
-          <div className="hidden md:flex items-center gap-3">
-             <div className="px-3 py-1.5 bg-[#F5F3FF] border border-[#DDD6FE] rounded-lg flex items-center gap-2">
-                <BarChart2 className="w-3.5 h-3.5 text-[#7C3AED]" />
-                <span className="text-[10px] font-black text-[#7C3AED] uppercase tracking-wider">Carga Global: 68%</span>
+        <div className="flex items-center justify-between w-full md:w-auto gap-4">
+          <div className="flex items-center gap-2 md:gap-3">
+             <div className="px-2 md:px-3 py-1.5 bg-[#F5F3FF] border border-[#DDD6FE] rounded-lg flex items-center gap-1.5">
+                <BarChart2 className="w-3 h-3 text-[#7C3AED]" />
+                <span className="text-[8px] md:text-[10px] font-black text-[#7C3AED] uppercase tracking-wider">68%</span>
              </div>
-             <div className="px-3 py-1.5 bg-[#ECFDF5] border border-[#A7F3D0] rounded-lg flex items-center gap-2">
-                <CheckCircle className="w-3.5 h-3.5 text-[#10B981]" />
-                <span className="text-[10px] font-black text-[#10B981] uppercase tracking-wider">KPI Entrega: 99.4%</span>
+             <div className="px-2 md:px-3 py-1.5 bg-[#ECFDF5] border border-[#A7F3D0] rounded-lg flex items-center gap-1.5">
+                <CheckCircle className="w-3 h-3 text-[#10B981]" />
+                <span className="text-[8px] md:text-[10px] font-black text-[#10B981] uppercase tracking-wider">99%</span>
              </div>
           </div>
           <div className="h-8 w-[1px] bg-[#E8ECF4]"></div>
@@ -201,33 +200,33 @@ export default function OperacionesPanel() {
         </div>
       </nav>
 
-      <div className="max-w-[1600px] mx-auto flex">
-        <main className="flex-1 p-6">
+      <div className="max-w-[1600px] mx-auto flex flex-col xl:flex-row">
+        <main className="flex-1 p-4 md:p-6 overflow-hidden">
           {/* Summary Strip */}
-          <div className="bg-[#F8F9FC] border border-[#E8ECF4] rounded-xl px-6 py-4 flex flex-wrap items-center justify-between gap-6 mb-8">
-             <div className="flex items-center gap-3">
-                <span className="text-[11px] font-bold text-[#64748B] uppercase tracking-wider">Tareas Activas:</span>
-                <span className="text-sm font-black text-[#0F172A]">5</span>
+          <div className="bg-[#F8F9FC] border border-[#E8ECF4] rounded-xl px-4 md:px-6 py-4 flex flex-wrap items-center justify-between gap-4 md:gap-6 mb-6 md:mb-8 text-[10px] md:text-sm font-bold uppercase tracking-wider">
+             <div className="flex items-center gap-2">
+                <span className="text-[#64748B]">Activas:</span>
+                <span className="text-[#0F172A]">5</span>
+             </div>
+             <div className="h-4 w-[1px] bg-[#E8ECF4] hidden sm:block"></div>
+             <div className="flex items-center gap-2">
+                <span className="text-[#64748B]">Hoy:</span>
+                <span className="text-[#10B981]">14</span>
+             </div>
+             <div className="h-4 w-[1px] bg-[#E8ECF4] hidden sm:block"></div>
+             <div className="flex items-center gap-2">
+                <span className="text-[#64748B]">Riesgo:</span>
+                <span className="text-[#EF4444]">3</span>
              </div>
              <div className="h-4 w-[1px] bg-[#E8ECF4] hidden lg:block"></div>
-             <div className="flex items-center gap-3">
-                <span className="text-[11px] font-bold text-[#64748B] uppercase tracking-wider">Completadas Hoy:</span>
-                <span className="text-sm font-black text-[#10B981]">14</span>
-             </div>
-             <div className="h-4 w-[1px] bg-[#E8ECF4] hidden lg:block"></div>
-             <div className="flex items-center gap-3">
-                <span className="text-[11px] font-bold text-[#64748B] uppercase tracking-wider">En Riesgo:</span>
-                <span className="text-sm font-black text-[#EF4444]">3</span>
-             </div>
-             <div className="h-4 w-[1px] bg-[#E8ECF4] hidden lg:block"></div>
-             <div className="flex items-center gap-3">
-                <span className="text-[11px] font-bold text-[#64748B] uppercase tracking-wider">Equipo:</span>
-                <span className="flex items-center gap-1.5 text-sm font-black text-[#0F172A]"><Users className="w-4 h-4 text-[#7C3AED]" /> 4 personas</span>
+             <div className="flex items-center gap-2">
+                <span className="text-[#64748B]">Equipo:</span>
+                <span className="flex items-center gap-1.5 text-[#0F172A]"><Users className="w-3.5 h-3.5 text-[#7C3AED]" /> 4</span>
              </div>
           </div>
 
           {/* Board */}
-          <div className="flex gap-6 h-[calc(100vh-280px)] min-h-[600px] overflow-x-auto pb-4 scrollbar-hide">
+          <div className="flex gap-4 md:gap-6 h-[calc(100vh-280px)] min-h-[500px] overflow-x-auto pb-4 scrollbar-hide">
              <Column title="Por hacer" status="pendiente" tasks={tasks.filter(t => t.status === 'pendiente')} icon={Clock} />
              <Column title="En proceso" status="en-proceso" tasks={tasks.filter(t => t.status === 'en-proceso')} icon={Zap} />
              <Column title="Finalizado" status="completado" tasks={tasks.filter(t => t.status === 'completado')} icon={CheckCircle} />
@@ -235,7 +234,7 @@ export default function OperacionesPanel() {
         </main>
 
         {/* Resource Sidebar */}
-        <aside className="w-72 border-l border-[#E8ECF4] p-6 hidden xl:block bg-[#F8F9FC]/50 min-h-[calc(100vh-64px)]">
+        <aside className="w-full xl:w-72 border-t xl:border-t-0 xl:border-l border-[#E8ECF4] p-6 bg-[#F8F9FC]/50 min-h-[auto] xl:min-h-[calc(100vh-64px)]">
            <div className="mb-8">
               <h3 className="text-xs font-black text-[#0F172A] uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
                  <AlertCircle className="w-4 h-4 text-[#7C3AED]" />
@@ -282,11 +281,11 @@ export default function OperacionesPanel() {
       {/* Modal: New Task */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-[#0F172A]/40 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white w-full max-w-lg rounded-2xl p-8 shadow-2xl relative border border-[#E8ECF4]">
+          <div className="bg-white w-full max-w-lg rounded-2xl p-6 md:p-8 shadow-2xl relative border border-[#E8ECF4]">
             <div className="flex justify-between items-center mb-8">
               <div>
-                <h3 className="text-xl font-bold text-[#0F172A]">Asignar nueva prioridad</h3>
-                <p className="text-xs text-[#64748B] font-medium mt-1">Define el objetivo y asigna recursos al proceso.</p>
+                <h3 className="text-xl font-bold text-[#0F172A]">Asignar prioridad</h3>
+                <p className="text-xs text-[#64748B] font-medium mt-1">Define el objetivo y asigna recursos.</p>
               </div>
               <button 
                 onClick={() => setIsModalOpen(false)} 

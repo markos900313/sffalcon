@@ -66,26 +66,26 @@ export default function ReservasPanel() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <div className={`min-h-screen bg-[#0D1F1A] text-slate-100 p-8 font-sans selection:bg-[#10B981]/30 ${lora.className}`}>
+    <div className={`min-h-screen bg-[#0D1F1A] text-slate-100 p-4 md:p-8 font-sans selection:bg-[#10B981]/30 ${lora.className}`}>
       <div className="max-w-7xl mx-auto">
         
         {/* Navigation Sidebar-Style Top (Compact) */}
-        <div className="flex items-center gap-6 mb-12">
+        <div className="flex items-center gap-4 md:gap-6 mb-8 md:mb-12">
             <Link 
               href="/servicios/saas-paneles"
-              className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#10B981] hover:text-white transition-all group"
+              className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#10B981] hover:text-white transition-all group shrink-0"
             >
               <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
             </Link>
-            <div className="h-6 w-px bg-white/10"></div>
-            <h1 className="text-sm font-black text-white uppercase tracking-[0.2em] opacity-80">Centro de Control de Reservas e Inventario</h1>
+            <div className="h-6 w-px bg-white/10 hidden xs:block"></div>
+            <h1 className="text-[10px] md:text-sm font-black text-white uppercase tracking-[0.2em] opacity-80 leading-tight">Control de Reservas e Inventario</h1>
         </div>
 
         {/* Dashboard Header - Internal Ops Style */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-12">
-          <div className="lg:col-span-2 flex flex-col justify-center">
-            <h2 className="text-4xl font-bold tracking-tight text-white mb-2">Gourmet Experience</h2>
-            <p className="text-[#10B981] font-bold tracking-[0.1em] uppercase text-xs flex items-center gap-3">
+        <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-5 gap-4 mb-8 md:mb-12">
+          <div className="xs:col-span-2 lg:col-span-2 flex flex-col justify-center mb-4 md:mb-0">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-2">Gourmet Experience</h2>
+            <p className="text-[#10B981] font-bold tracking-[0.1em] uppercase text-[10px] md:text-xs flex items-center gap-3">
                 <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse"></span>
                 Turno de Tarde · 14 Mar 2026
             </p>
@@ -158,12 +158,12 @@ export default function ReservasPanel() {
         </div>
 
         {/* Timeline Horizontal Refined */}
-        <div className="mb-16 bg-[#0D1614] border border-white/5 rounded-[2.5rem] p-10">
-            <div className="flex items-center justify-between mb-10">
-                <h2 className="text-[10px] font-black uppercase tracking-[0.2em] text-[#10B981]">Control de Mesa y Flujo de Tarde</h2>
-                <div className="flex gap-4">
-                    <button onClick={() => setIsModalOpen(true)} className="flex items-center gap-2 px-6 py-3 bg-[#10B981] text-white rounded-xl text-xs font-black uppercase tracking-widest shadow-lg shadow-[#10B981]/20 hover:scale-105 transition-all">
-                       <Plus className="w-4 h-4" /> Inscribir Comensal
+        <div className="mb-12 md:mb-16 bg-[#0D1614] border border-white/5 rounded-[1.5rem] md:rounded-[2.5rem] p-6 md:p-10">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-8 md:mb-10">
+                <h2 className="text-[10px] font-black uppercase tracking-[0.2em] text-[#10B981]">Control de Mesa y Flujo</h2>
+                <div className="flex gap-4 w-full sm:w-auto">
+                    <button onClick={() => setIsModalOpen(true)} className="flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-3 bg-[#10B981] text-white rounded-xl text-[10px] md:text-xs font-black uppercase tracking-widest shadow-lg shadow-[#10B981]/20 hover:scale-105 transition-all">
+                       <Plus className="w-4 h-4" /> Registrar
                     </button>
                     <div className="flex gap-1">
                         <button className="w-10 h-10 border border-white/5 bg-white/5 rounded-xl flex items-center justify-center hover:bg-white/10 transition-all"><ChevronLeft className="w-4 h-4" /></button>
@@ -210,20 +210,20 @@ export default function ReservasPanel() {
 
         {/* Listado Principal - Occupies Full Width more efficiently */}
         <div className="space-y-6 mb-20">
-            <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-[#10B981] mb-8">Operativa de Mesa y Servicio en Vivo</h3>
+            <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-[#10B981] mb-6 md:mb-8">Operativa en Vivo</h3>
             <div className="grid gap-4">
                 {reservationsData.map(res => (
-                   <div key={res.id} className="bg-white/[0.02] border border-white/5 rounded-[2.5rem] p-6 flex flex-col md:flex-row md:items-center justify-between group hover:bg-white/[0.04] hover:border-[#10B981]/30 transition-all">
-                       <div className="flex items-center gap-8 mb-4 md:mb-0">
+                   <div key={res.id} className="bg-white/[0.02] border border-white/5 rounded-2xl md:rounded-[2.5rem] p-4 md:p-6 flex flex-col md:flex-row md:items-center justify-between group hover:bg-white/[0.04] hover:border-[#10B981]/30 transition-all">
+                       <div className="flex items-center gap-4 md:gap-8 mb-6 md:mb-0">
                            <div className="w-20 h-20 bg-black/40 rounded-3xl flex flex-col items-center justify-center border border-white/5 relative overflow-hidden">
                                <div className={`absolute top-0 left-0 w-full h-1 ${res.status === 'Confirmada' ? 'bg-[#10B981]' : 'bg-orange-500'}`}></div>
                                <span className="text-lg font-black text-white leading-none mb-1">{res.time}</span>
                                <span className="text-[9px] uppercase font-black tracking-[0.2em] opacity-30">TURNO</span>
                            </div>
                            <div>
-                               <div className="flex items-center gap-4 mb-1">
-                                    <h4 className="text-2xl font-bold text-white leading-tight">{res.name}</h4>
-                                    <span className={`px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[9px] font-black uppercase tracking-widest ${res.status === 'Confirmada' ? 'text-[#10B981]' : 'text-orange-500'}`}>
+                               <div className="flex items-center gap-2 md:gap-4 mb-2 md:mb-1">
+                                    <h4 className="text-lg md:text-2xl font-bold text-white leading-tight">{res.name}</h4>
+                                    <span className={`px-2 md:px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[8px] md:text-[9px] font-black uppercase tracking-widest ${res.status === 'Confirmada' ? 'text-[#10B981]' : 'text-orange-500'}`}>
                                         Mesa {res.id + 4}
                                     </span>
                                </div>
@@ -241,25 +241,26 @@ export default function ReservasPanel() {
                            </div>
                        </div>
                        
-                       <div className="flex items-center gap-4">
-                            <div className="flex flex-col items-end gap-1 px-4">
-                                <p className="text-[9px] font-black uppercase tracking-widest text-white/20">Estado Notificación</p>
+                       <div className="flex grid grid-cols-2 md:flex items-center gap-3 md:gap-4 border-t md:border-t-0 border-white/5 pt-4 md:pt-0">
+                            <div className="flex flex-col items-start md:items-end gap-1 px-2 md:px-4">
+                                <p className="text-[8px] md:text-[9px] font-black uppercase tracking-widest text-white/20">Notificación</p>
                                 <div className="flex items-center gap-2">
                                     <div className={`w-2 h-2 rounded-full ${
                                         res.waStatus === 'enviado' ? 'bg-[#10B981]' :
                                         res.waStatus === 'pendiente' ? 'bg-orange-400' : 'bg-slate-600'
                                     }`}></div>
-                                    <span className="text-[10px] font-bold uppercase tracking-tight text-white/60">{res.waStatus.replace('-', ' ')}</span>
+                                    <span className="text-[9px] md:text-[10px] font-bold uppercase tracking-tight text-white/60">{res.waStatus.replace('-', ' ')}</span>
                                 </div>
                             </div>
-                            <button className={`flex items-center gap-3 px-8 py-4 rounded-2xl text-xs font-black uppercase tracking-widest transition-all border ${
+                            <button className={`col-span-1 flex items-center justify-center gap-2 md:gap-3 px-4 md:px-8 py-3 md:py-4 rounded-xl md:rounded-2xl text-[10px] md:text-xs font-black uppercase tracking-widest transition-all border ${
                                 res.waStatus === 'enviado' ? 'bg-[#10B981]/5 border-[#10B981]/20 text-[#10B981] opacity-50 cursor-not-allowed' : 'bg-white/5 border-white/5 hover:border-[#10B981]/50 text-white'
                             }`}>
-                                <MessageCircle className={`w-5 h-5 ${res.waStatus === 'enviado' ? 'text-[#10B981]' : 'text-white/40'}`} />
-                                {res.waStatus === 'enviado' ? 'Enviado' : 'Enviar WhatsApp'}
+                                <MessageCircle className={`w-4 h-4 md:w-5 md:h-5 ${res.waStatus === 'enviado' ? 'text-[#10B981]' : 'text-white/40'}`} />
+                                <span className="hidden xs:inline">{res.waStatus === 'enviado' ? 'Enviado' : 'WhatsApp'}</span>
+                                <span className="xs:hidden">WA</span>
                             </button>
-                            <button className="w-14 h-14 bg-white/5 border border-white/5 rounded-2xl flex items-center justify-center hover:bg-white/10 transition-all">
-                                <MoreVertical className="w-6 h-6" />
+                            <button className="col-start-2 w-full md:w-14 h-12 md:h-14 bg-white/5 border border-white/5 rounded-xl md:rounded-2xl flex items-center justify-center hover:bg-white/10 transition-all">
+                                <MoreVertical className="w-5 h-5 md:w-6 md:h-6" />
                             </button>
                        </div>
                    </div>
@@ -269,34 +270,34 @@ export default function ReservasPanel() {
 
         {/* Modal Simulado */}
         {isModalOpen && (
-          <div className="fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center p-4">
-            <div className="bg-[#0D1614] border border-white/10 w-full max-w-md rounded-[3rem] p-12 shadow-2xl relative">
+          <div className="fixed inset-0 bg-black/95 backdrop-blur-md z-50 flex items-center justify-center p-4">
+            <div className="bg-[#0D1614] border border-white/10 w-full max-w-md rounded-[2rem] md:rounded-[3rem] p-8 md:p-12 shadow-2xl relative">
               <div className="absolute top-0 right-0 w-48 h-48 bg-[#10B981]/5 rounded-full blur-[100px]"></div>
-              <div className="flex justify-between items-center mb-12 relative z-10">
-                <h3 className="text-3xl font-bold italic text-white">REGISTRO DE COMENSAL</h3>
-                <button onClick={() => setIsModalOpen(false)} className="p-3 hover:bg-white/5 rounded-xl transition-colors border border-white/10">
-                  <X className="w-6 h-6 text-white" />
+              <div className="flex justify-between items-center mb-10 md:mb-12 relative z-10">
+                <h3 className="text-xl md:text-3xl font-bold italic text-white uppercase">Registro</h3>
+                <button onClick={() => setIsModalOpen(false)} className="p-2 md:p-3 hover:bg-white/5 rounded-xl transition-colors border border-white/10">
+                  <X className="w-5 h-5 md:w-6 md:h-6 text-white" />
                 </button>
               </div>
               <div className="space-y-6 relative z-10">
                 <div className="space-y-3">
                     <label className="text-[9px] font-black uppercase tracking-[0.2em] text-[#10B981] px-1">Cliente Principal</label>
-                    <input type="text" className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-[#10B981] transition-colors font-bold text-white uppercase placeholder:text-white/10" placeholder="NOMBRE COMPLETO" />
+                    <input type="text" className="w-full bg-black/40 border border-white/10 rounded-xl md:rounded-2xl px-5 md:px-6 py-3 md:py-4 outline-none focus:border-[#10B981] transition-colors font-bold text-white uppercase placeholder:text-white/10 text-sm" placeholder="NOMBRE COMPLETO" />
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-3">
-                        <label className="text-[9px] font-black uppercase tracking-[0.2em] text-[#10B981] px-1">Slot de Hora</label>
-                        <select className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-[#10B981] transition-colors font-bold appearance-none text-white uppercase">
+                        <label className="text-[9px] font-black uppercase tracking-[0.2em] text-[#10B981] px-1">Hora</label>
+                        <select className="w-full bg-black/40 border border-white/10 rounded-xl md:rounded-2xl px-5 md:px-6 py-3 md:py-4 outline-none focus:border-[#10B981] transition-colors font-bold appearance-none text-white uppercase text-sm">
                             {hours.map(h => <option key={h} className="bg-[#0D1614]">{h}</option>)}
                         </select>
                     </div>
                     <div className="space-y-3">
-                        <label className="text-[9px] font-black uppercase tracking-[0.2em] text-[#10B981] px-1">Comensales</label>
-                        <input type="number" defaultValue={2} className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-[#10B981] transition-colors font-bold text-white" />
+                        <label className="text-[9px] font-black uppercase tracking-[0.2em] text-[#10B981] px-1">PAX</label>
+                        <input type="number" defaultValue={2} className="w-full bg-black/40 border border-white/10 rounded-xl md:rounded-2xl px-5 md:px-6 py-3 md:py-4 outline-none focus:border-[#10B981] transition-colors font-bold text-white text-sm" />
                     </div>
                 </div>
-                <button className="w-full py-5 bg-[#10B981] text-white rounded-full font-black text-lg hover:bg-[#059669] transition-all shadow-xl shadow-[#10B981]/20 mt-6 uppercase tracking-[0.2em]">
-                  Confirmar en Sistema
+                <button className="w-full py-4 md:py-5 bg-[#10B981] text-white rounded-full font-black text-base md:text-lg hover:bg-[#059669] transition-all shadow-xl shadow-[#10B981]/20 mt-6 uppercase tracking-[0.2em]">
+                  Inscribir
                 </button>
               </div>
             </div>
