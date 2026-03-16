@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://sffalcon.com'),
+  metadataBase: new URL('https://www.sffalcon.com'),
   title: {
     default: 'SFFALCON | Agencia Digital Murcia',
     template: '%s | SFFALCON'
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'es_ES',
-    url: 'https://sffalcon.com',
+    url: 'https://www.sffalcon.com',
     siteName: 'SFFALCON',
     title: 'SFFALCON | Agencia Digital Murcia',
     description: 'Transformamos negocios locales con tecnología digital. Webs, apps y SaaS con IA para empresas españolas.',
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     google: 'PENDIENTE',
   },
   alternates: {
-    canonical: 'https://sffalcon.com'
+    canonical: 'https://www.sffalcon.com'
   }
 };
 
@@ -89,8 +89,8 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               "name": "SFFALCON",
-              "url": "https://sffalcon.com",
-              "logo": "https://sffalcon.com/icon.svg",
+              "url": "https://www.sffalcon.com",
+              "logo": "https://www.sffalcon.com/icon.svg",
               "email": "admin@sffalcon.com",
               "telephone": "+34604989742",
               "founder": {
@@ -114,7 +114,7 @@ export default function RootLayout({
                 "Inteligencia Artificial"
               ],
               "sameAs": [
-                "https://sffalcon.com"
+                "https://www.sffalcon.com"
               ]
             })
           }}
