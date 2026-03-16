@@ -137,7 +137,10 @@ export default function MobileAppsPage() {
               <div className="hidden lg:flex w-[480px] relative bg-slate-50 border-l border-slate-100 p-6 overflow-hidden group-hover:bg-slate-100/30 transition-colors items-center justify-center">
                 <div className="w-full h-full relative max-w-[380px] aspect-square group-hover:scale-105 transition-transform duration-700">
                   {/* Clean Image Container */}
-                  <div className="absolute inset-0 bg-white rounded-[2.5rem] overflow-hidden shadow-2xl border border-slate-200/50">
+                  <div 
+                    className="absolute inset-0 bg-white rounded-[2.5rem] overflow-hidden shadow-2xl border border-slate-200/50"
+                    style={{ isolation: 'isolate', WebkitMaskImage: '-webkit-radial-gradient(white, black)', transform: 'translateZ(0)' }}
+                  >
                     <img
                       src={
                         example.color === 'blue' ? '/lumina_mini_3d_1773486654940.png' :

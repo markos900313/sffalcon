@@ -62,7 +62,10 @@ export default function LuminaCRMPage() {
                     </h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
                         <div className="space-y-6">
-                            <div className="aspect-video bg-slate-900 rounded-[2rem] overflow-hidden border border-slate-200 shadow-lg relative group">
+                            <div 
+                                className="aspect-video bg-slate-900 rounded-[2rem] overflow-hidden border border-slate-200 shadow-lg relative group"
+                                style={{ isolation: 'isolate', WebkitMaskImage: '-webkit-radial-gradient(white, black)', transform: 'translateZ(0)' }}
+                            >
                                 <img 
                                     src="/lumina_crm_dashboard_3d_1773486583538.png" 
                                     alt="Lumina Dashboard" 
@@ -77,7 +80,10 @@ export default function LuminaCRMPage() {
                             </p>
                         </div>
                         <div className="space-y-6">
-                            <div className="aspect-video bg-slate-900 rounded-[2rem] overflow-hidden border border-slate-200 shadow-lg relative group">
+                            <div 
+                                className="aspect-video bg-slate-900 rounded-[2rem] overflow-hidden border border-slate-200 shadow-lg relative group"
+                                style={{ isolation: 'isolate', WebkitMaskImage: '-webkit-radial-gradient(white, black)', transform: 'translateZ(0)' }}
+                            >
                                 <img 
                                     src="/lumina_crm_patient_3d_1773486598508.png" 
                                     alt="Lumina Patient" 

@@ -70,7 +70,10 @@ export default function EduAcademyPage() {
                     </h2>
                     <div className="grid grid-cols-1 md:grid-cols-1 gap-8 md:gap-12">
                         <div className="space-y-6">
-                            <div className="aspect-video bg-slate-900 rounded-[2rem] overflow-hidden border border-slate-200 shadow-lg relative group">
+                            <div 
+                                className="aspect-video bg-slate-900 rounded-[2rem] overflow-hidden border border-slate-200 shadow-lg relative group"
+                                style={{ isolation: 'isolate', WebkitMaskImage: '-webkit-radial-gradient(white, black)', transform: 'translateZ(0)' }}
+                            >
                                 <img 
                                     src="/edu_academy_dashboard_3d_1773486639087.png" 
                                     alt="EduAcademy Dashboard" 

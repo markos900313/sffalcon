@@ -62,7 +62,10 @@ export default function GourmetOrderPage() {
                     </h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
                         <div className="space-y-6">
-                            <div className="aspect-[4/5] bg-slate-900 rounded-[2rem] overflow-hidden border border-slate-200 shadow-lg relative group">
+                            <div 
+                                className="aspect-[4/5] bg-slate-900 rounded-[2rem] overflow-hidden border border-slate-200 shadow-lg relative group"
+                                style={{ isolation: 'isolate', WebkitMaskImage: '-webkit-radial-gradient(white, black)', transform: 'translateZ(0)' }}
+                            >
                                 <img 
                                     src="/gourmet_order_login_3d_1773486611290.png" 
                                     alt="GourmetOrder Login" 
@@ -74,7 +77,10 @@ export default function GourmetOrderPage() {
                             </div>
                         </div>
                         <div className="space-y-6">
-                            <div className="aspect-[4/5] bg-slate-900 rounded-[2rem] overflow-hidden border border-slate-200 shadow-lg relative group">
+                            <div 
+                                className="aspect-[4/5] bg-slate-900 rounded-[2rem] overflow-hidden border border-slate-200 shadow-lg relative group"
+                                style={{ isolation: 'isolate', WebkitMaskImage: '-webkit-radial-gradient(white, black)', transform: 'translateZ(0)' }}
+                            >
                                 <img 
                                     src="/gourmet_order_menu_3d_1773486624606.png" 
                                     alt="GourmetOrder Menu" 
