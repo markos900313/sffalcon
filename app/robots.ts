@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/api/',
     },
-    sitemap: 'https://sffalcon.com/sitemap.xml',
+    sitemap: 'https://www.sffalcon.com/sitemap.xml',
   }
 }
