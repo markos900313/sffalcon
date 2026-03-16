@@ -165,7 +165,7 @@ export default function MobileAppsPage() {
         </div>
 
         {/* CTA Section */}
-        <div className="mt-24 p-12 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-[3rem] text-white text-center relative overflow-hidden shadow-2xl shadow-blue-200">
+        <div className="mt-24 p-12 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-[2.5rem] md:rounded-[3rem] text-white text-center relative overflow-hidden shadow-2xl shadow-blue-500/20 isolate transform translate-z-0">
           <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32 blur-3xl"></div>
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-indigo-500/20 rounded-full -ml-32 -mb-32 blur-3xl"></div>
 

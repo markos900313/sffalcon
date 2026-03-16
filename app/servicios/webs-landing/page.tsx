@@ -122,7 +122,7 @@ export default function WebsLandingPage() {
           </div>
 
           {/* CTA Section */}
-          <div className="mt-16 bg-blue-600 rounded-3xl p-8 md:p-12 text-center text-white relative overflow-hidden shadow-2xl">
+          <div className="mt-16 bg-gradient-to-br from-blue-600 to-blue-700 rounded-[2.5rem] md:rounded-[3rem] p-8 md:p-12 text-center text-white relative overflow-hidden shadow-2xl shadow-blue-500/20 isolate transform translate-z-0">
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32 blur-3xl"></div>
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-800/20 rounded-full -ml-32 -mb-32 blur-3xl"></div>
             

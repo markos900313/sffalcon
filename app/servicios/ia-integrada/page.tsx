@@ -12,9 +12,7 @@ import {
   ArrowLeft,
   Sparkles
 } from "lucide-react";
-import { Inter } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
 
 const aiExamples = [
   {
@@ -57,7 +55,7 @@ const aiExamples = [
 
 export default function IaIntegratedShowcase() {
   return (
-    <div className={`min-h-screen bg-[#F8FAFC] selection:bg-indigo-100 pb-20 ${inter.className}`}>
+    <div className="min-h-screen bg-[#F8FAFC] selection:bg-indigo-100 pb-20">
       {/* Navigation Header */}
       {/* Navigation Header */}
       <nav className="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-100 h-16 flex items-center shadow-sm">
@@ -132,7 +130,7 @@ export default function IaIntegratedShowcase() {
         </div>
 
         {/* Value Proposition */}
-        <div className="bg-indigo-600 rounded-[3rem] p-12 text-white relative overflow-hidden">
+        <div className="bg-indigo-600 rounded-[2.5rem] md:rounded-[3rem] p-12 text-white relative overflow-hidden isolate transform translate-z-0">
             <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-[100px] -mr-48 -mt-48"></div>
             <div className="relative z-10 grid lg:grid-cols-2 gap-12 items-center">
                 <div>
