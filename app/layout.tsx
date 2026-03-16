@@ -13,23 +13,26 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.sffalcon.com'),
+  metadataBase: new URL('https://sffalcon.com'),
   title: {
     default: 'SFFALCON | Agencia Digital Murcia',
     template: '%s | SFFALCON'
   },
-  description: 'Agencia digital especializada en webs, apps y SaaS con IA para negocios locales españoles. Murcia.',
+  description: 'Agencia digital especializada en webs profesionales, apps y SaaS con IA para negocios locales españoles. Murcia, España.',
   keywords: [
     'agencia digital murcia',
     'diseño web murcia',
-    'aplicaciones móviles murcia',
+    'aplicaciones moviles murcia',
     'SaaS empresas locales',
     'inteligencia artificial negocios',
     'SFFALCON',
-    'desarrollo web españa'
+    'desarrollo web españa',
+    'agencia digital españa',
+    'webs profesionales murcia'
   ],
   authors: [{ 
-    name: 'Marcos Antonio Falcón Hernández' 
+    name: 'Marcos Antonio Falcón Hernández',
+    url: 'https://sffalcon.com'
   }],
   creator: 'SFFALCON',
   publisher: 'SFFALCON',
@@ -39,12 +42,15 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
     }
   },
   openGraph: {
     type: 'website',
     locale: 'es_ES',
-    url: 'https://www.sffalcon.com',
+    url: 'https://sffalcon.com',
     siteName: 'SFFALCON',
     title: 'SFFALCON | Agencia Digital Murcia',
     description: 'Transformamos negocios locales con tecnología digital. Webs, apps y SaaS con IA para empresas españolas.',
@@ -53,7 +59,7 @@ export const metadata: Metadata = {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'SFFALCON Agencia Digital'
+        alt: 'SFFALCON Agencia Digital Murcia'
       }
     ]
   },
@@ -63,13 +69,10 @@ export const metadata: Metadata = {
     description: 'Webs, apps y SaaS con IA para negocios locales españoles.',
     images: ['/og-image.jpg'],
   },
-  verification: {
-    google: 'PENDIENTE',
-  },
   alternates: {
-    canonical: 'https://www.sffalcon.com'
+    canonical: 'https://sffalcon.com'
   }
-};
+}
 
 export default function RootLayout({
   children,
@@ -89,8 +92,8 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               "name": "SFFALCON",
-              "url": "https://www.sffalcon.com",
-              "logo": "https://www.sffalcon.com/icon.svg",
+              "url": "https://sffalcon.com",
+              "logo": "https://sffalcon.com/icon.svg",
               "email": "admin@sffalcon.com",
               "telephone": "+34604989742",
               "founder": {
@@ -101,20 +104,28 @@ export default function RootLayout({
                 "@type": "PostalAddress",
                 "streetAddress": "Calle Párroco y Poeta Francisco Aroca 2",
                 "addressLocality": "Murcia",
+                "addressRegion": "Murcia",
                 "addressCountry": "ES"
               },
-              "areaServed": {
-                "@type": "Country",
-                "name": "España"
-              },
+              "areaServed": [
+                {
+                  "@type": "Country",
+                  "name": "España"
+                },
+                {
+                  "@type": "City",
+                  "name": "Miami"
+                }
+              ],
               "serviceType": [
-                "Diseño web",
+                "Diseño web profesional",
                 "Desarrollo de aplicaciones móviles",
-                "SaaS",
-                "Inteligencia Artificial"
+                "Plataformas SaaS",
+                "Inteligencia Artificial",
+                "Automatización de negocios"
               ],
               "sameAs": [
-                "https://www.sffalcon.com"
+                "https://sffalcon.com"
               ]
             })
           }}
