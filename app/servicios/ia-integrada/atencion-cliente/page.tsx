@@ -220,7 +220,5 @@ export default function AtencionClienteIa() {
         </aside>
       </div>
     </div>
-      </div>
-    </div>
   );
 }
