@@ -2,7 +2,6 @@
 
 import React from "react";
 import Link from "next/link";
-import { Inter } from "next/font/google";
 import {
   CheckCircle2, LayoutTemplate, Smartphone, BarChart3,
   Bot, Phone, Clock, Rocket, Mail, ArrowRight, Sparkles, Zap, Globe
@@ -11,57 +10,9 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-
 export default function LandingPage() {
   return (
-    <div className={`${inter.variable} font-sans bg-[#f5f7f8] text-slate-900 selection:bg-[#0f3460]/30 min-h-[max(884px,100dvh)]`}>
-      <style dangerouslySetInnerHTML={{
-        __html: `
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(15, 52, 96, 0.08);
-        }
-        .hero-gradient {
-            background: 
-              radial-gradient(circle at 100% 0%, rgba(15, 52, 96, 0.08) 0%, transparent 50%),
-              radial-gradient(circle at 0% 100%, rgba(15, 52, 96, 0.05) 0%, transparent 50%),
-              #f5f7f8;
-        }
-        .text-gradient {
-            background: linear-gradient(135deg, #0f3460 0%, #1a508b 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 
-              0 20px 40px -15px rgba(15, 52, 96, 0.1),
-              0 0 0 1px rgba(15, 52, 96, 0.02);
-        }
-        .floating {
-            animation: floating 6s ease-in-out infinite;
-        }
-        @keyframes floating {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
-        }
-        .glow-blob {
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(15, 52, 96, 0.08) 0%, transparent 70%);
-            border-radius: 50%;
-            filter: blur(40px);
-            z-index: 0;
-        }
-      `}} />
+    <div className="bg-[#f5f7f8] text-slate-900 selection:bg-[#0f3460]/30 min-h-[max(884px,100dvh)]">
 
       <Navbar />
 

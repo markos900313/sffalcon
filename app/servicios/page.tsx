@@ -4,10 +4,6 @@ import Footer from '@/components/Footer'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import { LayoutTemplate, Smartphone, BarChart3, Bot, ArrowRight, Sparkles } from 'lucide-react'
 import Link from 'next/link'
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-
 export const metadata: Metadata = {
   title: 'Servicios Digitales',
   description: 'Webs profesionales, aplicaciones móviles, plataformas SaaS e IA integrada para negocios locales. SFFALCON Murcia.',
@@ -49,21 +45,7 @@ const servicios = [
 
 export default function ServiciosPage() {
   return (
-    <div className={`${inter.variable} font-sans min-h-screen bg-[#f5f7f8] text-slate-900`}>
-      <style dangerouslySetInnerHTML={{
-        __html: `
-        .hero-gradient {
-            background: 
-              radial-gradient(circle at 100% 0%, rgba(15, 52, 96, 0.08) 0%, transparent 50%),
-              radial-gradient(circle at 0% 100%, rgba(15, 52, 96, 0.05) 0%, transparent 50%),
-              #f5f7f8;
-        }
-        .text-gradient {
-            background: linear-gradient(135deg, #0f3460 0%, #1a508b 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-      `}} />
+    <div className="min-h-screen bg-[#f5f7f8] text-slate-900">
 
       <Navbar />
       
