@@ -62,39 +62,31 @@ export default function EduAcademyPage() {
 
         {/* content continues... */}
 
-        {/* Main Screenshot (Dashboard) */}
-        <div className="relative rounded-[3rem] overflow-hidden border border-slate-200 shadow-2xl mb-24 aspect-square max-w-4xl mx-auto bg-slate-50 group">
-          <img 
-            src="/edu_academy_dashboard_3d_1773486639087.png" 
-            alt="EduAcademy Dashboard"
-            className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-1000"
-          />
-        </div>
+                {/* Detalle Técnico de la App */}
+                <div className="bg-slate-50 border border-slate-200 rounded-[2.5rem] p-8 md:p-12 mb-16">
+                    <h2 className="text-2xl font-black text-slate-900 mb-10 flex items-center gap-4">
+                        <div className="w-1.5 h-8 bg-indigo-600 rounded-full"></div>
+                        Vistas de la Plataforma
+                    </h2>
+                    <div className="grid grid-cols-1 md:grid-cols-1 gap-8 md:gap-12">
+                        <div className="space-y-6">
+                            <div className="aspect-video bg-slate-900 rounded-[2rem] overflow-hidden border border-slate-200 shadow-lg relative group">
+                                <img 
+                                    src="/edu_academy_dashboard_3d_1773486639087.png" 
+                                    alt="EduAcademy Dashboard" 
+                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">
+                                    <p className="text-white text-xs font-bold uppercase tracking-widest">Dashboard de Estudiante</p>
+                                </div>
+                            </div>
+                            <p className="text-sm text-slate-500 leading-relaxed font-medium text-center">
+                                Interfaz intuitiva diseñada para minimizar distracciones y maximizar la retención de conocimientos.
+                            </p>
+                        </div>
+                    </div>
+                </div>
 
-        {/* Feature Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
-          <div className="p-8 bg-white border border-slate-100 rounded-[2.5rem] shadow-sm hover:shadow-xl transition-shadow text-center">
-            <div className="w-14 h-14 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
-              <VideoIcon className="w-7 h-7" />
-            </div>
-            <h3 className="text-xl font-black text-slate-900 mb-3">Clases en Vivo</h3>
-            <p className="text-slate-500 font-medium">Streaming de alta definición con chat integrado y pizarras digitales.</p>
-          </div>
-          <div className="p-8 bg-white border border-slate-100 rounded-[2.5rem] shadow-sm hover:shadow-xl transition-shadow text-center">
-            <div className="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
-              <BookIcon className="w-7 h-7" />
-            </div>
-            <h3 className="text-xl font-black text-slate-900 mb-3">Contenido Offline</h3>
-            <p className="text-slate-500 font-medium">Descarga tus lecciones y estudia sin conexión a internet desde la app.</p>
-          </div>
-          <div className="p-8 bg-white border border-slate-100 rounded-[2.5rem] shadow-sm hover:shadow-xl transition-shadow text-center">
-            <div className="w-14 h-14 bg-green-50 text-green-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
-              <AwardIcon className="w-7 h-7" />
-            </div>
-            <h3 className="text-xl font-black text-slate-900 mb-3">Certificación</h3>
-            <p className="text-slate-500 font-medium">Generación automática de certificados con validación blockchain.</p>
-          </div>
-        </div>
 
         {/* Technical Stack section */}
         <div className="bg-slate-900 rounded-[3rem] p-12 text-white mb-24">

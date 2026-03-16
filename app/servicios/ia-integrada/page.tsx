@@ -92,11 +92,12 @@ export default function IaIntegratedShowcase() {
           {aiExamples.map((example) => (
             <div 
               key={example.id}
-              className={`group bg-white rounded-3xl border border-slate-200 shadow-sm transition-all duration-500 overflow-hidden flex flex-col h-full ${example.border} hover:shadow-xl hover:-translate-y-1`}
+              className={`group bg-white rounded-3xl border border-slate-200 shadow-xl shadow-slate-200/50 transition-all duration-500 overflow-hidden flex flex-col h-full ${example.border} hover:shadow-2xl hover:-translate-y-2`}
+              style={{ isolation: 'isolate' }}
             >
-              <div className={`h-2 bg-gradient-to-r ${example.color}`}></div>
+              <div className={`h-2 bg-gradient-to-r ${example.color} opacity-80`}></div>
               <div className="p-6 md:p-8 flex-1">
-                <div className="w-12 h-12 md:w-14 md:h-14 bg-slate-50 rounded-2xl flex items-center justify-center border border-slate-100 text-slate-900 mb-6 group-hover:scale-110 transition-transform duration-500">
+                <div className="w-12 h-12 md:w-14 md:h-14 bg-slate-50 rounded-2xl flex items-center justify-center border border-slate-100 text-slate-900 mb-6 group-hover:scale-110 transition-transform duration-500 shadow-sm">
                   <example.icon className="w-6 h-6 md:w-7 md:h-7" />
                 </div>
                 

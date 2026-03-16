@@ -54,84 +54,46 @@ export default function LuminaCRMPage() {
 
         {/* content continues... */}
 
-        {/* Main Screenshot (Login) */}
-        <div className="relative rounded-[3rem] overflow-hidden border border-slate-200 shadow-2xl mb-24 aspect-square max-w-4xl mx-auto bg-slate-50 group">
-          <img 
-            src="/lumina_crm_login_3d_1773486568534.png" 
-            alt="Lumina CRM Login"
-            className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-1000"
-          />
-        </div>
+                {/* Detalle de Arquitectura */}
+                <div className="bg-slate-50 border border-slate-200 rounded-[2.5rem] p-8 md:p-12 mb-16">
+                    <h2 className="text-2xl font-black text-slate-900 mb-10 flex items-center gap-4">
+                        <div className="w-1.5 h-8 bg-blue-600 rounded-full"></div>
+                        Vistas de la Plataforma
+                    </h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                        <div className="space-y-6">
+                            <div className="aspect-video bg-slate-900 rounded-[2rem] overflow-hidden border border-slate-200 shadow-lg relative group">
+                                <img 
+                                    src="/lumina_crm_dashboard_3d_1773486583538.png" 
+                                    alt="Lumina Dashboard" 
+                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">
+                                    <p className="text-white text-xs font-bold uppercase tracking-widest">Panel de Control General</p>
+                                </div>
+                            </div>
+                            <p className="text-sm text-slate-500 leading-relaxed font-medium">
+                                Interfaz diseñada por fases para que el equipo administrativo gestione citas y pacientes sin errores.
+                            </p>
+                        </div>
+                        <div className="space-y-6">
+                            <div className="aspect-video bg-slate-900 rounded-[2rem] overflow-hidden border border-slate-200 shadow-lg relative group">
+                                <img 
+                                    src="/lumina_crm_patient_3d_1773486598508.png" 
+                                    alt="Lumina Patient" 
+                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">
+                                    <p className="text-white text-xs font-bold uppercase tracking-widest">Ficha Médica 360º</p>
+                                </div>
+                            </div>
+                            <p className="text-sm text-slate-500 leading-relaxed font-medium">
+                                Visualización cronológica de antecedentes y tratamientos en una sola vista optimizada.
+                            </p>
+                        </div>
+                    </div>
+                </div>
 
-        {/* Component Showcase 1 (Dashboard) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-24">
-          <div className="space-y-8">
-            <div className="space-y-4">
-              <div className="w-12 h-12 bg-blue-600 text-white rounded-xl flex items-center justify-center shadow-lg shadow-blue-200">
-                <LineChart className="w-6 h-6" />
-              </div>
-              <h2 className="text-4xl font-black text-slate-900 tracking-tight">Dashboard de Operaciones</h2>
-              <p className="text-lg text-slate-500 leading-relaxed">
-                Visualización en tiempo real de la actividad de la clínica, desde el flujo de pacientes hasta el rendimiento financiero mensual.
-              </p>
-            </div>
-            <ul className="space-y-4">
-              {[
-                "Gráficos interactivos de ingresos",
-                "Seguimiento de citas diarias",
-                "Alertas de suministros médicos",
-                "Reportes automatizados PDF/Excel"
-              ].map((item, i) => (
-                <li key={i} className="flex items-center gap-3 text-slate-700 font-bold">
-                  <CheckCircle2 className="w-5 h-5 text-blue-600" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="rounded-[2.5rem] overflow-hidden border border-slate-200 shadow-xl aspect-square bg-white">
-            <img 
-              src="/lumina_crm_dashboard_3d_1773486583538.png" 
-              alt="Lumina CRM Dashboard"
-              className="w-full h-full object-cover"
-            />
-          </div>
-        </div>
-
-        {/* Component Showcase 2 (Patient File) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-24">
-          <div className="order-2 md:order-1 rounded-[2.5rem] overflow-hidden border border-slate-200 shadow-xl aspect-square bg-white">
-            <img 
-              src="/lumina_crm_patient_3d_1773486598508.png" 
-              alt="Lumina CRM Patient File"
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="order-1 md:order-2 space-y-8">
-            <div className="space-y-4">
-              <div className="w-12 h-12 bg-green-600 text-white rounded-xl flex items-center justify-center shadow-lg shadow-green-200">
-                <Users className="w-6 h-6" />
-              </div>
-              <h2 className="text-4xl font-black text-slate-900 tracking-tight">Expediente Clínico 360º</h2>
-              <p className="text-lg text-slate-500 leading-relaxed">
-                Toda la información del paciente centralizada: antecedentes, recetas, radiografías y evolución clínica en una sola vista.
-              </p>
-            </div>
-            <ul className="space-y-4">
-              {[
-                "Historial cronológico completo",
-                "Subida de archivos ilimitada",
-                "Recetario digital integrado",
-                "Cumplimiento total con RGPD"
-              ].map((item, i) => (
-                <li key={i} className="flex items-center gap-3 text-slate-700 font-bold">
-                  <CheckCircle2 className="w-5 h-5 text-green-600" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
 
         {/* Technical Stack section */}
         <div className="bg-slate-900 rounded-[3rem] p-12 text-white mb-24">

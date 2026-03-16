@@ -47,13 +47,14 @@ body {
 }
 
 .glass-card {
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.98); /* Más opaco para evitar invisibilidad en Mac */
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(15, 52, 96, 0.1);
     box-shadow: 
       0 20px 40px -15px rgba(15, 52, 96, 0.1),
-      0 0 0 1px rgba(15, 52, 96, 0.02);
+      0 0 0 1px rgba(15, 52, 96, 0.05);
+    isolation: isolate; /* Fix para Safari y bordes redondeados */
 }
 
 .floating {

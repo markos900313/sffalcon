@@ -54,49 +54,40 @@ export default function GourmetOrderPage() {
 
         {/* content continues... */}
 
-        {/* Main Screenshot (Login) */}
-        <div className="relative rounded-[3rem] overflow-hidden border border-slate-200 shadow-2xl mb-24 aspect-square max-w-4xl mx-auto bg-slate-900 group">
-          <img 
-            src="/gourmet_order_login_3d_1773486611290.png" 
-            alt="GourmetOrder Login"
-            className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-1000"
-          />
-        </div>
+                {/* Detalle Técnico de la App */}
+                <div className="bg-slate-50 border border-slate-200 rounded-[2.5rem] p-8 md:p-12 mb-16">
+                    <h2 className="text-2xl font-black text-slate-900 mb-10 flex items-center gap-4">
+                        <div className="w-1.5 h-8 bg-orange-500 rounded-full"></div>
+                        Interfaz y Menú Digital
+                    </h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                        <div className="space-y-6">
+                            <div className="aspect-[4/5] bg-slate-900 rounded-[2rem] overflow-hidden border border-slate-200 shadow-lg relative group">
+                                <img 
+                                    src="/gourmet_order_login_3d_1773486611290.png" 
+                                    alt="GourmetOrder Login" 
+                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">
+                                    <p className="text-white text-xs font-bold uppercase tracking-widest">Acceso para Comensales</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="space-y-6">
+                            <div className="aspect-[4/5] bg-slate-900 rounded-[2rem] overflow-hidden border border-slate-200 shadow-lg relative group">
+                                <img 
+                                    src="/gourmet_order_menu_3d_1773486624606.png" 
+                                    alt="GourmetOrder Menu" 
+                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">
+                                    <p className="text-white text-xs font-bold uppercase tracking-widest">Menú Interactivo HD</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        {/* Component Showcase (Menu) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-24">
-          <div className="space-y-8">
-            <div className="space-y-4">
-              <div className="w-12 h-12 bg-orange-500 text-white rounded-xl flex items-center justify-center shadow-lg shadow-orange-200">
-                <Utensils className="w-6 h-6" />
-              </div>
-              <h2 className="text-4xl font-black text-slate-900 tracking-tight">Menú Digital Interactivo</h2>
-              <p className="text-lg text-slate-500 leading-relaxed">
-                Presenta tus platos con fotografía profesional, filtros de alérgenos y opciones de personalización para cada pedido.
-              </p>
-            </div>
-            <ul className="space-y-4">
-              {[
-                "Fotografías HD de alta carga rápida",
-                "Filtros avanzados (Vegano, Sin Gluten)",
-                "Complementos y extras inteligentes",
-                "Actualizaciones de stock al instante"
-              ].map((item, i) => (
-                <li key={i} className="flex items-center gap-3 text-slate-700 font-bold">
-                  <CheckCircle2 className="w-5 h-5 text-orange-500" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="rounded-[2.5rem] overflow-hidden border border-slate-200 shadow-xl aspect-square bg-black">
-            <img 
-              src="/gourmet_order_menu_3d_1773486624606.png" 
-              alt="GourmetOrder Menu"
-              className="w-full h-full object-cover"
-            />
-          </div>
-        </div>
 
         {/* Technical Stack section */}
         <div className="bg-slate-900 rounded-[3rem] p-12 text-white mb-24">
