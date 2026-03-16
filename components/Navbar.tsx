@@ -20,9 +20,9 @@ export default function Navbar() {
             <span className="text-xl font-black tracking-tighter text-slate-900">SFFALCON</span>
           </Link>
           <div className="hidden md:flex items-center space-x-8">
-            <Link className="text-sm font-semibold text-slate-600 hover:text-[#0f3460] transition-colors" href="/#servicios">Servicios</Link>
-            <Link className="text-sm font-semibold text-slate-600 hover:text-[#0f3460] transition-colors" href="/#transformación">Transformación</Link>
-            <Link className="text-sm font-semibold text-slate-600 hover:text-[#0f3460] transition-colors" href="/#proceso">Proceso</Link>
+            <Link className="text-sm font-semibold text-slate-600 hover:text-[#0f3460] transition-colors" href="/servicios">Servicios</Link>
+            <Link className="text-sm font-semibold text-slate-600 hover:text-[#0f3460] transition-colors" href="/transformacion">Transformación</Link>
+            <Link className="text-sm font-semibold text-slate-600 hover:text-[#0f3460] transition-colors" href="/proceso">Proceso</Link>
             <Link className="bg-[#0f3460] text-white px-6 py-2.5 rounded-full text-sm font-bold hover:shadow-lg hover:shadow-[#0f3460]/30 transition-all active:scale-95" href="https://admin.sffalcon.com">
               Conectar Admin
             </Link>
@@ -40,9 +40,9 @@ export default function Navbar() {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden py-4 flex flex-col space-y-4">
-            <Link href="/#servicios" onClick={() => setIsMenuOpen(false)} className="text-sm font-semibold text-slate-600 hover:text-[#0f3460] px-2">Servicios</Link>
-            <Link href="/#transformación" onClick={() => setIsMenuOpen(false)} className="text-sm font-semibold text-slate-600 hover:text-[#0f3460] px-2">Transformación</Link>
-            <Link href="/#proceso" onClick={() => setIsMenuOpen(false)} className="text-sm font-semibold text-slate-600 hover:text-[#0f3460] px-2">Proceso</Link>
+            <Link href="/servicios" onClick={() => setIsMenuOpen(false)} className="text-sm font-semibold text-slate-600 hover:text-[#0f3460] px-2">Servicios</Link>
+            <Link href="/transformacion" onClick={() => setIsMenuOpen(false)} className="text-sm font-semibold text-slate-600 hover:text-[#0f3460] px-2">Transformación</Link>
+            <Link href="/proceso" onClick={() => setIsMenuOpen(false)} className="text-sm font-semibold text-slate-600 hover:text-[#0f3460] px-2">Proceso</Link>
             <Link href="https://admin.sffalcon.com" onClick={() => setIsMenuOpen(false)} className="bg-[#0f3460] text-white px-6 py-2.5 rounded-full text-sm font-bold w-max ml-2 mt-2">Conectar Admin</Link>
           </div>
         )}
