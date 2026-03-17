@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SFFALCON | Panel de Automatizaciones IA</title>
+<!-- Tailwind CSS CDN with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#0F172A',
+              accent: '#84CC16',
+              surface: '#1E293B'
+            }
+          },
+          fontFamily: {
+            mono: ['JetBrains Mono', 'Fira Code', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
+          },
+          animation: {
+            'pulse-slow': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-animations">
+    @keyframes pulse-dot {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(132, 204, 22, 0.7); }
+      70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(132, 204, 22, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(132, 204, 22, 0); }
+    }
+    .ia-active-pulse {
+      animation: pulse-dot 2s infinite;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #0F172A;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body class="bg-brand-dark text-slate-200 font-sans min-h-full flex flex-col">
+<!-- BEGIN: Navigation -->
+<nav class="sticky top-0 z-50 bg-brand-dark/80 backdrop-blur-md border-b border-slate-800 p-4">
+<div class="max-w-7xl mx-auto flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 bg-brand-accent rounded-full ia-active-pulse"></div>
+<h1 class="text-xl font-bold tracking-tight text-white uppercase font-mono">IA_AUTOMATION_CORE v2.4</h1>
+</div>
+
+</div>
+</nav>
+<!-- END: Navigation -->
+<main class="flex-grow max-w-7xl mx-auto w-full p-4 lg:p-8 space-y-8">
+<!-- BEGIN: Header Metrics -->
+<header class="grid grid-cols-1 md:grid-cols-3 gap-4" data-purpose="metrics-summary">
+<!-- Metric 1 -->
+<div class="bg-brand-surface border border-slate-800 p-6 rounded-xl flex flex-col items-center md:items-start">
+<span class="text-slate-400 text-xs uppercase font-mono mb-2">Tareas Automatizadas Hoy</span>
+<div class="flex items-baseline gap-2">
+<span class="text-4xl font-bold text-brand-accent">1,284</span>
+<span class="text-brand-accent/60 text-sm font-mono">+12%</span>
+</div>
+</div>
+<!-- Metric 2 -->
+<div class="bg-brand-surface border border-slate-800 p-6 rounded-xl flex flex-col items-center md:items-start">
+<span class="text-slate-400 text-xs uppercase font-mono mb-2">Horas Ahorradas</span>
+<div class="flex items-baseline gap-2">
+<span class="text-4xl font-bold text-brand-accent">42.5</span>
+<span class="text-slate-500 text-sm font-mono">HRS</span>
+</div>
+</div>
+<!-- Metric 3 -->
+<div class="bg-brand-surface border border-slate-800 p-6 rounded-xl flex flex-col items-center md:items-start">
+<span class="text-slate-400 text-xs uppercase font-mono mb-2">Tasa de Éxito</span>
+<div class="flex items-baseline gap-2">
+<span class="text-4xl font-bold text-brand-accent">99.8%</span>
+<span class="text-brand-accent/40 text-xs">ONLINE</span>
+</div>
+</div>
+</header>
+<!-- END: Header Metrics -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- BEGIN: Active Automations List -->
+<section class="lg:col-span-2 space-y-4" data-purpose="automations-list">
+<div class="flex justify-between items-center mb-6">
+<h2 class="text-lg font-mono font-semibold flex items-center gap-2">
+<span class="text-brand-accent opacity-50">&gt;</span> AUTOMATIZACIONES_ACTIVAS
+          </h2>
+<button class="bg-brand-accent hover:bg-lime-500 text-brand-dark px-4 py-2 rounded font-bold text-xs uppercase transition-colors">
+            + Crear nueva automatización
+          </button>
+</div>
+<!-- Automation Item 1 -->
+<div class="bg-brand-surface border border-slate-800 p-5 rounded-lg hover:border-brand-accent/30 transition-colors group">
+<div class="flex justify-between items-start mb-3">
+<div>
+<h3 class="font-bold text-slate-100 mb-1">Optimizador_Logistica_V3</h3>
+<p class="text-sm text-slate-400">Ruteo dinámico basado en tráfico y prioridad de entrega.</p>
+</div>
+<span class="flex items-center gap-2 bg-brand-accent/10 text-brand-accent px-2 py-1 rounded text-[10px] font-bold">
+<span class="w-1.5 h-1.5 bg-brand-accent rounded-full"></span> ACTIVA
+            </span>
+</div>
+<div class="flex justify-between items-center pt-4 border-t border-slate-800 text-[10px] font-mono text-slate-500">
+<span>ÚLTIMA EJECUCIÓN: Hace 2m</span>
+<div class="flex gap-4">
+<button class="hover:text-brand-accent">EDITAR</button>
+<button class="hover:text-red-400">PAUSAR</button>
+</div>
+</div>
+</div>
+<!-- Automation Item 2 -->
+<div class="bg-brand-surface border border-slate-800 p-5 rounded-lg hover:border-brand-accent/30 transition-colors group">
+<div class="flex justify-between items-start mb-3">
+<div>
+<h3 class="font-bold text-slate-100 mb-1">Clasificador_Soporte_NLP</h3>
+<p class="text-sm text-slate-400">Categorización automática de tickets mediante análisis de sentimiento.</p>
+</div>
+<span class="flex items-center gap-2 bg-slate-700 text-slate-400 px-2 py-1 rounded text-[10px] font-bold">
+<span class="w-1.5 h-1.5 bg-slate-500 rounded-full"></span> PAUSADA
+            </span>
+</div>
+<div class="flex justify-between items-center pt-4 border-t border-slate-800 text-[10px] font-mono text-slate-500">
+<span>ÚLTIMA EJECUCIÓN: Hace 14h</span>
+<div class="flex gap-4">
+<button class="hover:text-brand-accent">EDITAR</button>
+<button class="hover:text-brand-accent">ACTIVAR</button>
+</div>
+</div>
+</div>
+<!-- Automation Item 3 -->
+<div class="bg-brand-surface border border-slate-800 p-5 rounded-lg hover:border-brand-accent/30 transition-colors group">
+<div class="flex justify-between items-start mb-3">
+<div>
+<h3 class="font-bold text-slate-100 mb-1">Backup_Cloud_Sync</h3>
+<p class="text-sm text-slate-400">Sincronización incremental de bases de datos críticas.</p>
+</div>
+<span class="flex items-center gap-2 bg-brand-accent/10 text-brand-accent px-2 py-1 rounded text-[10px] font-bold">
+<span class="w-1.5 h-1.5 bg-brand-accent rounded-full"></span> ACTIVA
+            </span>
+</div>
+<div class="flex justify-between items-center pt-4 border-t border-slate-800 text-[10px] font-mono text-slate-500">
+<span>ÚLTIMA EJECUCIÓN: Hace 45s</span>
+<div class="flex gap-4">
+<button class="hover:text-brand-accent">EDITAR</button>
+<button class="hover:text-red-400">PAUSAR</button>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Active Automations List -->
+<!-- BEGIN: Real-time Terminal Log -->
+<aside class="space-y-4" data-purpose="real-time-log">
+<h2 class="text-lg font-mono font-semibold flex items-center gap-2">
+<span class="text-brand-accent opacity-50">&gt;</span> LIVE_EXECUTION_LOG
+        </h2>
+<div class="bg-black border border-slate-800 rounded-lg p-4 h-[400px] font-mono text-xs overflow-y-auto custom-scrollbar flex flex-col gap-3">
+<!-- Log Entry -->
+<div class="flex flex-col gap-1 border-l border-brand-accent/30 pl-3">
+<span class="text-slate-500 text-[10px]">[2023-10-27 14:32:01]</span>
+<span class="text-brand-accent font-bold">INF: Optimizador_Logistica_V3</span>
+<p class="text-slate-300">Recalculando ruta para unidad TRK-402. Factor: Congestión A-5.</p>
+</div>
+<!-- Log Entry -->
+<div class="flex flex-col gap-1 border-l border-brand-accent/30 pl-3">
+<span class="text-slate-500 text-[10px]">[2023-10-27 14:31:55]</span>
+<span class="text-blue-400 font-bold">SYS: Backup_Cloud_Sync</span>
+<p class="text-slate-300">Sincronización de 1,240 registros completada en AWS-East.</p>
+</div>
+<!-- Log Entry -->
+<div class="flex flex-col gap-1 border-l border-yellow-500/30 pl-3">
+<span class="text-slate-500 text-[10px]">[2023-10-27 14:31:10]</span>
+<span class="text-yellow-500 font-bold">WRN: IA_CORE_MONITOR</span>
+<p class="text-slate-300">Latencia en API de OpenAI detectada: 450ms.</p>
+</div>
+<!-- Log Entry -->
+<div class="flex flex-col gap-1 border-l border-brand-accent/30 pl-3">
+<span class="text-slate-500 text-[10px]">[2023-10-27 14:30:45]</span>
+<span class="text-brand-accent font-bold">INF: Optimizador_Logistica_V3</span>
+<p class="text-slate-300">Ejecución rutinaria finalizada con éxito.</p>
+</div>
+<!-- Log Entry -->
+<div class="flex flex-col gap-1 border-l border-brand-accent/30 pl-3 opacity-60">
+<span class="text-slate-500 text-[10px]">[2023-10-27 14:30:01]</span>
+<span class="text-brand-accent font-bold">INF: System_Pulse</span>
+<p class="text-slate-300">Health check OK. Todos los nodos operacionales.</p>
+</div>
+<div class="mt-auto pt-4 flex items-center gap-2 text-brand-accent/50 animate-pulse">
+<span>_</span>
+<span>Escuchando eventos...</span>
+</div>
+</div>
+<!-- Status Indicator Box -->
+<div class="bg-brand-surface border border-slate-800 p-4 rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 bg-brand-accent rounded-full ia-active-pulse"></div>
+<span class="text-xs font-mono uppercase text-slate-300">IA_CORE_STATUS: ONLINE</span>
+</div>
+<span class="text-[10px] font-mono text-slate-500">UPTIME: 99.9%</span>
+</div>
+</aside>
+<!-- END: Real-time Terminal Log -->
+</div>
+</main>
+<!-- BEGIN: Footer Branding -->
+<footer class="p-8 border-t border-slate-800 mt-12">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 opacity-40 grayscale hover:grayscale-0 transition-all">
+<div class="font-mono text-[10px] text-slate-500 uppercase tracking-widest">
+        © 2023 SFFALCON ADVANCED AUTOMATION SYSTEMS
+      </div>
+<div class="flex gap-6 text-[10px] font-mono text-slate-500 uppercase">
+<a class="hover:text-brand-accent" href="#">Documentación</a>
+<a class="hover:text-brand-accent" href="#">Seguridad</a>
+<a class="hover:text-brand-accent" href="#">API_Endpoint</a>
+</div>
+</div>
+</footer>
+<!-- END: Footer Branding -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+  @media (min-width: 1024px) {
+    #sffalcon-back-btn {
+      display: none !important;
+    }
+  }
+</style>
+<div id="sffalcon-back-btn" style="
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 1000000;
+  pointer-events: auto;
+  line-height: 0;
+  display: flex;
+">
+  <a
+    href="javascript:void(0)"
+    id="back-link"
+    title="Cerrar vista previa"
+    style="
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      color: #FFFFFF;
+      text-decoration: none;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    "
+    onmouseover="
+      this.style.background='#2563eb';
+      this.style.transform='scale(1.1)';
+      this.style.boxShadow='0 0 15px rgba(37, 99, 235, 0.4)';
+    "
+    onmouseout="
+      this.style.background='rgba(15, 23, 42, 0.85)';
+      this.style.transform='scale(1)';
+      this.style.boxShadow='0 8px 20px rgba(0,0,0,0.3)';
+    "
+  >
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="3.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="M18 6L6 18M6 6l12 12"/>
+    </svg>
+  </a>
+</div>
+
+<script>
+  (function() {
+    const btn = document.getElementById('back-link');
+    if (btn) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (window.history.length > 1 && document.referrer !== '') {
+          window.history.back();
+        } else {
+          if (!window.close()) {
+            window.location.href = '/';
+          }
+        }
+      });
+    }
+  })();
+</script>
+
+</body></html>

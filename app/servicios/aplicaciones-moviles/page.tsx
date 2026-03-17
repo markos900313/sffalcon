@@ -15,38 +15,39 @@ import {
   Code2,
   Globe
 } from "lucide-react";
+import { MobilePremiumCard } from "@/components/servicios/MobilePremiumCard";
 
 export default function MobileAppsPage() {
   const examples = [
     {
-      title: "Lumina CRM",
-      subtitle: "Gestión Sanitaria Intuitiva",
-      description: "Panel de control para clínicas que centraliza historias clínicas, citas y facturación en una interfaz intuitiva.",
-      features: ["Historias clínicas digitales", "Gestión de citas IA", "Facturación automatizada"],
-      benefits: ["Ahorro de 10h/semana en gestión", "Seguridad de datos grado médico"],
+      title: "AgendaPro \u2014 App de Gestión",
+      subtitle: "APP PROFESIONALES",
+      description: "Aplicación para autónomos y profesionales con agenda diaria, gestión de clientes y estadísticas.",
+      features: ["Agenda y citas del día", "Gestión de clientes", "Resumen de ingresos"],
+      benefits: ["Retención de datos eficiente", "Profesionalismo corporativo"],
+      icon: Monitor,
+      href: "/examples/apps/ejemplo-1.html",
+      color: "indigo"
+    },
+    {
+      title: "ReservaYa \u2014 App de Reservas",
+      subtitle: "APP HOSTELERÍA",
+      description: "Aplicación móvil para gestionar reservas con calendario, confirmaciones automáticas y panel de control.",
+      features: ["Calendario de reservas", "Estados en tiempo real", "Navegación tipo app nativa"],
+      benefits: ["Ahorro en tiempos de gestión", "Mejora asistencia de mesas"],
       icon: Shield,
-      href: "/servicios/aplicaciones-moviles/lumina-crm",
+      href: "/examples/apps/ejemplo-2.html",
       color: "blue"
     },
     {
-      title: "GourmetOrder",
-      subtitle: "Experiencia de Pedidos Premium",
-      description: "Aplicación de pedidos y reservas en tiempo real con integración de pagos y programas de fidelización.",
-      features: ["Pedidos en tiempo real", "Pasarela de pagos", "Fidelización de clientes"],
-      benefits: ["Aumento del ticket medio 15%", "Reducción de errores en sala"],
+      title: "RapidoYa \u2014 App de Delivery",
+      subtitle: "APP PEDIDOS",
+      description: "App de pedidos a domicilio con catálogo, carrito, pasarela de pago y seguimiento de pedido en tiempo real.",
+      features: ["Catálogo con categorías", "Carrito y pasarela pago", "Seguimiento en tiempo real"],
+      benefits: ["Aumento del ticket medio", "Disminución de errores"],
       icon: Zap,
-      href: "/servicios/aplicaciones-moviles/gourmet-order",
+      href: "/examples/apps/ejemplo-3.html",
       color: "orange"
-    },
-    {
-      title: "EduAcademy Hub",
-      subtitle: "Aprendizaje sin Límites",
-      description: "App nativa para estudiantes que permite acceso offline a contenidos, foros en vivo y seguimiento de progreso.",
-      features: ["Acceso offline", "Foros en vivo", "Dashboard de progreso"],
-      benefits: ["Mejora la retención de alumnos", "Marca educativa propia"],
-      icon: Monitor,
-      href: "/servicios/aplicaciones-moviles/edu-academy-hub",
-      color: "indigo"
     }
   ];
   return (
@@ -54,10 +55,8 @@ export default function MobileAppsPage() {
       {/* Integrated Navigation Header */}
       <nav className="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-100 h-16 flex items-center shadow-sm">
         <div className="max-w-7xl mx-auto px-4 w-full flex justify-between items-center gap-4">
-          <Link href="/#servicios" className="flex items-center gap-2 group text-slate-900 font-bold text-sm shrink-0">
-            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-            <span className="hidden sm:inline">Volver a Servicios</span>
-            <span className="sm:hidden">Volver</span>
+          <Link href="/" className="flex items-center gap-2 group text-slate-900 font-bold text-sm shrink-0">
+            <span>Inicio</span>
           </Link>
           <span className="text-[10px] md:text-xs font-black tracking-widest text-blue-600 uppercase truncate text-right">Software a Medida · SFFALCON</span>
         </div>
@@ -74,96 +73,7 @@ export default function MobileAppsPage() {
 
         <div className="grid grid-cols-1 gap-8 md:gap-12">
           {examples.map((example, index) => (
-            <div
-              key={index}
-              className="group bg-white rounded-[2rem] md:rounded-[2.5rem] overflow-hidden border border-slate-200 hover:border-blue-300 transition-all duration-500 hover:shadow-2xl flex flex-col md:flex-row min-h-fit md:h-[450px]"
-            >
-              {/* Left side: Content */}
-              <div className="p-8 md:p-10 flex flex-col flex-1 justify-center">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className={`w-12 h-12 md:w-14 md:h-14 rounded-2xl flex items-center justify-center border transition-colors ${example.color === 'blue' ? 'bg-blue-50 border-blue-100 text-blue-600' :
-                      example.color === 'orange' ? 'bg-orange-50 border-orange-100 text-orange-600' :
-                        'bg-indigo-50 border-indigo-100 text-indigo-600'
-                    }`}>
-                    <example.icon className="w-6 h-6 md:w-7 md:h-7" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl md:text-2xl font-black text-slate-900 tracking-tight leading-none">{example.title}</h3>
-                    <p className="text-[9px] md:text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-none mt-2">{example.subtitle}</p>
-                  </div>
-                </div>
-
-                <p className="text-slate-500 text-sm md:text-base mb-8 leading-relaxed max-w-lg">
-                  {example.description}
-                </p>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 mb-10 border-t border-slate-100 pt-8">
-                  <div>
-                    <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-4 px-1">Funciones</p>
-                    <div className="space-y-3">
-                      {example.features.map((feature, fIndex) => (
-                        <div key={fIndex} className="flex items-center gap-2.5 text-slate-600">
-                          <CheckCircle2 className="w-4 h-4 text-green-500 shrink-0" />
-                          <span className="text-xs md:text-sm font-medium truncate">{feature}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="hidden sm:block">
-                    <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-4 px-1">Ventajas</p>
-                    <div className="space-y-3">
-                      {example.benefits.map((benefit, bIndex) => (
-                        <div key={bIndex} className="flex items-center gap-2.5 text-slate-900">
-                          <div className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0" />
-                          <span className="text-sm font-bold truncate">{benefit}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-2">
-                  <Link
-                    href={example.href}
-                    className="w-full sm:w-auto px-10 py-4 bg-[#0f172a] text-white rounded-2xl font-bold text-sm inline-flex items-center justify-center gap-2 hover:bg-black transition-all active:scale-[0.98] group/btn"
-                  >
-                    Ver arquitectura
-                    <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                  </Link>
-                </div>
-              </div>
-
-              {/* Right side: Realistic Simulation */}
-              <div className="hidden lg:flex w-[480px] relative bg-slate-50 border-l border-slate-100 p-6 overflow-hidden group-hover:bg-slate-100/30 transition-colors items-center justify-center">
-                <div className="w-full h-full relative max-w-[380px] aspect-square group-hover:scale-105 transition-transform duration-700">
-                  {/* Clean Image Container */}
-                  <div 
-                    className="absolute inset-0 bg-white rounded-[2.5rem] overflow-hidden shadow-2xl border border-slate-200/50"
-                    style={{ isolation: 'isolate', WebkitMaskImage: '-webkit-radial-gradient(white, black)', transform: 'translateZ(0)' }}
-                  >
-                    <img
-                      src={
-                        example.color === 'blue' ? '/lumina_mini_3d_1773486654940.png' :
-                          example.color === 'orange' ? '/gourmet_mini_3d_1773486674106.png' :
-                            '/edu_academy_dashboard_3d_1773486639087.png'
-                      }
-                      alt={example.title}
-                      className="w-full h-full object-cover"
-                    />
-
-                    {/* Subtle Glass Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-white/10 pointer-events-none"></div>
-                  </div>
-
-                  {/* Decorative Shadow Blur */}
-                  <div className={`absolute -inset-4 blur-3xl opacity-20 -z-10 transition-opacity group-hover:opacity-30 ${example.color === 'blue' ? 'bg-blue-600' :
-                      example.color === 'orange' ? 'bg-orange-50' :
-                        'bg-indigo-600'
-                    }`}></div>
-                </div>
-              </div>
-
-            </div>
+            <MobilePremiumCard key={index} example={example as any} />
           ))}
         </div>
 

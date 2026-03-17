@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TechLearn | Aprende tecnología desde cero</title>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#0F172A',
+              violet: '#7C3AED',
+              cyan: '#06B6D4',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style data-purpose="global-styles">
+    body {
+      background-color: #0F172A;
+      color: white;
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
+    }
+    .hero-gradient {
+      background: radial-gradient(circle at top right, rgba(124, 58, 237, 0.15), transparent),
+                  radial-gradient(circle at bottom left, rgba(6, 182, 212, 0.1), transparent);
+    }
+    .card-blur {
+      backdrop-filter: blur(8px);
+      background-color: rgba(30, 41, 59, 0.5);
+    }
+    .nav-blur {
+      backdrop-filter: blur(12px);
+      background-color: rgba(15, 23, 42, 0.8);
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+<!-- BEGIN: Navigation -->
+<nav class="nav-blur fixed top-0 w-full z-50 border-b border-slate-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-20">
+<!-- Logo -->
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 bg-brand-violet rounded-lg flex items-center justify-center">
+<span class="font-bold text-white text-xl italic">T</span>
+</div>
+<span class="text-xl font-extrabold tracking-tight text-white">Tech<span class="text-brand-cyan">Learn</span></span>
+</div>
+<!-- Desktop Links -->
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-slate-300 hover:text-brand-cyan transition-colors" href="#cursos">Cursos</a>
+<a class="text-slate-300 hover:text-brand-cyan transition-colors" href="#beneficios">Beneficios</a>
+<a class="text-slate-300 hover:text-brand-cyan transition-colors" href="#precios">Precios</a>
+<a class="bg-brand-violet hover:bg-violet-700 text-white px-6 py-2 rounded-full font-semibold transition-all" href="#">Empezar</a>
+</div>
+<!-- Mobile Menu Button -->
+<div class="md:hidden">
+<button class="text-slate-300 p-2" id="mobile-menu-button">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+</div>
+</div>
+</div>
+<!-- Mobile Menu -->
+<div class="hidden md:hidden bg-brand-dark border-b border-slate-800 px-4 pt-2 pb-6 space-y-4" id="mobile-menu">
+<a class="block text-slate-300 hover:text-brand-cyan" href="#cursos">Cursos</a>
+<a class="block text-slate-300 hover:text-brand-cyan" href="#beneficios">Beneficios</a>
+<a class="block text-slate-300 hover:text-brand-cyan" href="#precios">Precios</a>
+<a class="block bg-brand-violet text-center text-white px-6 py-2 rounded-full font-semibold" href="#">Empezar</a>
+</div>
+</nav>
+<!-- END: Navigation -->
+<!-- BEGIN: Hero Section -->
+<section class="hero-gradient pt-32 pb-20 px-4 md:pt-48 md:pb-32">
+<div class="max-w-7xl mx-auto text-center">
+<div class="inline-block px-4 py-1.5 mb-6 rounded-full border border-brand-violet/30 bg-brand-violet/10 text-brand-cyan text-sm font-semibold tracking-wide">
+        NUEVA PLATAFORMA 2.0
+      </div>
+<h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6">
+        Aprende tecnología <br class="hidden md:block"/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-violet to-brand-cyan">desde cero</span>
+</h1>
+<p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10">
+        Domina las habilidades más demandadas del mercado digital con cursos prácticos, mentorías en vivo y proyectos reales.
+      </p>
+<div class="flex flex-col sm:flex-row justify-center gap-4">
+<a class="bg-brand-violet hover:bg-brand-violet/80 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg shadow-brand-violet/20" href="#cursos">
+          Ver cursos disponibles
+        </a>
+<a class="bg-slate-800 hover:bg-slate-700 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all border border-slate-700" href="#">
+          Explorar roadmap
+        </a>
+</div>
+</div>
+</section>
+<!-- END: Hero Section -->
+<!-- BEGIN: Stats Section -->
+<section class="py-12 border-y border-slate-800 bg-slate-900/50">
+<div class="max-w-7xl mx-auto px-4">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+<div data-purpose="stat-item">
+<div class="text-3xl md:text-4xl font-bold text-white mb-1">+15k</div>
+<div class="text-slate-400 text-sm md:text-base">Estudiantes</div>
+</div>
+<div data-purpose="stat-item">
+<div class="text-3xl md:text-4xl font-bold text-white mb-1">120+</div>
+<div class="text-slate-400 text-sm md:text-base">Cursos Activos</div>
+</div>
+<div data-purpose="stat-item">
+<div class="text-3xl md:text-4xl font-bold text-white mb-1">500h+</div>
+<div class="text-slate-400 text-sm md:text-base">Contenido HD</div>
+</div>
+<div data-purpose="stat-item">
+<div class="text-3xl md:text-4xl font-bold text-white mb-1">4.9/5</div>
+<div class="text-slate-400 text-sm md:text-base">Valoración Media</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Stats Section -->
+<!-- BEGIN: Featured Courses -->
+<section class="py-24 px-4" id="cursos">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+<div>
+<h2 class="text-3xl md:text-4xl font-bold mb-4">Cursos destacados</h2>
+<p class="text-slate-400">Seleccionados para impulsar tu carrera hoy mismo.</p>
+</div>
+<a class="text-brand-cyan hover:underline font-semibold flex items-center gap-2" href="#">
+          Ver catálogo completo
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Course Card 1 -->
+<article class="bg-slate-800/50 rounded-2xl overflow-hidden border border-slate-700 hover:border-brand-violet/50 transition-all group">
+<div class="relative h-48 overflow-hidden">
+<img alt="Fullstack Development" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHr9Q8jt_eFiOAH0B-0uVjB-Yfnmcft_VwPGsa_16DCcUJiMlQpsu064tKuiUF2CGlS9vKiUwIn1Rhi0IEE0sUdnmW3Jca_vJSyb2JUl5H3rMweqLFYXyCFMjeD5V2DLmkJuRmOuRtAIFlWDlcvdb89n6zcq94_8xLeUH-0lWgGTeTyQ_-iv5XWfKX08URgdwoZADyqVsoh0o23Erc49BZdg3UuFH_Ggc73QjLuqTn0azXor45OtGe3SolikVuvlJSAuIbQTlIK7Q"/>
+<span class="absolute top-4 left-4 bg-brand-violet text-white text-xs font-bold px-2 py-1 rounded">PRINCIPIANTE</span>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold mb-2">Desarrollo Web Fullstack</h3>
+<div class="flex items-center gap-4 text-slate-400 text-sm mb-4">
+<span class="flex items-center gap-1">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+                40 horas
+              </span>
+<span class="flex items-center gap-1">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+                Certificado
+              </span>
+</div>
+<div class="flex items-center justify-between border-t border-slate-700 pt-4">
+<span class="text-2xl font-bold text-white">$49.99</span>
+<button class="text-brand-cyan hover:text-white font-bold transition-colors">Inscribirse</button>
+</div>
+</div>
+</article>
+<!-- Course Card 2 -->
+<article class="bg-slate-800/50 rounded-2xl overflow-hidden border border-slate-700 hover:border-brand-violet/50 transition-all group">
+<div class="relative h-48 overflow-hidden">
+<img alt="Data Science" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQi6QP6FhQvEwuGR-Q0DympAgdW6fcue2qvCwzcwom0T3LA8Son3Ugp5jWwyrnp36evdOUh-QiysdT_BzJVD0d3yrN6hn8ZuO68NqgkiOkT0irxKRQysQ75w59wnscqAXlMPBTjH1Om-f9XY7plxC-YYxBZeWe9wSOMxzinvRWyKJymeU0FOpqX5Vp1FcxnTRhUYdTSgeGpSlY1h-nC8KYG4Tp0h3TDDFWKTjswZEnrDLQrRQzHAIoVqJR1_ncsRmpTc-isTiafp0"/>
+<span class="absolute top-4 left-4 bg-brand-cyan text-slate-900 text-xs font-bold px-2 py-1 rounded">INTERMEDIO</span>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold mb-2">Data Science &amp; AI</h3>
+<div class="flex items-center gap-4 text-slate-400 text-sm mb-4">
+<span class="flex items-center gap-1">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+                65 horas
+              </span>
+<span class="flex items-center gap-1">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+                Certificado
+              </span>
+</div>
+<div class="flex items-center justify-between border-t border-slate-700 pt-4">
+<span class="text-2xl font-bold text-white">$59.99</span>
+<button class="text-brand-cyan hover:text-white font-bold transition-colors">Inscribirse</button>
+</div>
+</div>
+</article>
+<!-- Course Card 3 -->
+<article class="bg-slate-800/50 rounded-2xl overflow-hidden border border-slate-700 hover:border-brand-violet/50 transition-all group">
+<div class="relative h-48 overflow-hidden">
+<img alt="Cybersecurity" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4LAudIkkHZkn_oivIJUo2PgpWFgbKM5k3peotLCAqufA8pXee_nE4Bo6CIBAD0MoM-KwBSnjv-r_7wGhjTZw-eRc9c7cMvWHbZwkvSkMKUDm-i8jRUac-6UBaYWx0vNoKzy5uqkfKQJ8JaNIHhuzV0Xk5z4ZF052anYmMEiYCWgUd6tgGwgxiHQ-PrKr0AaezRObgAQTACy8naXl0r-PZnVArqgxx-sWQlIbHjh6lifcLJ2kLq91kQow7pusJbLYh3PMyufji-C8"/>
+<span class="absolute top-4 left-4 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">AVANZADO</span>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold mb-2">Ciberseguridad Ofensiva</h3>
+<div class="flex items-center gap-4 text-slate-400 text-sm mb-4">
+<span class="flex items-center gap-1">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+                55 horas
+              </span>
+<span class="flex items-center gap-1">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+                Certificado
+              </span>
+</div>
+<div class="flex items-center justify-between border-t border-slate-700 pt-4">
+<span class="text-2xl font-bold text-white">$74.99</span>
+<button class="text-brand-cyan hover:text-white font-bold transition-colors">Inscribirse</button>
+</div>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- END: Featured Courses -->
+<!-- BEGIN: Why Choose Us -->
+<section class="py-24 bg-slate-900/40 px-4" id="beneficios">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold mb-4">¿Por qué elegir TechLearn?</h2>
+<p class="text-slate-400 max-w-2xl mx-auto">Diseñamos una experiencia de aprendizaje pensada para los retos reales de la industria.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="p-6 bg-slate-800/30 rounded-2xl border border-slate-700">
+<div class="w-12 h-12 bg-brand-violet/20 rounded-lg flex items-center justify-center mb-4">
+<svg class="w-6 h-6 text-brand-violet" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<h3 class="text-lg font-bold mb-2">Aprendizaje Ágil</h3>
+<p class="text-slate-400 text-sm">Contenido directo al grano, sin rellenos innecesarios y 100% práctico.</p>
+</div>
+<div class="p-6 bg-slate-800/30 rounded-2xl border border-slate-700">
+<div class="w-12 h-12 bg-brand-cyan/20 rounded-lg flex items-center justify-center mb-4">
+<svg class="w-6 h-6 text-brand-cyan" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<h3 class="text-lg font-bold mb-2">Comunidad Activa</h3>
+<p class="text-slate-400 text-sm">Únete a miles de estudiantes y expertos para resolver dudas en tiempo real.</p>
+</div>
+<div class="p-6 bg-slate-800/30 rounded-2xl border border-slate-700">
+<div class="w-12 h-12 bg-brand-violet/20 rounded-lg flex items-center justify-center mb-4">
+<svg class="w-6 h-6 text-brand-violet" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<h3 class="text-lg font-bold mb-2">Proyectos Reales</h3>
+<p class="text-slate-400 text-sm">Crea un portfolio sólido trabajando en desafíos reales del mercado.</p>
+</div>
+<div class="p-6 bg-slate-800/30 rounded-2xl border border-slate-700">
+<div class="w-12 h-12 bg-brand-cyan/20 rounded-lg flex items-center justify-center mb-4">
+<svg class="w-6 h-6 text-brand-cyan" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<h3 class="text-lg font-bold mb-2">Certificación Oficial</h3>
+<p class="text-slate-400 text-sm">Obtén certificados con validez internacional para tu perfil de LinkedIn.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Why Choose Us -->
+<!-- BEGIN: Testimonials -->
+<section class="py-24 px-4">
+<div class="max-w-7xl mx-auto">
+<h2 class="text-3xl md:text-4xl font-bold text-center mb-16">Lo que dicen nuestros graduados</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Testimonial 1 -->
+<div class="p-8 bg-slate-800/20 rounded-3xl border border-slate-700 relative">
+<div class="absolute -top-4 left-8 bg-brand-violet w-8 h-8 rounded-full flex items-center justify-center">
+<span class="text-xl font-serif">"</span>
+</div>
+<p class="text-slate-300 italic mb-6">"Gracias a TechLearn conseguí mi primer empleo como desarrollador Frontend en menos de 6 meses. El contenido es excelente."</p>
+<div class="flex items-center gap-4">
+<img alt="Student" class="w-12 h-12 rounded-full object-cover border-2 border-brand-cyan" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiTcFQdgTVfTelF8_mioLbT9Me3jVUtD59IQ7YFU5xAhchg2e2G7OHWFfnN8K-g_3tIxQFcLxu9g5bgpoRt5Q8yX78PiDw-Lku_8_5oS4tdhK61oeEHfZxaOnVmauNty9jjZBaBZZs_hWIvnNPXLa0-N82eu7u2-aUHrb80pliWHhPRjqcA6LaW4MQI59DFoOhRVb0-i9fFaubL6TybqeB8mF8a-z1v02FlkBnFMNz24BW1VgspHT-Qh4MzP59JUN35EeWtpL2yUs"/>
+<div>
+<div class="font-bold">Alex Rivera</div>
+<div class="text-xs text-brand-cyan uppercase font-semibold">Dev en Google</div>
+</div>
+</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="p-8 bg-slate-800/20 rounded-3xl border border-slate-700 relative">
+<div class="absolute -top-4 left-8 bg-brand-violet w-8 h-8 rounded-full flex items-center justify-center">
+<span class="text-xl font-serif">"</span>
+</div>
+<p class="text-slate-300 italic mb-6">"La metodología práctica me ayudó a entender conceptos que en otros lugares me parecían imposibles. 100% recomendado."</p>
+<div class="flex items-center gap-4">
+<img alt="Student" class="w-12 h-12 rounded-full object-cover border-2 border-brand-cyan" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDma-fsIioqFoMkNBQLwv3AxCKJvOnoL3jc9bh5KVQx3_r--eFCWK84PdYIzKBnk52GyatOlL9VX_AXca7IUKPQY53szvX9oG9pESjZTtLNfNeafLM8OWcOWktEg4hpteyRnTgXD3tNVDrWnRxmKHJWULXDfCJagziAerstoH-TZze6JdsCVFAJ0Sq4ky4NoNWrlygVjXC-c655HgYkbd1DwL7c7Mz3OpJVGkYI3vYb5seyPeLNv2AH6zg6-qEPbRonB85p_KL3B60"/>
+<div>
+<div class="font-bold">Sofía Martínez</div>
+<div class="text-xs text-brand-cyan uppercase font-semibold">UX Designer</div>
+</div>
+</div>
+</div>
+<!-- Testimonial 3 -->
+<div class="p-8 bg-slate-800/20 rounded-3xl border border-slate-700 relative">
+<div class="absolute -top-4 left-8 bg-brand-violet w-8 h-8 rounded-full flex items-center justify-center">
+<span class="text-xl font-serif">"</span>
+</div>
+<p class="text-slate-300 italic mb-6">"El soporte de los mentores es increíble. Nunca te sientes solo durante el proceso de aprendizaje."</p>
+<div class="flex items-center gap-4">
+<img alt="Student" class="w-12 h-12 rounded-full object-cover border-2 border-brand-cyan" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBinqRI70Wyc10r_8gb8Cwzs7mKClM6qRYnVM7-5cmM4rMcpJ-Cv1TS81fcCfWG0Utv8Hzta_57KDH5JmYiV_i8rnfD0AlRKSNGV33TKF37ydd1PKa_-FQ7bEJQTk1Wk70zQH9df3SPKZZi74mKc2vcG3DMoeWWheR6SDfjHOxvZbo55Oi05jBWWMeRZD2ejGP3cRr4pUiUNbddcJkY2nkfreWRQ3_OTWmf5STpWiuOcq68ABJtm-gpVZQvZA6ujT0uLK_sw1HpK9o"/>
+<div>
+<div class="font-bold">Marc Espinoza</div>
+<div class="text-xs text-brand-cyan uppercase font-semibold">Data Analyst</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Testimonials -->
+<!-- BEGIN: Pricing Plans -->
+<section class="py-24 bg-brand-dark px-4" id="precios">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold mb-4">Planes para todos los niveles</h2>
+<p class="text-slate-400">Elige el plan que mejor se adapte a tus objetivos profesionales.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Basic Plan -->
+<div class="p-8 bg-slate-900 border border-slate-800 rounded-3xl flex flex-col">
+<h3 class="text-xl font-bold mb-2">Básico</h3>
+<div class="mb-6">
+<span class="text-4xl font-extrabold">$19</span>
+<span class="text-slate-400">/mes</span>
+</div>
+<ul class="space-y-4 mb-8 flex-grow">
+<li class="flex items-center gap-2 text-slate-300 text-sm">
+<svg class="w-5 h-5 text-green-500" fill="currentColor" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill-rule="evenodd"></path></svg>
+              Acceso a 5 cursos básicos
+            </li>
+<li class="flex items-center gap-2 text-slate-300 text-sm">
+<svg class="w-5 h-5 text-green-500" fill="currentColor" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill-rule="evenodd"></path></svg>
+              Comunidad en Discord
+            </li>
+<li class="flex items-center gap-2 text-slate-300 text-sm">
+<svg class="w-5 h-5 text-green-500" fill="currentColor" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill-rule="evenodd"></path></svg>
+              Certificados digitales
+            </li>
+</ul>
+<button class="w-full py-3 px-6 rounded-xl border border-slate-700 font-bold hover:bg-slate-800 transition-all">Suscribirme</button>
+</div>
+<!-- Pro Plan -->
+<div class="p-8 bg-slate-800 border-2 border-brand-violet rounded-3xl flex flex-col relative transform md:-translate-y-4 shadow-2xl shadow-brand-violet/20">
+<div class="absolute top-0 right-8 -translate-y-1/2 bg-brand-violet text-white text-xs font-bold px-3 py-1 rounded-full">POPULAR</div>
+<h3 class="text-xl font-bold mb-2">Pro</h3>
+<div class="mb-6">
+<span class="text-4xl font-extrabold">$39</span>
+<span class="text-slate-400">/mes</span>
+</div>
+<ul class="space-y-4 mb-8 flex-grow">
+<li class="flex items-center gap-2 text-slate-300 text-sm">
+<svg class="w-5 h-5 text-green-500" fill="currentColor" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill-rule="evenodd"></path></svg>
+              Acceso ilimitado a todos los cursos
+            </li>
+<li class="flex items-center gap-2 text-slate-300 text-sm">
+<svg class="w-5 h-5 text-green-500" fill="currentColor" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill-rule="evenodd"></path></svg>
+              Mentorías grupales semanales
+            </li>
+<li class="flex items-center gap-2 text-slate-300 text-sm">
+<svg class="w-5 h-5 text-green-500" fill="currentColor" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill-rule="evenodd"></path></svg>
+              Descarga de material offline
+            </li>
+<li class="flex items-center gap-2 text-slate-300 text-sm">
+<svg class="w-5 h-5 text-green-500" fill="currentColor" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill-rule="evenodd"></path></svg>
+              Acceso a la bolsa de trabajo
+            </li>
+</ul>
+<button class="w-full py-3 px-6 rounded-xl bg-brand-violet text-white font-bold hover:bg-brand-violet/80 transition-all">Suscribirme Pro</button>
+</div>
+<!-- Business Plan -->
+<div class="p-8 bg-slate-900 border border-slate-800 rounded-3xl flex flex-col">
+<h3 class="text-xl font-bold mb-2">Business</h3>
+<div class="mb-6">
+<span class="text-4xl font-extrabold">$99</span>
+<span class="text-slate-400">/mes</span>
+</div>
+<ul class="space-y-4 mb-8 flex-grow">
+<li class="flex items-center gap-2 text-slate-300 text-sm">
+<svg class="w-5 h-5 text-green-500" fill="currentColor" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill-rule="evenodd"></path></svg>
+              Hasta 10 cuentas de equipo
+            </li>
+<li class="flex items-center gap-2 text-slate-300 text-sm">
+<svg class="w-5 h-5 text-green-500" fill="currentColor" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill-rule="evenodd"></path></svg>
+              Panel de administración
+            </li>
+<li class="flex items-center gap-2 text-slate-300 text-sm">
+<svg class="w-5 h-5 text-green-500" fill="currentColor" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill-rule="evenodd"></path></svg>
+              Soporte prioritario 24/7
+            </li>
+</ul>
+<button class="w-full py-3 px-6 rounded-xl border border-slate-700 font-bold hover:bg-slate-800 transition-all">Contactar ventas</button>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Pricing Plans -->
+<!-- BEGIN: Final CTA -->
+<section class="py-20 px-4">
+<div class="max-w-5xl mx-auto rounded-[2rem] bg-gradient-to-r from-brand-violet to-brand-cyan p-12 text-center relative overflow-hidden">
+<!-- Decorative elements -->
+<div class="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-10 -left-10 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
+<div class="relative z-10">
+<h2 class="text-3xl md:text-5xl font-extrabold mb-6">¿Listo para transformar <br/>tu futuro?</h2>
+<p class="text-white/90 text-lg mb-10 max-w-xl mx-auto">Únete a la nueva generación de expertos tecnológicos. El momento de empezar es ahora.</p>
+<button class="bg-white text-brand-dark hover:bg-slate-100 px-10 py-5 rounded-2xl font-bold text-xl transition-all shadow-xl">
+          Comienza gratis hoy
+        </button>
+</div>
+</div>
+</section>
+<!-- END: Final CTA -->
+<!-- BEGIN: Footer -->
+<footer class="pt-20 pb-10 px-4 border-t border-slate-800">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+<div class="col-span-1 md:col-span-1">
+<div class="flex items-center gap-2 mb-6">
+<div class="w-8 h-8 bg-brand-violet rounded-lg flex items-center justify-center">
+<span class="font-bold text-white text-xl italic">T</span>
+</div>
+<span class="text-xl font-extrabold tracking-tight text-white">TechLearn</span>
+</div>
+<p class="text-slate-400 text-sm leading-relaxed">Educación de calidad para mentes hambrientas de futuro. Construyendo el mañana, una línea de código a la vez.</p>
+</div>
+<div>
+<h4 class="font-bold mb-6">Cursos</h4>
+<ul class="space-y-4 text-slate-400 text-sm">
+<li><a class="hover:text-brand-cyan transition-colors" href="#">Programación</a></li>
+<li><a class="hover:text-brand-cyan transition-colors" href="#">Diseño UI/UX</a></li>
+<li><a class="hover:text-brand-cyan transition-colors" href="#">Data Science</a></li>
+<li><a class="hover:text-brand-cyan transition-colors" href="#">Ciberseguridad</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold mb-6">Plataforma</h4>
+<ul class="space-y-4 text-slate-400 text-sm">
+<li><a class="hover:text-brand-cyan transition-colors" href="#">Sobre nosotros</a></li>
+<li><a class="hover:text-brand-cyan transition-colors" href="#">Testimonios</a></li>
+<li><a class="hover:text-brand-cyan transition-colors" href="#">Comunidad</a></li>
+<li><a class="hover:text-brand-cyan transition-colors" href="#">Roadmaps</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold mb-6">Legal</h4>
+<ul class="space-y-4 text-slate-400 text-sm">
+<li><a class="hover:text-brand-cyan transition-colors" href="#">Privacidad</a></li>
+<li><a class="hover:text-brand-cyan transition-colors" href="#">Términos de uso</a></li>
+<li><a class="hover:text-brand-cyan transition-colors" href="#">Cookies</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-slate-500 text-xs">© 2023 TechLearn Academy. Todos los derechos reservados.</p>
+<div class="flex gap-6">
+<a class="text-slate-500 hover:text-white transition-colors" href="#">
+<span class="sr-only">Twitter</span>
+<svg class="h-5 w-5 fill-current" viewbox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.84 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"></path></svg>
+</a>
+<a class="text-slate-500 hover:text-white transition-colors" href="#">
+<span class="sr-only">LinkedIn</span>
+<svg class="h-5 w-5 fill-current" viewbox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
+</a>
+<a class="text-slate-500 hover:text-white transition-colors" href="#">
+<span class="sr-only">GitHub</span>
+<svg class="h-5 w-5 fill-current" viewbox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- END: Footer -->
+<!-- BEGIN: Mobile Menu Logic -->
+<script data-purpose="mobile-menu-logic">
+    const menuBtn = document.getElementById('mobile-menu-button');
+    const menu = document.getElementById('mobile-menu');
+
+    menuBtn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+
+    // Close menu when clicking a link
+    const links = menu.querySelectorAll('a');
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.add('hidden');
+      });
+    });
+  </script>
+<!-- END: Mobile Menu Logic -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+  @media (min-width: 1024px) {
+    #sffalcon-back-btn {
+      display: none !important;
+    }
+  }
+</style>
+<div id="sffalcon-back-btn" style="
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 1000000;
+  pointer-events: auto;
+  line-height: 0;
+  display: flex;
+">
+  <a
+    href="javascript:void(0)"
+    id="back-link"
+    title="Cerrar vista previa"
+    style="
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      color: #FFFFFF;
+      text-decoration: none;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    "
+    onmouseover="
+      this.style.background='#2563eb';
+      this.style.transform='scale(1.1)';
+      this.style.boxShadow='0 0 15px rgba(37, 99, 235, 0.4)';
+    "
+    onmouseout="
+      this.style.background='rgba(15, 23, 42, 0.85)';
+      this.style.transform='scale(1)';
+      this.style.boxShadow='0 8px 20px rgba(0,0,0,0.3)';
+    "
+  >
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="3.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="M18 6L6 18M6 6l12 12"/>
+    </svg>
+  </a>
+</div>
+
+<script>
+  (function() {
+    const btn = document.getElementById('back-link');
+    if (btn) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (window.history.length > 1 && document.referrer !== '') {
+          window.history.back();
+        } else {
+          if (!window.close()) {
+            window.location.href = '/';
+          }
+        }
+      });
+    }
+  })();
+</script>
+
+</body></html>

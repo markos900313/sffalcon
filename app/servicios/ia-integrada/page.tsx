@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import { AIPremiumCard } from '@/components/servicios/AIPremiumCard';
 import { 
   ArrowRight, 
   MessageSquare, 
@@ -17,37 +18,37 @@ import {
 const aiExamples = [
   {
     id: "atencion-cliente",
-    title: "Agente de Atención",
-    subtitle: "Responde a cada cliente al instante",
-    description: "Chat automatizado que resuelve dudas, gestiona citas y cualifica leads sin intervención humana.",
+    title: "ChatBot IA — Atención al Cliente",
+    subtitle: "IA ATENCIÓN",
+    description: "Asistente IA para atender clientes 24/7 por chat con respuestas automáticas y escalado a humano.",
     icon: MessageSquare,
-    href: "/servicios/ia-integrada/atencion-cliente",
-    features: ["Respuesta instantánea", "Traspaso a humano", "Análisis de sentimiento"],
-    color: "from-blue-600/20 to-indigo-600/10",
+    href: "/examples/ia/ejemplo-1.html",
+    features: ["Respuestas automáticas IA", "Historial de conversaciones", "Escalado a persona real"],
+    color: "indigo",
     accent: "text-indigo-600",
     border: "hover:border-indigo-500/30"
   },
   {
     id: "automatizacion",
-    title: "Automatización de Procesos",
-    subtitle: "Elimina el trabajo manual pesado",
-    description: "La IA detecta cuellos de botella y ejecuta tareas repetitivas de forma autónoma y segura.",
+    title: "AutoFlow — Automatizaciones IA",
+    subtitle: "IA AUTOMATIZACIÓN",
+    description: "Panel de automatizaciones que ejecuta tareas en segundo plano con log en tiempo real y métricas.",
     icon: Zap,
-    href: "/servicios/ia-integrada/automatizacion",
-    features: ["Detección de tareas", "Ejecución autónoma", "Ahorro de horas real"],
-    color: "from-lime-600/20 to-emerald-600/10",
+    href: "/examples/ia/ejemplo-2.html",
+    features: ["Tareas automatizadas 24/7", "Log de acciones en tiempo real", "Métricas de rendimiento"],
+    color: "lime",
     accent: "text-lime-600",
     border: "hover:border-lime-500/30"
   },
   {
     id: "asistente-negocio",
-    title: "Asistente de Negocio",
-    subtitle: "Toma decisiones basadas en datos",
-    description: "Asistente inteligente que analiza tus datos y te da recomendaciones clave para crecer.",
+    title: "FALCON IA — Copiloto de Negocio",
+    subtitle: "IA ESTRATÉGICA",
+    description: "Asistente IA que analiza tu negocio, responde preguntas con datos reales y genera informes automáticos.",
     icon: Bot,
-    href: "/servicios/ia-integrada/asistente-negocio",
-    features: ["Consulta de datos", "Informes automáticos", "Sugerencias de venta"],
-    color: "from-orange-600/20 to-red-600/10",
+    href: "/examples/ia/ejemplo-3.html",
+    features: ["Análisis de datos del negocio", "Respuestas con contexto real", "Generación de informes"],
+    color: "orange",
     accent: "text-orange-600",
     border: "hover:border-orange-500/30"
   }
@@ -60,10 +61,8 @@ export default function IaIntegratedShowcase() {
       {/* Navigation Header */}
       <nav className="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-100 h-16 flex items-center shadow-sm">
         <div className="max-w-7xl mx-auto px-4 w-full flex justify-between items-center gap-4">
-          <Link href="/#servicios" className="flex items-center gap-2 group text-slate-900 font-bold text-sm shrink-0">
-            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-            <span className="hidden sm:inline">Volver a Servicios</span>
-            <span className="sm:hidden">Volver</span>
+          <Link href="/" className="flex items-center gap-2 group text-slate-900 font-bold text-sm shrink-0">
+            <span>Inicio</span>
           </Link>
           <div className="flex items-center gap-2 overflow-hidden">
             <Sparkles className="w-3.5 h-3.5 text-indigo-600 fill-indigo-600 shrink-0" />
@@ -88,47 +87,11 @@ export default function IaIntegratedShowcase() {
         </div>
 
         {/* Grid Demos */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16 md:mb-20">
-          {aiExamples.map((example) => (
-            <div 
-              key={example.id}
-              className={`group bg-white rounded-3xl border border-slate-200 shadow-xl shadow-slate-200/50 transition-all duration-500 overflow-hidden flex flex-col h-full ${example.border} hover:shadow-2xl hover:-translate-y-2`}
-              style={{ isolation: 'isolate' }}
-            >
-              <div className={`h-2 bg-gradient-to-r ${example.color} opacity-80`}></div>
-              <div className="p-6 md:p-8 flex-1">
-                <div className="w-12 h-12 md:w-14 md:h-14 bg-slate-50 rounded-2xl flex items-center justify-center border border-slate-100 text-slate-900 mb-6 group-hover:scale-110 transition-transform duration-500 shadow-sm">
-                  <example.icon className="w-6 h-6 md:w-7 md:h-7" />
-                </div>
-                
-                <p className={`text-[9px] md:text-[10px] font-black uppercase tracking-widest mb-1 ${example.accent}`}>{example.subtitle}</p>
-                <h2 className="text-xl md:text-2xl font-bold text-slate-900 mb-4">{example.title}</h2>
-                <p className="text-slate-500 text-sm font-medium mb-8 leading-relaxed">
-                  {example.description}
-                </p>
-
-                <div className="space-y-3 mb-8">
-                  {example.features.map((feature, i) => (
-                    <div key={i} className="flex items-center gap-2.5 text-slate-700 font-bold text-xs uppercase tracking-tight">
-                      <CheckCircle2 className={`w-3.5 h-3.5 ${example.accent}`} />
-                      <span className="truncate">{feature}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="p-6 md:p-8 pt-0 mt-auto">
-                <Link 
-                  href={example.href}
-                  className="w-full py-4 bg-slate-900 text-white rounded-2xl font-bold text-sm flex items-center justify-center gap-2 hover:bg-indigo-600 transition-all group/btn shadow-lg shadow-slate-200"
-                >
-                  Ver IA en acción
-                  <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                </Link>
-              </div>
-            </div>
+        <div className="grid grid-cols-1 mb-16 md:mb-20">
+          {aiExamples.map((example, index) => (
+            <AIPremiumCard key={index} example={example as any} />
           ))}
-        </div>
+</div>
 
         {/* Value Proposition */}
         <div className="bg-indigo-600 bg-gradient-to-br from-indigo-600 to-indigo-700 rounded-[2.5rem] md:rounded-[3rem] p-12 text-white relative overflow-hidden shadow-2xl shadow-indigo-900/20">

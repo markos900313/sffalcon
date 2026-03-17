@@ -154,7 +154,7 @@ export default function LandingPage() {
             <h2 className="text-2xl md:text-5xl font-black text-slate-900 mb-6">Soluciones que generan impacto real</h2>
             <div className="h-1.5 md:h-2 w-20 md:w-24 bg-gradient-to-r from-[#0f3460] to-[#1a508b] rounded-full"></div>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 md:gap-8 hover-parent">
             {/* Card 1 */}
             <Link href="/servicios/webs-landing" className="group p-6 md:p-8 rounded-2xl border border-slate-100 bg-[#f5f7f8] hover:bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col items-start">
               <LayoutTemplate className="w-8 h-8 text-[#0f3460] mb-6" strokeWidth={1.5} />

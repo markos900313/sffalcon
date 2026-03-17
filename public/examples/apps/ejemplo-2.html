@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-[#0D1B35]" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>ReservaYa - App de Reservas</title>
+<!-- Tailwind CSS v3 with Forms and Container Queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'app-bg': '#0D1B35',
+            'app-card': '#111F3A',
+            'app-accent': '#10B981',
+            'app-text': '#FFFFFF',
+            'app-muted': '#94A3B8',
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-layout">
+    /* Custom scrollbar for dark mode */
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0D1B35;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #111F3A;
+      border-radius: 10px;
+    }
+    /* Fixed aspect ratio for calendar days */
+    .calendar-day {
+      aspect-ratio: 1 / 1;
+    }
+    /* SafeArea padding for modern mobile devices */
+    .safe-area-bottom {
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+    /* Centering the content for desktop */
+    .responsive-container {
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;
+    }
+  </style>
+</head>
+<body class="text-app-text h-full flex flex-col overflow-hidden">
+
+<div class="flex-1 overflow-y-auto overflow-x-hidden">
+<div class="responsive-container">
+<!-- BEGIN: Main Header -->
+<header class="px-6 py-4 flex items-center justify-between bg-app-bg z-40" data-purpose="header">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 bg-app-accent rounded-lg flex items-center justify-center">
+<svg class="h-5 w-5 text-white" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h1 class="text-xl font-bold tracking-tight">ReservaYa</h1>
+</div>
+<button aria-label="Menú" class="p-2 rounded-full hover:bg-white/5">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6h16M4 12h16m-7 6h7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+</header>
+<!-- END: Main Header -->
+<!-- Main Content Area -->
+<main class="px-6 pb-32 pt-4" data-purpose="main-content">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- LEFT COLUMN: Calendar (Desktop Side Panel) -->
+<section class="lg:col-span-5 xl:col-span-4" data-purpose="calendar-section">
+<div class="flex items-center justify-between mb-4">
+<h2 class="font-bold text-lg">Octubre 2023</h2>
+<div class="flex gap-2">
+<button class="p-1 text-app-muted hover:text-white"><svg class="h-5 w-5" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></button>
+<button class="p-1 text-app-muted hover:text-white"><svg class="h-5 w-5" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></button>
+</div>
+</div>
+<div class="grid grid-cols-7 gap-2 text-center text-xs font-medium text-app-muted mb-2">
+<span>L</span><span>M</span><span>X</span><span>J</span><span>V</span><span>S</span><span>D</span>
+</div>
+<div class="grid grid-cols-7 gap-2">
+<!-- Mock days for October -->
+<div class="calendar-day flex items-center justify-center rounded-lg text-app-muted opacity-30">25</div>
+<div class="calendar-day flex items-center justify-center rounded-lg text-app-muted opacity-30">26</div>
+<div class="calendar-day flex items-center justify-center rounded-lg text-app-muted opacity-30">27</div>
+<div class="calendar-day flex items-center justify-center rounded-lg text-app-muted opacity-30">28</div>
+<div class="calendar-day flex items-center justify-center rounded-lg text-app-muted opacity-30">29</div>
+<div class="calendar-day flex items-center justify-center rounded-lg text-app-muted opacity-30">30</div>
+<div class="calendar-day flex items-center justify-center rounded-lg bg-app-card">1</div>
+<div class="calendar-day flex items-center justify-center rounded-lg bg-app-card">2</div>
+<div class="calendar-day flex items-center justify-center rounded-lg bg-app-card border border-app-accent text-app-accent font-bold">3</div>
+<div class="calendar-day flex items-center justify-center rounded-lg bg-app-accent/20 text-app-accent font-semibold">4</div>
+<div class="calendar-day flex items-center justify-center rounded-lg bg-app-card">5</div>
+<div class="calendar-day flex items-center justify-center rounded-lg bg-app-accent/20 text-app-accent font-semibold">6</div>
+<div class="calendar-day flex items-center justify-center rounded-lg bg-app-accent/20 text-app-accent font-semibold">7</div>
+<div class="calendar-day flex items-center justify-center rounded-lg bg-app-card">8</div>
+<div class="calendar-day flex items-center justify-center rounded-lg bg-app-accent/20 text-app-accent font-semibold">9</div>
+<div class="calendar-day flex items-center justify-center rounded-lg bg-app-card">10</div>
+<div class="calendar-day flex items-center justify-center rounded-lg bg-app-card">11</div>
+<div class="calendar-day flex items-center justify-center rounded-lg bg-app-accent/20 text-app-accent font-semibold">12</div>
+<div class="calendar-day flex items-center justify-center rounded-lg bg-app-card">13</div>
+<div class="calendar-day flex items-center justify-center rounded-lg bg-app-card">14</div>
+<div class="calendar-day flex items-center justify-center rounded-lg bg-app-card">15</div>
+</div>
+</section>
+<!-- END: Monthly Calendar -->
+<!-- RIGHT COLUMN: Reservations List -->
+<section class="lg:col-span-7 xl:col-span-8 space-y-4" data-purpose="reservation-list">
+<div class="flex items-center justify-between">
+<h2 class="font-bold text-lg">Próximas Reservas</h2>
+<span class="text-xs font-semibold bg-app-card px-3 py-1 rounded-full text-app-accent">Hoy, 3 de Oct</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-4">
+<!-- Card 1: Confirmada -->
+<article class="bg-app-card p-4 rounded-2xl flex items-center gap-4 border border-white/5 shadow-sm" data-purpose="reservation-card">
+<img alt="Cliente" class="w-12 h-12 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEDr1k3JHnf-HJn0cYkobwyerTqTV8qMcrz_-lISp2QzHKKy563qF3GTefMO0Gn3qRMdp2j-3sAItLmmGxYX-XBNDSQ1PkAHtp9p_fid1Urz-6mjtmZfDkT5OObHLbAITK0vfdgxzkqyBg_T1YnEqSRODO2sXOF7I-6H3gkU9qrcYxq9LjkoY_KYBfOhDMcnEfZHXq594Y2uTUt1vl798U_aRUvlrL7jB7bvQMal7ruxK3iT3PGtIkTPEs9-BBdQ5YUmAFFClsbzc"/>
+<div class="flex-1">
+<h3 class="font-semibold text-sm">Ricardo Sánchez</h3>
+<p class="text-xs text-app-muted">14:30 • 4 personas</p>
+</div>
+<div class="text-right">
+<span class="inline-block px-2 py-1 bg-app-accent/10 text-app-accent text-[10px] font-bold uppercase rounded tracking-wider">Confirmada</span>
+</div>
+</article>
+<!-- Card 2: Pendiente -->
+<article class="bg-app-card p-4 rounded-2xl flex items-center gap-4 border border-white/5 shadow-sm" data-purpose="reservation-card">
+<img alt="Cliente" class="w-12 h-12 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDisYBD8FPM5KXnL0xSX4xEo5QNn6X1ZpYmJ8Q2m5T2t5bcOc09BgutTJUzMg2u6l9k4WFUpXzCTkumpX6GEbM5TfyDjuxl1xKvDC2L2Sje5ILKUcRoum1a6f4bkquN6_ZtHfvz_Y343c3hTOQAuME1Q-Ca2uAKlY93CO7cppsNSbk0ry9Y7MrAq2UKwfgvE3eyr8Rjzj4H_Rk3mYPIeGKGRaqqnG7TQXgaUuzzvbXBJ1jY5GIlH5Na-I0f-QC40N-09YymD2_eMKg"/>
+<div class="flex-1">
+<h3 class="font-semibold text-sm">Elena Gómez</h3>
+<p class="text-xs text-app-muted">16:00 • 2 personas</p>
+</div>
+<div class="text-right">
+<span class="inline-block px-2 py-1 bg-amber-500/10 text-amber-500 text-[10px] font-bold uppercase rounded tracking-wider">Pendiente</span>
+</div>
+</article>
+<!-- Card 3: Cancelada -->
+<article class="bg-app-card p-4 rounded-2xl flex items-center gap-4 border border-white/5 shadow-sm" data-purpose="reservation-card">
+<img alt="Cliente" class="w-12 h-12 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDpPyBxpnr58iWrMUdPCziu8RMaL5xiJSTAfnlwceRo7xIru-KDttecAs4vF_y9yBdtH5jAfqNHo6xoiXyARiNVCgiyzgHEeCvZeNx0TSENs1j8hz_5A6YTsdUE57O6zStFIHYMxGGaoO9jlgVuWaiXjE0zPQPZmQTO0uCMXEtubBRVmC2HEl0ACcXqPZpHeSBEqnWDG3a5-BNOGjffQIC6gEkRtdQJh4mtR50pVyDt7WhbAOB6xgMhNmTevdRzwIaJbl2ydirOIg"/>
+<div class="flex-1">
+<h3 class="font-semibold text-sm">Marcos Ruiz</h3>
+<p class="text-xs text-app-muted">21:00 • 6 personas</p>
+</div>
+<div class="text-right">
+<span class="inline-block px-2 py-1 bg-red-500/10 text-red-500 text-[10px] font-bold uppercase rounded tracking-wider">Cancelada</span>
+</div>
+</article>
+<!-- Card 4: Confirmada -->
+<article class="bg-app-card p-4 rounded-2xl flex items-center gap-4 border border-white/5 shadow-sm" data-purpose="reservation-card">
+<img alt="Cliente" class="w-12 h-12 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRsaN5xLtJv80ZIPFnfSvcCHihjtzdxxN_S4vAILBwlTDlDCtBLcKA0z2e-D9tAuNnCrblQQl0ep_UKaj36Mc-BA4mQqr2dCUKidIhwWCOjZ3POygwwMPUPOI4oCTc3yYiGV1jm6VKdc1hom80LWsGwUAWGORoh6T1P5ZQOT7-nMeCqKeKJ2PQSLGLdFr9ggO0c5dpvE4wfx8Al9yC5ETqxQqIQXa4IBPhmp33S5u2QlXTUm20TvBMrXdbYvVFLkIJ3_t3eFJeO60"/>
+<div class="flex-1">
+<h3 class="font-semibold text-sm">Carla Peterson</h3>
+<p class="text-xs text-app-muted">22:30 • 2 personas</p>
+</div>
+<div class="text-right">
+<span class="inline-block px-2 py-1 bg-app-accent/10 text-app-accent text-[10px] font-bold uppercase rounded tracking-wider">Confirmada</span>
+</div>
+</article>
+</div>
+</section>
+<!-- END: Reservations List -->
+</div>
+</main>
+</div>
+</div>
+
+<!-- BEGIN: Bottom Navigation -->
+<nav class="fixed bottom-0 left-0 right-0 bg-[#0a1529]/95 backdrop-blur-md border-t border-white/5 safe-area-bottom z-50" data-purpose="bottom-nav">
+<div class="responsive-container">
+<div class="grid grid-cols-4 h-16">
+<a class="flex flex-col items-center justify-center text-app-accent" href="#">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="text-[10px] mt-1 font-medium">Inicio</span>
+</a>
+<a class="flex flex-col items-center justify-center text-app-muted" href="#">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="text-[10px] mt-1 font-medium">Reservas</span>
+</a>
+<a class="flex flex-col items-center justify-center text-app-muted" href="#">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="text-[10px] mt-1 font-medium">Clientes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-app-muted" href="#">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="text-[10px] mt-1 font-medium">Ajustes</span>
+</a>
+</div>
+</div>
+</nav>
+<!-- END: Bottom Navigation -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+  @media (min-width: 1024px) {
+    #sffalcon-back-btn {
+      display: none !important;
+    }
+  }
+</style>
+<div id="sffalcon-back-btn" style="
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 1000000;
+  pointer-events: auto;
+  line-height: 0;
+  display: flex;
+">
+  <a
+    href="javascript:void(0)"
+    id="back-link"
+    title="Cerrar vista previa"
+    style="
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      color: #FFFFFF;
+      text-decoration: none;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    "
+    onmouseover="
+      this.style.background='#2563eb';
+      this.style.transform='scale(1.1)';
+      this.style.boxShadow='0 0 15px rgba(37, 99, 235, 0.4)';
+    "
+    onmouseout="
+      this.style.background='rgba(15, 23, 42, 0.85)';
+      this.style.transform='scale(1)';
+      this.style.boxShadow='0 8px 20px rgba(0,0,0,0.3)';
+    "
+  >
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="3.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="M18 6L6 18M6 6l12 12"/>
+    </svg>
+  </a>
+</div>
+
+<script>
+  (function() {
+    const btn = document.getElementById('back-link');
+    if (btn) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (window.history.length > 1 && document.referrer !== '') {
+          window.history.back();
+        } else {
+          if (!window.close()) {
+            window.location.href = '/';
+          }
+        }
+      });
+    }
+  })();
+</script>
+
+</body></html>

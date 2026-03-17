@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FALCON IA — Copiloto de Negocio</title>
+<!-- BEGIN: External Scripts -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              orange: '#EA580C',
+              soft: '#FFF7ED',
+            }
+          },
+          fontFamily: {
+            serif: ['Georgia', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+<!-- END: External Scripts -->
+<!-- BEGIN: Custom Styles -->
+<style data-purpose="custom-typography">
+    .ia-response {
+      font-family: 'Georgia', serif;
+      line-height: 1.6;
+    }
+  </style>
+<style data-purpose="mini-chart-logic">
+    /* Simple CSS bar chart styling */
+    .bar-container {
+      display: flex;
+      align-items: flex-end;
+      gap: 4px;
+      height: 60px;
+      margin: 10px 0;
+    }
+    .bar {
+      background-color: #EA580C;
+      width: 15px;
+      border-radius: 2px 2px 0 0;
+      transition: height 0.3s ease;
+    }
+  </style>
+<!-- END: Custom Styles -->
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col">
+<!-- BEGIN: Sticky Header -->
+<header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-brand-orange rounded flex items-center justify-center text-white font-bold">F</div>
+<h1 class="text-xl font-semibold tracking-tight">FALCON IA <span class="text-slate-400 font-light">— Copiloto de negocio</span></h1>
+</div>
+<div class="hidden md:flex items-center gap-4 text-sm font-medium">
+<span class="flex items-center gap-2 px-3 py-1 bg-green-50 text-green-700 rounded-full border border-green-100">
+<span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+          Conectado a: CRM · Reservas
+        </span>
+</div>
+</div>
+</header>
+<!-- END: Sticky Header -->
+<!-- BEGIN: Main Layout -->
+<main class="flex-1 max-w-7xl mx-auto w-full flex flex-col md:flex-row overflow-hidden">
+<!-- BEGIN: Desktop Sidebar -->
+<aside class="hidden md:flex w-64 flex-col border-r border-slate-200 p-6 space-y-4 bg-white/50" data-purpose="navigation-sidebar">
+<p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Herramientas Rápidas</p>
+<button class="flex items-center gap-3 px-4 py-3 text-left rounded-xl hover:bg-white hover:shadow-sm border border-transparent hover:border-slate-100 transition-all">
+<svg class="w-5 h-5 text-brand-orange" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="text-sm font-medium">Analizar ventas</span>
+</button>
+<button class="flex items-center gap-3 px-4 py-3 text-left rounded-xl hover:bg-white hover:shadow-sm border border-transparent hover:border-slate-100 transition-all">
+<svg class="w-5 h-5 text-brand-orange" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="text-sm font-medium">Ver clientes</span>
+</button>
+<button class="flex items-center gap-3 px-4 py-3 text-left rounded-xl hover:bg-white hover:shadow-sm border border-transparent hover:border-slate-100 transition-all">
+<svg class="w-5 h-5 text-brand-orange" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="text-sm font-medium">Revisar tareas</span>
+</button>
+<button class="flex items-center gap-3 px-4 py-3 text-left rounded-xl hover:bg-white hover:shadow-sm border border-transparent hover:border-slate-100 transition-all">
+<svg class="w-5 h-5 text-brand-orange" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="text-sm font-medium">Generar informe</span>
+</button>
+</aside>
+<!-- END: Desktop Sidebar -->
+<!-- BEGIN: Chat Area -->
+<section class="flex-1 flex flex-col h-[calc(100vh-64px)] bg-slate-50" data-purpose="chat-container">
+<!-- Conversation History -->
+<div class="flex-1 overflow-y-auto p-4 md:p-8 space-y-8" id="chat-messages">
+<!-- User Message -->
+<div class="flex flex-col items-end max-w-3xl ml-auto">
+<div class="bg-white border border-slate-200 px-5 py-3 rounded-2xl rounded-tr-none shadow-sm">
+<p class="text-slate-700">¿Cómo van las ventas de este mes y quiénes tienen facturas pendientes?</p>
+</div>
+<span class="text-[10px] text-slate-400 mt-2 uppercase font-bold">Tú • 10:45 AM</span>
+</div>
+<!-- AI Assistant Message -->
+<div class="flex flex-col items-start max-w-3xl">
+<div class="bg-brand-soft border border-brand-orange/20 px-6 py-5 rounded-3xl rounded-tl-none shadow-sm ia-response text-slate-800">
+<p class="mb-4">Hola. He revisado tus datos del CRM y de facturación. Aquí tienes un resumen rápido:</p>
+<!-- Inline Mini Chart -->
+<div class="bg-white/60 p-4 rounded-xl mb-4 border border-brand-orange/10">
+<span class="text-xs font-bold text-slate-500 uppercase tracking-tighter">Ventas Semanales (Marzo)</span>
+<div class="bar-container">
+<div class="bar" style="height: 30%;"></div>
+<div class="bar" style="height: 50%;"></div>
+<div class="bar" style="height: 85%;"></div>
+<div class="bar" style="height: 45%;"></div>
+</div>
+<p class="text-sm">Las ventas han subido un <strong class="text-brand-orange">12%</strong> respecto a la semana pasada.</p>
+</div>
+<p class="mb-3">En cuanto a los pagos pendientes, he identificado a 3 clientes con retrasos superiores a 15 días:</p>
+<ul class="space-y-2 mb-4">
+<li class="flex items-center justify-between bg-white/40 px-3 py-2 rounded-lg text-sm border border-slate-100">
+<span>📦 Distribuidora Galindo</span>
+<span class="font-bold text-red-600">€1,240.00</span>
+</li>
+<li class="flex items-center justify-between bg-white/40 px-3 py-2 rounded-lg text-sm border border-slate-100">
+<span>🏨 Hotel Oasis</span>
+<span class="font-bold text-red-600">€850.00</span>
+</li>
+<li class="flex items-center justify-between bg-white/40 px-3 py-2 rounded-lg text-sm border border-slate-100">
+<span>☕ Café del Centro</span>
+<span class="font-bold text-red-600">€420.00</span>
+</li>
+</ul>
+<p>¿Te gustaría que redacte un correo recordatorio amable para ellos?</p>
+</div>
+<span class="text-[10px] text-slate-400 mt-2 uppercase font-bold">FALCON IA • 10:46 AM</span>
+</div>
+</div>
+<!-- Input Area -->
+<div class="p-4 md:p-8 bg-gradient-to-t from-slate-50 via-slate-50 to-transparent">
+<div class="max-w-3xl mx-auto relative group">
+<input class="w-full pl-6 pr-16 py-4 bg-white border border-slate-200 rounded-2xl shadow-lg focus:ring-2 focus:ring-brand-orange focus:border-brand-orange outline-none transition-all placeholder:text-slate-400" placeholder="Pregunta algo sobre tu negocio..." type="text"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 bg-brand-orange text-white p-2 rounded-xl hover:scale-105 transition-transform active:scale-95 shadow-md">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M13 5l7 7-7 7M5 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</div>
+<p class="text-center text-[11px] text-slate-400 mt-4 uppercase tracking-widest">IA orientada a resultados empresariales</p>
+</div>
+</section>
+<!-- END: Chat Area -->
+</main>
+<!-- END: Main Layout -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+  @media (min-width: 1024px) {
+    #sffalcon-back-btn {
+      display: none !important;
+    }
+  }
+</style>
+<div id="sffalcon-back-btn" style="
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 1000000;
+  pointer-events: auto;
+  line-height: 0;
+  display: flex;
+">
+  <a
+    href="javascript:void(0)"
+    id="back-link"
+    title="Cerrar vista previa"
+    style="
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      color: #FFFFFF;
+      text-decoration: none;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    "
+    onmouseover="
+      this.style.background='#2563eb';
+      this.style.transform='scale(1.1)';
+      this.style.boxShadow='0 0 15px rgba(37, 99, 235, 0.4)';
+    "
+    onmouseout="
+      this.style.background='rgba(15, 23, 42, 0.85)';
+      this.style.transform='scale(1)';
+      this.style.boxShadow='0 8px 20px rgba(0,0,0,0.3)';
+    "
+  >
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="3.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="M18 6L6 18M6 6l12 12"/>
+    </svg>
+  </a>
+</div>
+
+<script>
+  (function() {
+    const btn = document.getElementById('back-link');
+    if (btn) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (window.history.length > 1 && document.referrer !== '') {
+          window.history.back();
+        } else {
+          if (!window.close()) {
+            window.location.href = '/';
+          }
+        }
+      });
+    }
+  })();
+</script>
+
+</body></html>

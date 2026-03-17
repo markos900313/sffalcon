@@ -2,53 +2,51 @@
 
 import { Utensils, Stethoscope, GraduationCap, ArrowRight, ArrowLeft, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
+import { WebPremiumCard } from "@/components/servicios/WebPremiumCard";
 
 const examples = [
   {
-    title: "Web para Restaurante",
-    subtitle: "El Bistró Mediterráneo",
-    description: "Un diseño elegante y visual que prioriza la experiencia del comensal desde el primer clic.",
+    title: "La Terraza \u2014 Restaurante",
+    subtitle: "WEB RESTAURANTE",
+    description: "Landing page completa para restaurante con reservas online, carta digital y sección de contacto.",
     icon: Utensils,
     color: "bg-orange-50",
     iconColor: "text-orange-600",
-    href: "/servicios/webs-landing/restaurante",
+    href: "/examples/webs/ejemplo-1.html",
     features: [
-      "Sistema de reservas online integrado",
-      "Menú digital con imágenes de alta calidad",
-      "Optimización para móviles (pedidos rápidos)",
-      "Gestión de reseñas de clientes"
+      "Reserva de mesa online",
+      "Carta con fotos y precios",
+      "Galería y testimonios"
     ],
     benefit: "Aumenta las reservas directas en un 40%"
   },
   {
-    title: "Web para Clínica Dental",
-    subtitle: "Clínica Dental Lumina",
-    description: "Transmitimos confianza y profesionalidad para convertir visitantes en pacientes recurrentes.",
+    title: "Sonrisas \u2014 Clínica Dental",
+    subtitle: "WEB CORPORATIVA",
+    description: "Web profesional para clínica con formulario de cita, equipo médico y tratamientos detallados.",
     icon: Stethoscope,
     color: "bg-blue-50",
     iconColor: "text-blue-600",
-    href: "/servicios/webs-landing/clinica-dental",
+    href: "/examples/webs/ejemplo-2.html",
     features: [
-      "Reserva de citas en tiempo real",
-      "Presentación del equipo médico",
-      "Sección de tratamientos detallada",
-      "Preguntas frecuentes automatizadas"
+      "Cita online integrada",
+      "Ficha de tratamientos",
+      "Equipo y testimonios"
     ],
     benefit: "Reduce el tiempo de gestión de citas en un 60%"
   },
   {
-    title: "Landing para Academia Online",
-    subtitle: "EduAcademy Pro",
-    description: "Estructura enfocada 100% en la conversión y venta de cursos digitales.",
+    title: "TechLearn \u2014 Academia Online",
+    subtitle: "WEB ACADEMIA",
+    description: "Landing page para academia con catálogo de cursos, precios por plan y registro de alumnos.",
     icon: GraduationCap,
     color: "bg-purple-50",
     iconColor: "text-purple-600",
-    href: "/servicios/webs-landing/academia",
+    href: "/examples/webs/ejemplo-3.html",
     features: [
-      "Catálogo de cursos dinámico",
-      "Pasarela de pagos segura",
-      "Testimonios de alumnos destacados",
-      "Panel de usuario intuitivo"
+      "Catálogo de cursos",
+      "Planes y precios",
+      "Estadísticas y testimonios"
     ],
     benefit: "Mejora el ratio de conversión de inscritos"
   }
@@ -60,10 +58,8 @@ export default function WebsLandingPage() {
       {/* Integrated Navigation Header */}
       <nav className="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-100 h-16 flex items-center shadow-sm">
         <div className="max-w-7xl mx-auto px-4 w-full flex justify-between items-center gap-4">
-          <Link href="/#servicios" className="flex items-center gap-2 group text-slate-900 font-bold text-sm shrink-0">
-            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-            <span className="hidden sm:inline">Volver a Servicios</span>
-            <span className="sm:hidden">Volver</span>
+          <Link href="/" className="flex items-center gap-2 group text-slate-900 font-bold text-sm shrink-0">
+            <span>Inicio</span>
           </Link>
           <span className="text-[10px] md:text-xs font-black tracking-widest text-blue-600 uppercase truncate text-right">Webs & Landing Pages · SFFALCON</span>
         </div>
@@ -79,45 +75,9 @@ export default function WebsLandingPage() {
         </div>
 
         <div className="space-y-12">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 gap-8 md:gap-12">
             {examples.map((example, index) => (
-              <div 
-                key={index}
-                className="group bg-white rounded-3xl p-6 md:p-8 border border-slate-200 hover:border-blue-300 transition-all duration-300 hover:shadow-xl flex flex-col h-full"
-              >
-                <div className="flex items-start gap-4 mb-6">
-                  <div className={`w-12 h-12 ${example.color} rounded-xl flex-shrink-0 flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                    <example.icon className={`w-6 h-6 ${example.iconColor}`} />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-slate-900 leading-tight">{example.title}</h3>
-                    <p className="text-xs font-semibold text-blue-600 mt-1">{example.subtitle}</p>
-                  </div>
-                </div>
-                
-                <p className="text-slate-600 text-sm mb-6 flex-grow line-clamp-3">{example.description}</p>
-                
-                <ul className="grid grid-cols-1 gap-y-2.5 mb-8">
-                  {example.features.slice(0, 3).map((feature, fIndex) => (
-                    <li key={fIndex} className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                      <span className="text-xs text-slate-700 truncate">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                
-                <div className="pt-4 border-t border-slate-100 italic text-[11px] text-slate-400 mb-8">
-                  {example.benefit}
-                </div>
-                
-                <Link 
-                  href={example.href}
-                  className="w-full py-4 px-4 bg-slate-900 text-white rounded-xl font-bold text-sm flex items-center justify-center gap-2 group/btn hover:bg-slate-800 transition-all active:scale-[0.98]"
-                >
-                  Ver este modelo
-                  <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                </Link>
-              </div>
+              <WebPremiumCard key={index} example={example as any} />
             ))}
           </div>
 

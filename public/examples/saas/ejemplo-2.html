@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ClientHub | Agency CRM</title>
+<!-- BEGIN: External Scripts -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              bg: '#111318',
+              card: '#1A1F28',
+              accent: '#F59E0B', // Amber
+              text: '#FFFFFF',
+              border: '#2D3748',
+              muted: '#94A3B8'
+            }
+          }
+        }
+      }
+    }
+  </script>
+<!-- END: External Scripts -->
+<style data-purpose="scrollbar-styling">
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #111318;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2D3748;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #F59E0B;
+    }
+  </style>
+<style data-purpose="layout-customizations">
+    .heatmap-cell {
+      width: 12px;
+      height: 12px;
+      border-radius: 2px;
+    }
+    .bloomberg-border {
+      border-bottom: 1px solid #2D3748;
+    }
+    /* Mobile Toggle Logic */
+    @media (max-width: 1023px) {
+      .mobile-hidden { display: none; }
+      .mobile-view-list [data-purpose="client-list"] { display: flex; width: 100%; }
+      .mobile-view-list [data-purpose="client-detail"] { display: none; }
+      .mobile-view-detail [data-purpose="client-list"] { display: none; }
+      .mobile-view-detail [data-purpose="client-detail"] { display: flex; width: 100%; }
+    }
+  </style>
+</head>
+<body class="bg-brand-bg text-brand-text h-full overflow-hidden font-sans mobile-view-list" id="app-body">
+
+<div class="flex h-full w-full">
+<!-- BEGIN: Sidebar Navigation -->
+<aside class="fixed inset-y-0 left-0 z-40 w-16 lg:w-64 bg-brand-card border-r border-brand-border flex flex-col transition-all duration-300 lg:static" data-purpose="main-navigation">
+<div class="p-4 lg:p-6 flex items-center gap-3">
+<div class="w-8 h-8 bg-brand-accent rounded flex items-center justify-center text-black font-black shrink-0">CH</div>
+<span class="text-xl font-bold hidden lg:block tracking-tight">ClientHub</span>
+</div>
+<nav class="flex-1 px-2 lg:px-4 mt-4 space-y-2">
+<a class="flex items-center justify-center lg:justify-start gap-4 p-3 bg-brand-accent/10 text-brand-accent rounded-lg" href="#">
+<svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="hidden lg:block font-medium">Panel Principal</span>
+</a>
+<a class="flex items-center justify-center lg:justify-start gap-4 p-3 text-brand-muted hover:text-white transition-colors" href="#">
+<svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="hidden lg:block font-medium">Clientes</span>
+</a>
+<a class="flex items-center justify-center lg:justify-start gap-4 p-3 text-brand-muted hover:text-white transition-colors" href="#">
+<svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="hidden lg:block font-medium">Calendario</span>
+</a>
+<a class="flex items-center justify-center lg:justify-start gap-4 p-3 text-brand-muted hover:text-white transition-colors" href="#">
+<svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="hidden lg:block font-medium">Reportes</span>
+</a>
+</nav>
+<div class="p-4 lg:p-6 border-t border-brand-border flex items-center gap-3">
+<img alt="Admin" class="rounded-full w-8 h-8 lg:w-10 lg:h-10 border border-brand-border shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCy6Rm74iaEMZv-b_eWtATAbHTEjBWhtms4BH2aMgRq7N7S2wzbWBL4HNE1ydXp-ZqKOQ-uapk8z4oNrsudidEQV8F8EBkdwGW4B3AqL48VYqpmIJgQA-veAZEEs_RoCRHZC44qcS1gQJ3VDDNBO7DibxtumwrrtqPYidPsb1JFVoI9zh_6FTksmTamf4tW5f4CAHOSe6cMIiWzOXqf6IqjqXzaEaEbEI7gx0Juv69nsgj24P2YiP7_fsyF9FifUzAN4IVKS8JGWIw"/>
+<div class="hidden lg:block overflow-hidden">
+<p class="text-sm font-bold truncate">Admin User</p>
+<p class="text-xs text-brand-muted uppercase tracking-widest truncate">PRO PLAN</p>
+</div>
+</div>
+</aside>
+<!-- END: Sidebar Navigation -->
+<!-- Main Content Area Wrapper -->
+<main class="flex-1 flex flex-col min-w-0 pl-16 lg:pl-0">
+<!-- BEGIN: Global Header Metrics -->
+<header class="h-auto lg:h-20 border-b border-brand-border px-4 lg:px-8 py-4 lg:py-0 flex flex-col lg:flex-row items-start lg:items-center justify-between bg-brand-bg shrink-0 gap-4" data-purpose="top-header">
+<div class="flex items-center gap-6 lg:gap-12 overflow-x-auto w-full lg:w-auto no-scrollbar pb-2 lg:pb-0">
+<div class="shrink-0">
+<p class="text-[9px] lg:text-[10px] text-brand-muted uppercase font-bold tracking-widest mb-1">Total Clientes</p>
+<p class="text-xl lg:text-2xl font-mono font-bold">1,284</p>
+</div>
+<div class="shrink-0">
+<p class="text-[9px] lg:text-[10px] text-brand-muted uppercase font-bold tracking-widest mb-1">Activos</p>
+<p class="text-xl lg:text-2xl font-mono font-bold text-green-500">942</p>
+</div>
+<div class="shrink-0">
+<p class="text-[9px] lg:text-[10px] text-brand-muted uppercase font-bold tracking-widest mb-1">Nuevos (Mes)</p>
+<p class="text-xl lg:text-2xl font-mono font-bold text-brand-accent">+48</p>
+</div>
+</div>
+<div class="flex items-center gap-3 w-full lg:w-auto justify-end">
+<button class="bg-brand-card p-2 rounded border border-brand-border text-brand-muted hover:text-white">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<button class="bg-brand-accent text-black font-bold px-4 py-2 rounded text-sm hover:brightness-110 whitespace-nowrap">
+            + <span class="hidden sm:inline">Nuevo Cliente</span><span class="sm:hidden">Nuevo</span>
+</button>
+</div>
+</header>
+<!-- END: Global Header Metrics -->
+<div class="flex-1 flex overflow-hidden relative">
+<!-- BEGIN: Client List Column -->
+<section class="w-full md:w-[320px] lg:w-[420px] flex flex-col border-r border-brand-border bg-brand-bg transition-all" data-purpose="client-list">
+<div class="p-4 bg-brand-bg space-y-4">
+<!-- Search -->
+<div class="relative">
+<input class="w-full bg-brand-card border-brand-border text-sm rounded focus:ring-brand-accent focus:border-brand-accent text-white pl-10" placeholder="Buscar..." type="text"/>
+<svg class="w-4 h-4 absolute left-3 top-3 text-brand-muted" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<!-- Filters -->
+<div class="flex gap-2">
+<select class="flex-1 bg-brand-bg border-brand-border text-[10px] lg:text-[11px] rounded uppercase font-bold tracking-tight text-brand-muted focus:ring-0 px-2 py-1">
+<option>Estado: Todos</option>
+<option>Retainer</option>
+<option>Proyecto</option>
+</select>
+<select class="flex-1 bg-brand-bg border-brand-border text-[10px] lg:text-[11px] rounded uppercase font-bold tracking-tight text-brand-muted focus:ring-0 px-2 py-1">
+<option>Ordenar: Reciente</option>
+<option>A-Z</option>
+</select>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto divide-y divide-brand-border/50">
+<!-- Client Row 1 -->
+<div class="p-4 hover:bg-brand-card cursor-pointer transition-colors border-l-2 border-brand-accent" onclick="document.getElementById('app-body').className = 'bg-brand-bg text-brand-text h-full overflow-hidden font-sans mobile-view-detail'">
+<div class="flex items-center justify-between mb-1">
+<div class="flex items-center gap-3">
+<img alt="Avatar" class="rounded w-8 h-8" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeH_4loIdrUcsGLFwgHAxpg7xRp4vkS55ekbbCE1f9fA0GKKvMp--CjNjY89HUI3f20r0NrhLYSd-1SMyujqcvK94mRx5zwyWkgmLOcbiBkK_kS5ZmPSuO6vJGmtQO7tQvklh9gRLpf0uu2hL6McfH0bIOWmxT_vwO-HHvjBMoIHnIbx0i8g0Y6nKMWmB52cbggk3Ske1C-358oe8nLCci-b1anWgGxTY5XypWSfdaTXHGHDn-TlF5WfkShM21i2JHGqYp-KI36uY"/>
+<div class="min-w-0">
+<h4 class="text-sm font-bold truncate">Alejandro Sanz</h4>
+<p class="text-xs text-brand-muted truncate">Skyline Digital</p>
+</div>
+</div>
+<span class="px-2 py-1 bg-green-900/30 text-green-500 text-[9px] font-bold uppercase rounded shrink-0">Retainer</span>
+</div>
+<div class="flex justify-between items-center mt-3">
+<p class="text-[9px] text-brand-muted truncate mr-2">Último: <span class="text-white">Hoy, 10:30 AM</span></p>
+<div class="flex -space-x-2 shrink-0">
+<div class="w-5 h-5 rounded-full bg-brand-border border border-brand-bg flex items-center justify-center text-[8px]">JD</div>
+<div class="w-5 h-5 rounded-full bg-brand-border border border-brand-bg flex items-center justify-center text-[8px]">MS</div>
+</div>
+</div>
+</div>
+<!-- Client Row 2 -->
+<div class="p-4 hover:bg-brand-card cursor-pointer transition-colors border-l-2 border-transparent">
+<div class="flex items-center justify-between mb-1">
+<div class="flex items-center gap-3">
+<img alt="Avatar" class="rounded w-8 h-8" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtjRfuBEhUIjUAN7qzmIBHSdmRa3pyEPz__7hLstnXfluj-zabGHSKADFxXqvpOA-lMjL-Oj7BO4TPuvk7Y1AgDRZKD9ptAIo87Zf7JVdbs8hv6o4rISq6HasxEfMxnL-Lwl8TK-hE16q6roEZyypbmSXc-N7XoB1WOEgnUKbnvjzOCZoGAUwrCS_jy0KryFze_ZlRqEplC4dUfU0Y8yZ5Dnt4wVb-uwPvht7Jcr9kmTL8Gy9SUS4jKffp0KVlQaY_jZxQKiDvc74"/>
+<div class="min-w-0">
+<h4 class="text-sm font-bold truncate">Lucía Mendez</h4>
+<p class="text-xs text-brand-muted truncate">Innovatech S.A.</p>
+</div>
+</div>
+<span class="px-2 py-1 bg-blue-900/30 text-blue-500 text-[9px] font-bold uppercase rounded shrink-0">Proyecto</span>
+</div>
+<div class="flex justify-between items-center mt-3">
+<p class="text-[9px] text-brand-muted">Último: <span class="text-white">Ayer</span></p>
+</div>
+</div>
+<!-- Client Row 3 -->
+<div class="p-4 hover:bg-brand-card cursor-pointer transition-colors border-l-2 border-transparent">
+<div class="flex items-center justify-between mb-1">
+<div class="flex items-center gap-3">
+<img alt="Avatar" class="rounded w-8 h-8" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAw9PvBJq9-AjFiuVbMOyeQD0TRDMClxgATTKBrMdM5j5TXY26MnirefOThTimPGpAelGPvZHQPFDX1lM7A_HS1M3uiB0rH8zQrhXKvTiDcsNq9aZun6fssmbiCED5nzBAuU_1AVUkaWTVcZUfypb2PiP5uLT3dKyG0GbefK7ZYYElC1VTZrwQ--GVQkboQnwdMkG34NDmw7H51hxVI3ceqzuqx3E3eZXOvZpOYgKOd2sWRq97px89baYP0upLO_5kWwdBgRX_nJLQ"/>
+<div class="min-w-0">
+<h4 class="text-sm font-bold truncate">Roberto Gomez</h4>
+<p class="text-xs text-brand-muted truncate">Global Logistics</p>
+</div>
+</div>
+<span class="px-2 py-1 bg-amber-900/30 text-brand-accent text-[9px] font-bold uppercase rounded shrink-0">Lead</span>
+</div>
+<div class="flex justify-between items-center mt-3">
+<p class="text-[9px] text-brand-muted">Último: <span class="text-white">Hace 3 días</span></p>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Client List Column -->
+<!-- BEGIN: Client Detail Column -->
+<section class="flex-1 bg-brand-bg flex flex-col overflow-y-auto" data-purpose="client-detail">
+<!-- Back Button for Mobile Detail View -->
+<div class="lg:hidden p-4 border-b border-brand-border flex items-center bg-brand-bg sticky top-0 z-20">
+<button class="text-brand-accent flex items-center gap-2 text-sm font-bold" onclick="document.getElementById('app-body').className = 'bg-brand-bg text-brand-text h-full overflow-hidden font-sans mobile-view-list'">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+              Volver a la lista
+            </button>
+</div>
+<!-- Detail Header -->
+<div class="p-4 lg:p-8 border-b border-brand-border bg-brand-card/30">
+<div class="flex flex-col lg:flex-row justify-between items-start gap-6">
+<div class="flex flex-col sm:flex-row gap-4 lg:gap-6 items-start sm:items-center">
+<img alt="Large Avatar" class="rounded-xl w-16 h-16 lg:w-20 lg:h-20 ring-2 ring-brand-border shadow-2xl shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-vs6MBf7JwrOqefmxSutDl8-AxxJ2LYirH7pPjdt6NJc7sfu4qAWrHxwv9hrxkkNRx9C4gKFheo8W_wRwBYCI68T-To7rKnvQ8QFBPNVCBZ0GADw76zYGQpKyMFLLl5XoVrkDjL6HYaXNs_9_qoyc96jsZNYDVgybICyDPdK2Y2dwZ5WqxsZYg7TyDeW_d6v2cV5JT-sZs0QqziSXLcBHNoeuTEY1tIbYdBKi3BeTKOuSd2xd055VrsKIBvtQTo8Ytsvhhmu18t4"/>
+<div>
+<h2 class="text-2xl lg:text-3xl font-bold">Alejandro Sanz</h2>
+<p class="text-brand-muted flex flex-wrap items-center gap-x-2 gap-y-1 mt-1 text-sm">
+<span class="text-white font-medium">CEO @ Skyline Digital</span>
+<span class="hidden sm:inline">•</span>
+<span>Valencia, España</span>
+</p>
+<div class="flex gap-2 mt-4">
+<button class="bg-brand-accent text-black font-bold px-4 lg:px-6 py-2 rounded text-xs lg:text-sm hover:scale-105 transition-transform">Contactar</button>
+<button class="bg-brand-card border border-brand-border text-white px-4 lg:px-6 py-2 rounded text-xs lg:text-sm hover:bg-brand-border transition-colors">Editar Perfil</button>
+</div>
+</div>
+</div>
+<div class="lg:text-right w-full lg:w-auto mt-4 lg:mt-0">
+<p class="text-[9px] lg:text-[10px] text-brand-muted uppercase font-bold tracking-widest mb-1">LTV Estimado</p>
+<p class="text-2xl lg:text-3xl font-mono font-bold text-brand-accent">€42,500</p>
+</div>
+</div>
+</div>
+<!-- Detail Content Grid -->
+<div class="p-4 lg:p-8 grid grid-cols-1 xl:grid-cols-3 gap-6 lg:gap-8">
+<!-- Column: Activity & Stats -->
+<div class="xl:col-span-2 space-y-6 lg:space-y-8">
+<!-- BEGIN: Activity Heatmap -->
+<div class="bg-brand-card p-4 lg:p-6 rounded-lg border border-brand-border" data-purpose="activity-heatmap">
+<h3 class="text-[10px] lg:text-xs font-bold uppercase text-brand-muted tracking-widest mb-6 flex justify-between items-center">
+                  Historial de Actividad
+                  <span class="text-[9px] lg:text-[10px] normal-case font-normal">Últimos 12 meses</span>
+</h3>
+<div class="flex flex-wrap gap-1 lg:gap-1.5 overflow-hidden">
+<!-- Simulated Heatmap Nodes -->
+<div class="heatmap-cell bg-green-900/20"></div>
+<div class="heatmap-cell bg-green-900/40"></div>
+<div class="heatmap-cell bg-green-500"></div>
+<div class="heatmap-cell bg-green-900/20"></div>
+<div class="heatmap-cell bg-green-900/10"></div>
+<div class="heatmap-cell bg-green-700"></div>
+<div class="heatmap-cell bg-green-500"></div>
+<div class="heatmap-cell bg-green-900/20"></div>
+<div class="heatmap-cell bg-green-900/60"></div>
+<div class="heatmap-cell bg-green-500"></div>
+<div class="heatmap-cell bg-green-900/10"></div>
+<div class="heatmap-cell bg-green-900/10"></div>
+<div class="heatmap-cell bg-green-700"></div>
+<div class="heatmap-cell bg-green-900/30"></div>
+<div class="heatmap-cell bg-green-500"></div>
+<div class="heatmap-cell bg-green-500"></div>
+<div class="heatmap-cell bg-green-900/20"></div>
+<div class="heatmap-cell bg-green-900/40"></div>
+<div class="heatmap-cell bg-green-500"></div>
+<div class="heatmap-cell bg-green-900/20"></div>
+<div class="heatmap-cell bg-green-900/10"></div>
+<div class="heatmap-cell bg-green-700"></div>
+<div class="heatmap-cell bg-green-500"></div>
+<div class="heatmap-cell bg-green-900/20"></div>
+<div class="heatmap-cell bg-green-900/60"></div>
+<div class="heatmap-cell bg-green-500"></div>
+<div class="heatmap-cell bg-green-900/10"></div>
+<div class="heatmap-cell bg-green-900/10"></div>
+<div class="heatmap-cell bg-green-700"></div>
+<div class="heatmap-cell bg-green-900/30"></div>
+<div class="heatmap-cell bg-green-500"></div>
+<div class="heatmap-cell bg-green-500"></div>
+</div>
+<div class="mt-4 flex justify-between items-center text-[9px] lg:text-[10px] text-brand-muted">
+<span>Menos</span>
+<div class="flex gap-1">
+<div class="heatmap-cell bg-green-900/10"></div>
+<div class="heatmap-cell bg-green-900/40"></div>
+<div class="heatmap-cell bg-green-700"></div>
+<div class="heatmap-cell bg-green-500"></div>
+</div>
+<span>Más</span>
+</div>
+</div>
+<!-- END: Activity Heatmap -->
+<!-- Timeline -->
+<div class="space-y-4">
+<h3 class="text-[10px] lg:text-xs font-bold uppercase text-brand-muted tracking-widest">Actividad Reciente</h3>
+<div class="space-y-0 relative before:absolute before:left-3 before:top-2 before:bottom-2 before:w-[1px] before:bg-brand-border">
+<div class="relative pl-10 pb-6">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-brand-accent flex items-center justify-center border-4 border-brand-bg shadow-lg">
+<svg class="w-3 h-3 text-black" fill="currentColor" viewbox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
+</div>
+<p class="text-sm font-bold">Respuesta de Campaña de Email</p>
+<p class="text-xs text-brand-muted mt-1">"Me interesa el presupuesto de Q4. Agendamos?"</p>
+<p class="text-[9px] lg:text-[10px] text-brand-muted mt-2 uppercase">Hoy • 10:30 AM</p>
+</div>
+<div class="relative pl-10 pb-6">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center border-4 border-brand-bg shadow-lg">
+<svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path></svg>
+</div>
+<p class="text-sm font-bold">Llamada de Revisión Mensual</p>
+<p class="text-xs text-brand-muted mt-1">Se discutieron los KPIs de Agosto y el nuevo funnel de ventas.</p>
+<p class="text-[9px] lg:text-[10px] text-brand-muted mt-2 uppercase">Ayer • 16:00 PM</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Column: Sidebar Details -->
+<div class="space-y-6 lg:space-y-8">
+<!-- Next Meeting Card -->
+<div class="bg-brand-accent text-black p-5 lg:p-6 rounded-lg shadow-xl" data-purpose="meeting-card">
+<h3 class="text-[9px] lg:text-[10px] font-black uppercase tracking-widest mb-4 opacity-70">Próxima Reunión</h3>
+<div class="flex items-center gap-4">
+<div class="text-3xl lg:text-4xl font-black">12</div>
+<div>
+<p class="text-base lg:text-lg font-bold leading-tight">Octubre, 2023</p>
+<p class="text-xs lg:text-sm font-medium opacity-80">14:00 - 15:00 (60 min)</p>
+</div>
+</div>
+<div class="mt-6 pt-6 border-t border-black/10">
+<p class="text-sm font-bold">Revisión de Estrategia Q4</p>
+<p class="text-xs mt-1 opacity-80 italic truncate">Google Meet Link en calendario</p>
+</div>
+</div>
+<!-- Quick Info -->
+<div class="bg-brand-card p-5 lg:p-6 rounded-lg border border-brand-border space-y-6">
+<div>
+<h4 class="text-[9px] lg:text-[10px] text-brand-muted uppercase font-bold tracking-widest mb-3">Información Clave</h4>
+<ul class="space-y-3 lg:space-y-4">
+<li class="flex flex-col sm:flex-row sm:justify-between sm:items-center text-xs lg:text-sm gap-1">
+<span class="text-brand-muted">Email</span>
+<span class="font-medium truncate">a.sanz@skydigital.com</span>
+</li>
+<li class="flex justify-between items-center text-xs lg:text-sm">
+<span class="text-brand-muted">Teléfono</span>
+<span class="font-medium">+34 612 345 678</span>
+</li>
+<li class="flex justify-between items-center text-xs lg:text-sm">
+<span class="text-brand-muted">Industria</span>
+<span class="font-medium">Marketing Tech</span>
+</li>
+</ul>
+</div>
+<div>
+<h4 class="text-[9px] lg:text-[10px] text-brand-muted uppercase font-bold tracking-widest mb-3">Equipo Asignado</h4>
+<div class="flex gap-2">
+<img class="rounded-full w-8 h-8 border border-brand-border" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRuyDk6-Upf0HEDhCA_FzvzShfRwSbBLx87QX87LKaG35MbbIAAc-a7MxiCuiJZ2hGjNF9ee8YPqaqKX3T-MTLr6ShIvcwkogjLtdumKksBZL-hpzsjWo5MhNmPlML1K_CwjvztvIewOTPjVtbsP5KhsxA0Ac0zT8MPggMZuze-vpOK-U39ZzfIF4RYLpMhtcZFszh3Nl0UL3EYwLiuR9qgVl_JomA6cvBKIS2KSsAo6yQM-wk-T7mpVvG-QagE3ikCc6xDqE4-lw" title="Account Manager"/>
+<img class="rounded-full w-8 h-8 border border-brand-border" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvuUzVV9tnB8WPcT8DnhlEIYQSC7k8ZXokaITTg_5k3PttLwxWdIVOOd5lZvJbrU9JoiAdqbFc6WNhBEA4_THaWbE5wa0aGG05Sk9dys9c3p8J1htWMJZjStRfQcRjsdouStoZoBeRF34HW3yPCpRLfLdnId4TiDNGryo6gyTi7LrQDqwC1dvTqKn4z7xbtBVXG6AqF1KFTloZKyFtyWu7qHSWvTmQxHGRmrDOeZMtlQc5vpdrssuf7ppdZQTW_ETXLOkfwBO1Be4" title="Creative Lead"/>
+<div class="w-8 h-8 rounded-full bg-brand-bg border border-brand-border flex items-center justify-center text-[9px] lg:text-[10px] text-brand-muted font-bold">+2</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Client Detail Column -->
+</div>
+</main>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+  @media (min-width: 1024px) {
+    #sffalcon-back-btn {
+      display: none !important;
+    }
+  }
+</style>
+<div id="sffalcon-back-btn" style="
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 1000000;
+  pointer-events: auto;
+  line-height: 0;
+  display: flex;
+">
+  <a
+    href="javascript:void(0)"
+    id="back-link"
+    title="Cerrar vista previa"
+    style="
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      color: #FFFFFF;
+      text-decoration: none;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    "
+    onmouseover="
+      this.style.background='#2563eb';
+      this.style.transform='scale(1.1)';
+      this.style.boxShadow='0 0 15px rgba(37, 99, 235, 0.4)';
+    "
+    onmouseout="
+      this.style.background='rgba(15, 23, 42, 0.85)';
+      this.style.transform='scale(1)';
+      this.style.boxShadow='0 8px 20px rgba(0,0,0,0.3)';
+    "
+  >
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="3.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="M18 6L6 18M6 6l12 12"/>
+    </svg>
+  </a>
+</div>
+
+<script>
+  (function() {
+    const btn = document.getElementById('back-link');
+    if (btn) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (window.history.length > 1 && document.referrer !== '') {
+          window.history.back();
+        } else {
+          if (!window.close()) {
+            window.location.href = '/';
+          }
+        }
+      });
+    }
+  })();
+</script>
+
+</body></html>

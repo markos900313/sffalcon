@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TableManager - Panel de Reservas</title>
+<!-- Tailwind CSS CDN with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              bg: '#0D1F1A',
+              card: '#0F2D20',
+              accent: '#10B981',
+              accentHover: '#059669',
+              border: '#1B4332',
+              textMuted: '#94A3B8'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-scrollbars">
+    /* Custom scrollbar for a sleek dark look */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0D1F1A;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1B4332;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #10B981;
+    }
+  </style>
+<style data-purpose="layout-adjustments">
+    body {
+      background-color: #0D1F1A;
+      color: white;
+    }
+    .sidebar-active {
+      background-color: rgba(16, 185, 129, 0.1);
+      border-left: 4px solid #10B981;
+    }
+    /* Simple mobile menu toggle logic without heavy JS */
+    #mobile-menu-toggle:checked ~ aside {
+      transform: translateX(0);
+    }
+    @media (max-width: 1024px) {
+      aside {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex font-sans overflow-x-hidden">
+<!-- Mobile Menu Toggle (Checkbox Hack) -->
+<input class="hidden peer" id="mobile-menu-toggle" type="checkbox"/>
+<!-- Overlay for mobile sidebar -->
+<label class="fixed inset-0 bg-black/50 z-30 hidden peer-checked:block lg:hidden" for="mobile-menu-toggle"></label>
+<!-- BEGIN: NavigationSidebar -->
+<aside class="w-64 border-r border-brand-border flex flex-col fixed h-full bg-brand-bg z-40 lg:translate-x-0 transition-transform duration-300" data-purpose="main-sidebar">
+<!-- Logo Section -->
+<div class="p-6 flex items-center justify-between lg:justify-start gap-3">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-brand-accent rounded-lg flex items-center justify-center">
+<svg class="h-5 w-5 text-brand-bg" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+<path d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z"></path>
+</svg>
+</div>
+<span class="text-xl font-bold tracking-tight text-white">TableManager</span>
+</div>
+<label class="lg:hidden p-2 text-brand-textMuted cursor-pointer" for="mobile-menu-toggle">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</label>
+</div>
+<!-- Navigation Links -->
+<nav class="flex-1 px-4 space-y-1 mt-4">
+<a class="sidebar-active flex items-center px-4 py-3 text-brand-accent rounded-r-md transition-colors" href="#">
+<svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+        Dashboard
+      </a>
+<a class="flex items-center px-4 py-3 text-brand-textMuted hover:text-white hover:bg-brand-card rounded-md transition-colors" href="#">
+<svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+        Reservas
+      </a>
+<a class="flex items-center px-4 py-3 text-brand-textMuted hover:text-white hover:bg-brand-card rounded-md transition-colors" href="#">
+<svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+        Clientes
+      </a>
+<a class="flex items-center px-4 py-3 text-brand-textMuted hover:text-white hover:bg-brand-card rounded-md transition-colors" href="#">
+<svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+        Reportes
+      </a>
+</nav>
+<!-- Secondary Sidebar Content: Service Status -->
+<div class="px-6 py-4 border-t border-brand-border hidden lg:block">
+<div class="mb-6" data-purpose="mini-calendar">
+<h4 class="text-xs font-semibold text-brand-textMuted uppercase tracking-wider mb-2">Mini Calendario</h4>
+<div class="bg-brand-card p-3 rounded text-center">
+<p class="text-sm font-medium">Octubre 2023</p>
+<div class="grid grid-cols-7 gap-1 mt-2 text-[10px] text-brand-textMuted">
+<span>Lu</span><span>Ma</span><span>Mi</span><span>Ju</span><span>Vi</span><span>Sa</span><span>Do</span>
+<span class="p-1">16</span><span class="p-1">17</span><span class="p-1">18</span><span class="p-1">19</span><span class="p-1 bg-brand-accent text-brand-bg rounded-full font-bold">20</span><span class="p-1">21</span><span class="p-1">22</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3 p-2 bg-brand-card rounded-lg border border-brand-border" data-purpose="service-indicator">
+<span class="relative flex h-3 w-3">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-accent opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-brand-accent"></span>
+</span>
+<span class="text-xs font-medium">Servicio Abierto</span>
+</div>
+</div>
+<!-- User Profile Footer -->
+<div class="p-4 border-t border-brand-border mt-auto">
+<div class="flex items-center gap-3">
+<img alt="User Avatar" class="w-10 h-10 rounded-full border border-brand-accent" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8p53sp_TlIhvE42uOSde0SS2lV1A996A5WRT66EzaVemE_9KdvOYRmCNMnfrCORnqeotx8EW6Zff2GCNny5WrnVmHtVNGQyP4FsobEGFTs3f6ZFfvzWpykiVYHqlQZaoB7g4kv8yeVhkXUuNmK0K4UJIUrxqo61OHUCHVEGy56TKGc5xZVqSpegpvwTt3eAb9vds0JC8HG76920YOzwIHTRt5mBES8iufaQEUC9eLp_dZouAbGY5PGeNrZLHkHxPbpbDAbFf9UU0"/>
+<div class="overflow-hidden">
+<p class="text-sm font-semibold truncate text-white">Admin Restaurante</p>
+<p class="text-xs text-brand-textMuted truncate">admin@tablemanager.com</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- END: NavigationSidebar -->
+<!-- BEGIN: MainContentWrapper -->
+<main class="flex-1 lg:ml-64 p-4 md:p-8 w-full">
+<!-- BEGIN: TopHeader -->
+<header class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8" data-purpose="page-header">
+<div class="flex items-center gap-4 w-full sm:w-auto">
+<label class="lg:hidden p-2 bg-brand-card border border-brand-border rounded-lg cursor-pointer" for="mobile-menu-toggle">
+<svg class="w-6 h-6 text-brand-accent" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</label>
+<div>
+<h1 class="text-2xl md:text-3xl font-bold text-white">Panel de Reservas</h1>
+<p class="text-brand-textMuted text-sm mt-1">Viernes, 20 de Octubre 2023</p>
+</div>
+</div>
+<div class="flex items-center gap-2 sm:gap-4 w-full sm:w-auto">
+<button class="flex-1 sm:flex-none bg-brand-card border border-brand-border p-2.5 rounded-lg hover:bg-brand-border transition-colors flex justify-center items-center">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<button class="flex-[3] sm:flex-none bg-brand-accent hover:bg-brand-accentHover text-brand-bg px-4 sm:px-6 py-2.5 rounded-lg font-bold flex items-center justify-center gap-2 transition-transform transform active:scale-95">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="whitespace-nowrap">Nueva Reserva</span>
+</button>
+</div>
+</header>
+<!-- END: TopHeader -->
+<!-- BEGIN: MetricsSection -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-8" data-purpose="metrics-grid">
+<!-- Metric Card 1 -->
+<div class="bg-brand-card p-4 md:p-6 rounded-xl border border-brand-border">
+<p class="text-brand-textMuted text-sm font-medium">Reservas hoy</p>
+<div class="flex items-end justify-between mt-2">
+<h3 class="text-3xl font-bold text-white">42</h3>
+<span class="text-brand-accent text-sm flex items-center">+12% <svg class="w-4 h-4" fill="currentColor" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L6.707 7.707a1 1 0 01-1.414 0z" fill-rule="evenodd"></path></svg></span>
+</div>
+</div>
+<!-- Metric Card 2 -->
+<div class="bg-brand-card p-4 md:p-6 rounded-xl border border-brand-border">
+<p class="text-brand-textMuted text-sm font-medium">Ocupación %</p>
+<div class="flex items-end justify-between mt-2">
+<h3 class="text-3xl font-bold text-white">85%</h3>
+<div class="w-20 bg-brand-bg rounded-full h-2 mb-2 border border-brand-border">
+<div class="bg-brand-accent h-full rounded-full" style="width: 85%"></div>
+</div>
+</div>
+</div>
+<!-- Metric Card 3 -->
+<div class="bg-brand-card p-4 md:p-6 rounded-xl border border-brand-border">
+<p class="text-brand-textMuted text-sm font-medium">Confirmadas</p>
+<div class="flex items-end justify-between mt-2">
+<h3 class="text-3xl font-bold text-white">38</h3>
+<span class="text-brand-textMuted text-xs">90% ratio</span>
+</div>
+</div>
+<!-- Metric Card 4 -->
+<div class="bg-brand-card p-4 md:p-6 rounded-xl border border-brand-border">
+<p class="text-brand-textMuted text-sm font-medium">Canceladas</p>
+<div class="flex items-end justify-between mt-2">
+<h3 class="text-3xl font-bold text-red-400">4</h3>
+<span class="text-red-400 text-sm flex items-center">-2 <svg class="w-4 h-4" fill="currentColor" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M14.707 12.293a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L9 14.586V3a1 1 0 012 0v11.586l2.293-2.293a1 1 0 011.414 0z" fill-rule="evenodd"></path></svg></span>
+</div>
+</div>
+</div>
+<!-- END: MetricsSection -->
+<!-- BEGIN: ReservationsTableContainer -->
+<div class="bg-brand-card rounded-xl border border-brand-border overflow-hidden" data-purpose="reservation-list">
+<div class="p-4 md:p-6 border-b border-brand-border flex flex-col sm:row sm:justify-between sm:items-center gap-4">
+<h2 class="text-lg font-semibold text-white">Listado de Reservas</h2>
+<div class="flex flex-wrap gap-2">
+<select class="bg-brand-bg border-brand-border text-sm rounded-md focus:ring-brand-accent focus:border-brand-accent text-white flex-1 sm:flex-none">
+<option>Todos los Turnos</option>
+<option>Almuerzo</option>
+<option>Cena</option>
+</select>
+<button class="bg-brand-bg border border-brand-border px-4 py-1.5 rounded-md text-sm hover:bg-brand-border transition-colors text-white">Filtrar</button>
+</div>
+</div>
+<!-- Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse min-w-[700px] lg:min-w-full" id="reservation-table">
+<thead>
+<tr class="text-brand-textMuted text-xs uppercase tracking-wider border-b border-brand-border">
+<th class="px-6 py-4 font-medium">Cliente</th>
+<th class="px-6 py-4 font-medium">Fecha/Hora</th>
+<th class="px-6 py-4 font-medium text-center">Pax</th>
+<th class="px-6 py-4 font-medium">Mesa</th>
+<th class="px-6 py-4 font-medium">Estado</th>
+<th class="px-6 py-4 font-medium text-right">Acciones</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-brand-border text-sm">
+<!-- Row 1 -->
+<tr class="hover:bg-brand-bg/50 transition-colors">
+<td class="px-6 py-4">
+<div class="font-medium text-white">Alejandro Sanz</div>
+<div class="text-xs text-brand-textMuted">+34 600 111 222</div>
+</td>
+<td class="px-6 py-4">
+<div class="text-white">Hoy, 20:30</div>
+<div class="text-xs text-brand-accent font-medium uppercase tracking-tight">Turno Cena</div>
+</td>
+<td class="px-6 py-4 text-center text-white">4</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 bg-brand-bg rounded border border-brand-border text-xs text-white">Mesa 12</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">Confirmada</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="text-brand-textMuted hover:text-white"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></button>
+<button class="text-brand-textMuted hover:text-red-400"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-brand-bg/50 transition-colors">
+<td class="px-6 py-4">
+<div class="font-medium text-white">Lucía Méndez</div>
+<div class="text-xs text-brand-textMuted">+34 655 888 777</div>
+</td>
+<td class="px-6 py-4">
+<div class="text-white">Hoy, 21:00</div>
+<div class="text-xs text-brand-accent font-medium uppercase tracking-tight">Turno Cena</div>
+</td>
+<td class="px-6 py-4 text-center text-white">2</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 bg-brand-bg rounded border border-brand-border text-xs text-white">Mesa 04</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-100 text-amber-800">Pendiente</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="text-brand-textMuted hover:text-white"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></button>
+<button class="text-brand-textMuted hover:text-red-400"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-brand-bg/50 transition-colors">
+<td class="px-6 py-4">
+<div class="font-medium text-white">Roberto García</div>
+<div class="text-xs text-brand-textMuted">+34 612 345 678</div>
+</td>
+<td class="px-6 py-4">
+<div class="text-white">Hoy, 21:30</div>
+<div class="text-xs text-brand-accent font-medium uppercase tracking-tight">Turno Cena</div>
+</td>
+<td class="px-6 py-4 text-center text-white">6</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 bg-brand-bg rounded border border-brand-border text-xs text-white">Mesa Terraza 1</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">Confirmada</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="text-brand-textMuted hover:text-white"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></button>
+<button class="text-brand-textMuted hover:text-red-400"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-brand-bg/50 transition-colors">
+<td class="px-6 py-4">
+<div class="font-medium text-white">Marta P.</div>
+<div class="text-xs text-brand-textMuted">+34 688 000 999</div>
+</td>
+<td class="px-6 py-4">
+<div class="text-white">Mañana, 14:00</div>
+<div class="text-xs text-brand-accent font-medium uppercase tracking-tight">Almuerzo</div>
+</td>
+<td class="px-6 py-4 text-center text-white">8</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 bg-brand-bg rounded border border-brand-border text-xs text-white">Mesa VIP</span>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">Confirmada</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="text-brand-textMuted hover:text-white"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></button>
+<button class="text-brand-textMuted hover:text-red-400"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="p-4 md:p-6 border-t border-brand-border flex flex-col sm:flex-row items-center justify-between text-sm gap-4">
+<span class="text-brand-textMuted order-2 sm:order-1">Mostrando 1 a 4 de 42 resultados</span>
+<div class="flex gap-1 order-1 sm:order-2">
+<button class="px-3 py-1.5 border border-brand-border rounded bg-brand-bg hover:bg-brand-card transition-colors text-white">Ant</button>
+<button class="px-3 py-1.5 border border-brand-border rounded bg-brand-accent text-brand-bg font-bold">1</button>
+<button class="px-3 py-1.5 border border-brand-border rounded bg-brand-bg hover:bg-brand-card transition-colors text-white">2</button>
+<button class="px-3 py-1.5 border border-brand-border rounded bg-brand-bg hover:bg-brand-card transition-colors text-white">3</button>
+<button class="px-3 py-1.5 border border-brand-border rounded bg-brand-bg hover:bg-brand-card transition-colors text-white">Sig</button>
+</div>
+</div>
+</div>
+<!-- END: ReservationsTableContainer -->
+</main>
+<!-- END: MainContentWrapper -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+  @media (min-width: 1024px) {
+    #sffalcon-back-btn {
+      display: none !important;
+    }
+  }
+</style>
+<div id="sffalcon-back-btn" style="
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 1000000;
+  pointer-events: auto;
+  line-height: 0;
+  display: flex;
+">
+  <a
+    href="javascript:void(0)"
+    id="back-link"
+    title="Cerrar vista previa"
+    style="
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      color: #FFFFFF;
+      text-decoration: none;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    "
+    onmouseover="
+      this.style.background='#2563eb';
+      this.style.transform='scale(1.1)';
+      this.style.boxShadow='0 0 15px rgba(37, 99, 235, 0.4)';
+    "
+    onmouseout="
+      this.style.background='rgba(15, 23, 42, 0.85)';
+      this.style.transform='scale(1)';
+      this.style.boxShadow='0 8px 20px rgba(0,0,0,0.3)';
+    "
+  >
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="3.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="M18 6L6 18M6 6l12 12"/>
+    </svg>
+  </a>
+</div>
+
+<script>
+  (function() {
+    const btn = document.getElementById('back-link');
+    if (btn) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (window.history.length > 1 && document.referrer !== '') {
+          window.history.back();
+        } else {
+          if (!window.close()) {
+            window.location.href = '/';
+          }
+        }
+      });
+    }
+  })();
+</script>
+
+</body></html>

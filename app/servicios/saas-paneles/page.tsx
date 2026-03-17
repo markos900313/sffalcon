@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import { SaaSPremiumCard } from '@/components/servicios/SaaSPremiumCard';
 import { 
   ArrowRight, 
   Calendar, 
@@ -15,36 +16,36 @@ import {
 const saasExamples = [
   {
     id: "reservas",
-    title: "Panel de Reservas",
-    subtitle: "Restaurantes y Clínicas",
-    description: "Gestión centralizada de citas sin comisiones externas. Control total sobre tu agenda.",
+    title: "TableManager \u2014 Panel Reservas",
+    subtitle: "SAAS HOSTELERÍA",
+    description: "Panel de gestión de reservas para restaurantes y negocios con métricas, tabla de reservas y estado del servicio.",
     icon: Calendar,
-    href: "/servicios/saas-paneles/reservas",
-    features: ["Calendario dinámico", "WhatsApp recordatorios", "Gestión de turnos"],
+    href: "/examples/saas/ejemplo-1.html",
+    features: ["Métricas en tiempo real", "Tabla de reservas completa", "Control de ocupación"],
     color: "from-emerald-900/40 to-emerald-950/20",
     accent: "text-emerald-500",
     border: "hover:border-emerald-500/30"
   },
   {
     id: "clientes",
-    title: "Panel de Clientes (CRM)",
-    subtitle: "Gestión de Base Propia",
-    description: "Toda la información de tus clientes en un solo lugar. Simple, rápido y privado.",
+    title: "ClientHub \u2014 CRM de Clientes",
+    subtitle: "SAAS CRM",
+    description: "Panel de gestión de clientes con base de datos privada, historial de actividad y seguimiento comercial.",
     icon: Users,
-    href: "/servicios/saas-paneles/clientes",
-    features: ["Buscador inteligente", "Heatmap actividad", "Historial interacción"],
+    href: "/examples/saas/ejemplo-2.html",
+    features: ["Base de clientes propia", "Historial y actividad", "Pipeline de ventas"],
     color: "from-amber-900/40 to-amber-950/20",
     accent: "text-amber-500",
     border: "hover:border-amber-500/30"
   },
   {
     id: "operaciones",
-    title: "Panel de Operaciones",
-    subtitle: "Gestión de Tareas y Equipo",
-    description: "Tableros Kanban para el control interno de tus procesos y productividad del equipo.",
+    title: "OpsFlow \u2014 Panel Operaciones",
+    subtitle: "SAAS EQUIPOS",
+    description: "Panel de operaciones estilo Kanban para gestionar tareas, equipo y flujos de trabajo sin herramientas externas.",
     icon: Layout,
-    href: "/servicios/saas-paneles/operaciones",
-    features: ["Tablero Kanban", "Carga de trabajo", "Tiempos de entrega"],
+    href: "/examples/saas/ejemplo-3.html",
+    features: ["Tablero Kanban completo", "Carga de trabajo por persona", "Seguimiento de progreso"],
     color: "from-violet-900/40 to-violet-950/20",
     accent: "text-violet-500",
     border: "hover:border-violet-500/30"
@@ -57,10 +58,8 @@ export default function SaasShowcasePage() {
       {/* Integrated Navigation Header */}
       <nav className="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-100 h-16 flex items-center shadow-sm">
         <div className="max-w-7xl mx-auto px-4 w-full flex justify-between items-center gap-4">
-          <Link href="/#servicios" className="flex items-center gap-2 group text-slate-900 font-bold text-sm shrink-0">
-            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-            <span className="hidden sm:inline">Volver a Servicios</span>
-            <span className="sm:hidden">Volver</span>
+          <Link href="/" className="flex items-center gap-2 group text-slate-900 font-bold text-sm shrink-0">
+            <span>Inicio</span>
           </Link>
           <span className="text-[10px] md:text-xs font-black tracking-widest text-[#0f3460] uppercase truncate text-right">Showcase SaaS · SFFALCON</span>
         </div>
@@ -76,46 +75,11 @@ export default function SaasShowcasePage() {
         </div>
 
         {/* Improved Grid for better "above the fold" visibility */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16">
-          {saasExamples.map((example) => (
-            <div 
-              key={example.id}
-              className={`group bg-white rounded-3xl border border-slate-200 shadow-sm transition-all duration-500 overflow-hidden flex flex-col h-full ${example.border}`}
-            >
-              <div className={`h-2 text-white bg-gradient-to-r ${example.color}`}></div>
-              <div className="p-6 md:p-8 flex-1">
-                <div className="w-12 h-12 bg-slate-50 rounded-xl flex items-center justify-center border border-slate-100 text-slate-900 mb-6 group-hover:scale-110 transition-transform duration-500">
-                  <example.icon className="w-6 h-6" />
-                </div>
-                
-                <p className={`text-[10px] font-black uppercase tracking-widest mb-1 ${example.accent}`}>{example.subtitle}</p>
-                <h2 className="text-xl font-bold text-slate-900 mb-4">{example.title}</h2>
-                <p className="text-slate-500 text-sm font-medium mb-8 leading-relaxed">
-                  {example.description}
-                </p>
-
-                <div className="space-y-3 mb-8">
-                  {example.features.map((feature, i) => (
-                    <div key={i} className="flex items-center gap-2.5 text-slate-700 font-bold text-xs uppercase tracking-tight">
-                      <CheckCircle2 className={`w-3.5 h-3.5 ${example.accent}`} />
-                      <span className="truncate">{feature}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="p-6 md:p-8 pt-0 mt-auto">
-                <Link 
-                  href={example.href}
-                  className="w-full py-4 bg-[#0f3460] text-white rounded-2xl font-bold text-sm flex items-center justify-center gap-2 hover:bg-black transition-all group/btn"
-                >
-                  Ver arquitectura
-                  <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                </Link>
-              </div>
-            </div>
+        <div className="grid grid-cols-1 mb-16">
+          {saasExamples.map((example, index) => (
+            <SaaSPremiumCard key={index} example={example as any} />
           ))}
-        </div>
+</div>
 
         {/* Integrated Technical Brief */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">

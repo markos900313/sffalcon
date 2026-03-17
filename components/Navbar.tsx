@@ -20,6 +20,7 @@ export default function Navbar() {
             <span className="text-xl font-black tracking-tighter text-slate-900">SFFALCON</span>
           </Link>
           <div className="hidden md:flex items-center space-x-8">
+            <Link className="text-sm font-semibold text-slate-600 hover:text-[#0f3460] transition-colors" href="/">Inicio</Link>
             <Link className="text-sm font-semibold text-slate-600 hover:text-[#0f3460] transition-colors" href="/servicios">Servicios</Link>
             <Link className="text-sm font-semibold text-slate-600 hover:text-[#0f3460] transition-colors" href="/transformacion">Transformación</Link>
             <Link className="text-sm font-semibold text-slate-600 hover:text-[#0f3460] transition-colors" href="/proceso">Proceso</Link>
@@ -40,6 +41,7 @@ export default function Navbar() {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden py-4 flex flex-col space-y-4">
+            <Link href="/" onClick={() => setIsMenuOpen(false)} className="text-sm font-semibold text-slate-600 hover:text-[#0f3460] px-2">Inicio</Link>
             <Link href="/servicios" onClick={() => setIsMenuOpen(false)} className="text-sm font-semibold text-slate-600 hover:text-[#0f3460] px-2">Servicios</Link>
             <Link href="/transformacion" onClick={() => setIsMenuOpen(false)} className="text-sm font-semibold text-slate-600 hover:text-[#0f3460] px-2">Transformación</Link>
             <Link href="/proceso" onClick={() => setIsMenuOpen(false)} className="text-sm font-semibold text-slate-600 hover:text-[#0f3460] px-2">Proceso</Link>

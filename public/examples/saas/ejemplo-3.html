@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OpsFlow - SaaS Operations Management</title>
+<!-- BEGIN: Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- END: Tailwind CDN -->
+<!-- BEGIN: Custom Tailwind Configuration -->
+<script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'ops-bg': '#F9FAFB',
+                        'ops-accent': '#7C3AED',
+                        'ops-card': '#FFFFFF',
+                        'ops-sidebar': '#FFFFFF',
+                        'ops-text-main': '#111827',
+                        'ops-text-secondary': '#4B5563',
+                    },
+                    boxShadow: {
+                        'card-sm': '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
+                        'card-md': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+                    }
+                }
+            }
+        }
+    </script>
+<!-- END: Custom Tailwind Configuration -->
+<!-- BEGIN: Global Styles -->
+<style data-purpose="scrollbar-styling">
+        /* Custom Scrollbar for a clean light look */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F3F4F6;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D1D5DB;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #9CA3AF;
+        }
+    </style>
+<style data-purpose="layout-utilities">
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(124, 58, 237, 0.1);
+        }
+        
+        /* Mobile visibility toggles */
+        #mobile-sidebar.hidden {
+            transform: translateX(-100%);
+        }
+        #mobile-sidebar {
+            transition: transform 0.3s ease-in-out;
+        }
+    </style>
+<!-- END: Global Styles -->
+</head>
+<body class="bg-ops-bg text-ops-text-main font-sans selection:bg-ops-accent/20 overflow-x-hidden">
+<!-- BEGIN: Mobile Menu Toggle -->
+<button class="lg:hidden fixed top-4 left-4 z-[60] bg-ops-accent text-white p-3 rounded-xl shadow-lg active:scale-95 transition-transform" onclick="document.getElementById('mobile-sidebar').classList.toggle('hidden')">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<!-- END: Mobile Menu Toggle -->
+<!-- BEGIN: Navigation & Sidebar -->
+<aside class="fixed left-0 top-0 h-full w-72 bg-ops-sidebar border-r border-gray-200 z-50 flex flex-col lg:translate-x-0 hidden lg:flex" id="mobile-sidebar">
+<div class="p-6">
+<div class="flex items-center justify-between mb-10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-ops-accent rounded-xl flex items-center justify-center shadow-[0_4px_10px_rgba(124,58,237,0.3)]">
+<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<span class="text-2xl font-bold tracking-tight text-gray-900">OpsFlow</span>
+</div>
+<button class="lg:hidden p-2 text-gray-400" onclick="document.getElementById('mobile-sidebar').classList.add('hidden')">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-4 bg-ops-accent/5 text-ops-accent border-r-4 border-ops-accent font-semibold rounded-r-lg" href="#">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+                Tablero
+            </a>
+<a class="flex items-center gap-3 px-4 py-4 text-ops-text-secondary hover:text-ops-accent hover:bg-ops-accent/5 transition-all rounded-lg" href="#">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2"></path></svg>
+                Métricas
+            </a>
+<a class="flex items-center gap-3 px-4 py-4 text-ops-text-secondary hover:text-ops-accent hover:bg-ops-accent/5 transition-all rounded-lg" href="#">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                Equipo
+            </a>
+<a class="flex items-center gap-3 px-4 py-4 text-ops-text-secondary hover:text-ops-accent hover:bg-ops-accent/5 transition-all rounded-lg" href="#">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                Ajustes
+            </a>
+</nav>
+</div>
+<!-- User Workload Indicator -->
+<div class="mt-auto p-6 border-t border-gray-100 bg-gray-50/50">
+<h3 class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-5">Carga de Trabajo</h3>
+<div class="space-y-6">
+<div data-purpose="user-load-item">
+<div class="flex justify-between text-sm mb-2">
+<span class="text-ops-text-secondary font-semibold">S. Falcón</span>
+<span class="text-green-600 font-bold">42%</span>
+</div>
+<div class="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+<div class="bg-green-500 h-full" style="width: 42%"></div>
+</div>
+</div>
+<div data-purpose="user-load-item">
+<div class="flex justify-between text-sm mb-2">
+<span class="text-ops-text-secondary font-semibold">M. Red</span>
+<span class="text-yellow-600 font-bold">78%</span>
+</div>
+<div class="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+<div class="bg-yellow-500 h-full" style="width: 78%"></div>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- END: Navigation & Sidebar -->
+<!-- BEGIN: Main Dashboard Content -->
+<main class="lg:ml-72 min-h-screen flex flex-col">
+<!-- BEGIN: Header Metrics -->
+<header class="min-h-20 lg:h-24 border-b border-gray-200 flex flex-col lg:flex-row items-center justify-between px-4 py-4 lg:py-0 lg:px-10 bg-white/95 backdrop-blur-md sticky top-0 z-40">
+<div class="flex items-center w-full lg:w-auto justify-between lg:justify-start gap-4 mb-4 lg:mb-0">
+<div class="flex flex-col ml-12 lg:ml-0">
+<h1 class="text-xl lg:text-2xl font-extrabold text-gray-900 leading-none">Panel de Operaciones</h1>
+<p class="text-[10px] lg:text-xs text-ops-text-secondary mt-1 font-medium">Visualización en tiempo real</p>
+</div>
+<div class="flex items-center gap-3 lg:hidden">
+<button class="p-2.5 text-gray-500 bg-gray-100 rounded-xl relative">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+<span class="absolute top-2 right-2 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-white"></span>
+</button>
+<img alt="Avatar" class="w-10 h-10 rounded-xl border-2 border-gray-100 shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnuAe_FRpRRGBVbLku5QNBKLYw9wNxhrV0geHjeGx1LKIRS14FaRRlXUvJRGch2u5vMuTOGdDghPFkNJ7y4tHOoI2l2_Ba2ZuesZD9Uw9lWxCMR0CjGzOBZ-h4c3cbRUidM0twvu37LzMc5d2zC5XDZtqgE1b0HjyJhVS-UmSMl0M8RSXi-DpIt3uYc4CdAyTeuDCwB4DVAwH5Z6T8vr1_d67a9wNKJ03vEVAFWZsvB8ycxDxh-2GjBqI4dWh5rHR3ML5ArP-Rsxs"/>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-2 w-full lg:flex lg:w-auto lg:gap-12 mb-4 lg:mb-0">
+<div class="bg-gray-50 lg:bg-transparent p-2 lg:p-0 rounded-xl text-center">
+<p class="text-[9px] lg:text-[10px] text-gray-500 uppercase tracking-widest font-bold">Load Avg</p>
+<p class="text-sm lg:text-lg font-mono text-ops-accent font-black">0.84ms</p>
+</div>
+<div class="bg-gray-50 lg:bg-transparent p-2 lg:p-0 rounded-xl text-center lg:border-l lg:border-gray-100 lg:pl-12">
+<p class="text-[9px] lg:text-[10px] text-gray-500 uppercase tracking-widest font-bold">Tps Global</p>
+<p class="text-sm lg:text-lg font-mono text-ops-accent font-black">1.2k</p>
+</div>
+<div class="bg-gray-50 lg:bg-transparent p-2 lg:p-0 rounded-xl text-center lg:border-l lg:border-gray-100 lg:pl-12">
+<p class="text-[9px] lg:text-[10px] text-gray-500 uppercase tracking-widest font-bold">Uptime</p>
+<p class="text-sm lg:text-lg font-mono text-green-600 font-black">99.9%</p>
+</div>
+</div>
+<div class="hidden lg:flex items-center gap-6">
+<button class="p-3 text-gray-500 hover:text-ops-accent hover:bg-ops-accent/5 rounded-xl transition-all relative">
+<svg class="w-7 h-7" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+<span class="absolute top-3 right-3 w-2.5 h-2.5 bg-red-500 rounded-full ring-2 ring-white"></span>
+</button>
+<img alt="Avatar" class="w-12 h-12 rounded-xl border-2 border-gray-100 shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnuAe_FRpRRGBVbLku5QNBKLYw9wNxhrV0geHjeGx1LKIRS14FaRRlXUvJRGch2u5vMuTOGdDghPFkNJ7y4tHOoI2l2_Ba2ZuesZD9Uw9lWxCMR0CjGzOBZ-h4c3cbRUidM0twvu37LzMc5d2zC5XDZtqgE1b0HjyJhVS-UmSMl0M8RSXi-DpIt3uYc4CdAyTeuDCwB4DVAwH5Z6T8vr1_d67a9wNKJ03vEVAFWZsvB8ycxDxh-2GjBqI4dWh5rHR3ML5ArP-Rsxs"/>
+</div>
+</header>
+<!-- END: Header Metrics -->
+<!-- BEGIN: Kanban Board Container -->
+<div class="flex-1 overflow-x-auto p-4 lg:p-10 bg-ops-bg">
+<div class="flex flex-col lg:flex-row gap-6 lg:gap-10 h-full lg:min-w-max pb-20 lg:pb-0">
+<!-- Column 1: Pendiente -->
+<div class="w-full lg:w-85 flex flex-col" data-purpose="kanban-column">
+<div class="flex items-center justify-between mb-6 px-1">
+<h2 class="flex items-center gap-2 font-black text-gray-800 uppercase tracking-tight text-sm">
+<span class="w-3 h-3 bg-gray-400 rounded-full shadow-sm"></span>
+                        Pendiente
+                        <span class="bg-gray-200 text-gray-600 px-2 py-0.5 rounded-md text-[10px] font-bold ml-2">4</span>
+</h2>
+</div>
+<div class="space-y-4">
+<!-- Card 1 -->
+<article class="bg-ops-card p-5 rounded-2xl border border-gray-200 shadow-sm hover:shadow-xl hover:border-ops-accent/30 transition-all cursor-pointer group">
+<div class="flex justify-between items-start mb-4">
+<span class="px-2.5 py-1 bg-red-50 text-red-600 text-[10px] font-black rounded-lg uppercase border border-red-100">Crítica</span>
+<button class="text-gray-400 p-1 hover:bg-gray-50 rounded-lg">
+<svg class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20"><path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z"></path></svg>
+</button>
+</div>
+<h3 class="text-[15px] font-bold text-gray-900 mb-5 leading-snug">Optimización de latencia en API Gateway Region-West-1</h3>
+<div class="flex items-center gap-3 mb-5">
+<img alt="User" class="w-7 h-7 rounded-lg border border-gray-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGqP5wB8G40VAIX2gCbK4kaOVQNdf7_zcAAvS4BMBSRucMaEAMy6GU_FMWv0S_ly7ARRRP7v5o0lOojsyLnhbxV8Ti1oVPYKm3djRWGR97zBZMa3zdqeV-hRCi-LaCtRjTsPKKJOiFtoLUoxaJU5U_WvUTkVlpM3V1FdGjIsnPD5oXwkg2DqYX776JwNVar01c0nphz8BD8SoPYfrTs5in8rRDpUdwC5_PWfmTljes53_56BfX8zJ7-jJ1hnyC4f2EhPAEBQB4r2c"/>
+<span class="text-xs text-ops-text-secondary font-bold">Sergio Falcón</span>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-[11px] text-gray-500 font-bold">
+<span>Progreso</span>
+<span>0%</span>
+</div>
+<div class="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden">
+<div class="bg-ops-accent h-full" style="width: 0%"></div>
+</div>
+</div>
+<div class="mt-5 flex items-center justify-between border-t border-gray-50 pt-4">
+<span class="text-[11px] text-gray-400 font-bold flex items-center gap-1.5">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+                                24 Oct
+                            </span>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="bg-ops-card p-5 rounded-2xl border border-gray-200 shadow-sm hover:shadow-xl hover:border-ops-accent/30 transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-4">
+<span class="px-2.5 py-1 bg-blue-50 text-blue-600 text-[10px] font-black rounded-lg uppercase border border-blue-100">Mejora</span>
+</div>
+<h3 class="text-[15px] font-bold text-gray-900 mb-5 leading-snug">Integración de Webhooks v3 para Stripe</h3>
+<div class="flex items-center gap-3 mb-5">
+<img alt="User" class="w-7 h-7 rounded-lg border border-gray-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQBX6DJgkzHuc3Q6Ij1VIUycfYsCo1GyEhpydaa2-nczzIaxiiNuzluMCNOLfKCr5i9Ye9q8-fLBOXUb3QBX4NvVRrbufEb9sXtn8diehFWQQqtUSxPV3DUDk1K6dQA-vNhMQKiMlwP8koKCR2eXgrkucc8fSsrBej-CDnOUvJJrOCrY_ixEeZDF4zYC-1B5l9_veOIe2Xv1GQxnTd2n-2WoGkXZFhOjnZ1IW1s9gkRl7oXcXnu9qjMSMRd2yBXc5M2mqQN0rQSyw"/>
+<span class="text-xs text-ops-text-secondary font-bold">Marta Red</span>
+</div>
+<div class="mt-5 flex items-center justify-between border-t border-gray-50 pt-4">
+<span class="text-[11px] text-gray-400 font-bold flex items-center gap-1.5">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+                                28 Oct
+                            </span>
+</div>
+</article>
+<!-- Add Task Button -->
+<button class="w-full py-4 border-2 border-dashed border-gray-200 rounded-2xl text-gray-500 text-sm font-bold hover:border-ops-accent/40 hover:text-ops-accent hover:bg-white transition-all flex items-center justify-center gap-2 bg-white/40">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-width="3"></path></svg>
+                        Añadir tarea
+                    </button>
+</div>
+</div>
+<!-- Column 2: En Proceso -->
+<div class="w-full lg:w-85 flex flex-col" data-purpose="kanban-column">
+<div class="flex items-center justify-between mb-6 px-1">
+<h2 class="flex items-center gap-2 font-black text-gray-800 uppercase tracking-tight text-sm">
+<span class="w-3 h-3 bg-yellow-400 rounded-full shadow-sm animate-pulse"></span>
+                        En proceso
+                        <span class="bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded-md text-[10px] font-bold ml-2">2</span>
+</h2>
+</div>
+<div class="space-y-4">
+<!-- Card 3 -->
+<article class="bg-ops-card p-5 rounded-2xl border border-gray-200 shadow-sm hover:shadow-xl hover:border-ops-accent/30 transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-4">
+<span class="px-2.5 py-1 bg-yellow-50 text-yellow-600 text-[10px] font-black rounded-lg uppercase border border-yellow-100">En Desarrollo</span>
+</div>
+<h3 class="text-[15px] font-bold text-gray-900 mb-5 leading-snug">Refactorización de Sharding de Base de Datos SQL</h3>
+<div class="flex items-center gap-3 mb-5">
+<img alt="User" class="w-7 h-7 rounded-lg border border-gray-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-7A-NZmZAJyKOr2N5hD2bpZMNt-jKFUNTVT1fLPIMSp8YyG_TNedHvE7TJirHxDfgIjYgfw6Yprbz7O4kh9YRDbZkpwAtgo_M81eSUSa2O5ITIae8SS2e-y8kj9ygOEGGtJd2OY6F2Drg--vfLUR9NJ-in-lEzbasDkjALP_3i_WDXCsFZjQ3ZVTeLvTNLcMj9_2Rc1Ir-sh-9Yoiqn2l-qUY8bYwwE49MD9dF_-1MJ4OxG_wC0tmDUsz9FPQXIavj0iEeF5Ev7Y"/>
+<span class="text-xs text-ops-text-secondary font-bold">Sergio Falcón</span>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-[11px] text-gray-500 font-bold">
+<span>Progreso</span>
+<span>65%</span>
+</div>
+<div class="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden">
+<div class="bg-yellow-500 h-full" style="width: 65%"></div>
+</div>
+</div>
+<div class="mt-5 flex items-center justify-between border-t border-gray-50 pt-4">
+<span class="text-[11px] text-gray-400 font-bold flex items-center gap-1.5">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+                                20 Oct
+                            </span>
+<div class="flex -space-x-2">
+<img class="w-6 h-6 rounded-lg border-2 border-white shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANL9iOMnyR6vNlYx-WnSYlJDZvUyxKwrJboefikJ8GaF-e_2NkfNDkaV_R-G_Eqws1RpfXZ12b5uDCzxsKxsKTRn4LtjR2yZIsG2U11r-sl0HFlAn3hFhydIdP-ooj0uZj4zrVv-IySVv-FUt1o7nVB7-b0v9k2kbHsML4Z-8Tjt1sBAoHyYhkot9gfZ_AEPBrIrkcJ4sW-BhSFdjZMkwn59o4IZJYUSbresPIPFdRoeGT48deevxoV2yesh7AusGvwv1Y0nvW-zU"/>
+<img class="w-6 h-6 rounded-lg border-2 border-white shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaom3QgnxwCfnv_IwrGGKY607BVeYujs0UaJfm7e08hDorhMMZLAv0UzvDk0JBk-Ox6bO72TWyZYJ1-r4yxbaKnZQdWhar3bj1eSFvTNvBuXJpwWBwhG5JhpXlbm18L1W-vItZiiSqffc66mMiPCdmdk84NL8Qc53cRqwkGbGXUu9Kl335GIheEYfSZy0mq3qrqzb00qyezsUnnQpk4M1mI4veebTvNb0p8A7Ik9gV5nvt7Ba1OZNeofXdD5cAtuU4fthCeXTJsmk"/>
+</div>
+</div>
+</article>
+<!-- Add Task Button -->
+<button class="w-full py-4 border-2 border-dashed border-gray-200 rounded-2xl text-gray-500 text-sm font-bold hover:border-ops-accent/40 hover:text-ops-accent transition-all flex items-center justify-center gap-2 bg-white/40">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-width="3"></path></svg>
+                        Añadir tarea
+                    </button>
+</div>
+</div>
+<!-- Column 3: Completado -->
+<div class="w-full lg:w-85 flex flex-col" data-purpose="kanban-column">
+<div class="flex items-center justify-between mb-6 px-1">
+<h2 class="flex items-center gap-2 font-black text-gray-800 uppercase tracking-tight text-sm">
+<span class="w-3 h-3 bg-green-500 rounded-full shadow-sm"></span>
+                        Completado
+                        <span class="bg-green-100 text-green-700 px-2 py-0.5 rounded-md text-[10px] font-bold ml-2">12</span>
+</h2>
+</div>
+<div class="space-y-4">
+<!-- Card 4 -->
+<article class="bg-white/80 p-5 rounded-2xl border border-gray-100 opacity-90 grayscale-[0.3] hover:grayscale-0 hover:opacity-100 transition-all shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<span class="px-2.5 py-1 bg-green-50 text-green-600 text-[10px] font-black rounded-lg uppercase border border-green-100">Hecho</span>
+</div>
+<h3 class="text-[15px] font-bold mb-5 leading-snug line-through text-gray-400 italic">Despliegue de parches de seguridad Kernel v6.1</h3>
+<div class="flex items-center gap-3 mb-5">
+<img alt="User" class="w-7 h-7 rounded-lg border border-gray-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGUW9GWbGn2MCpCP5-771CXayThHXMyx0A7Tueg_-HPR26NOL2re3PnoqYiS5VvzzgvOYDMNlcecelbh_bGZ0OZ-eFeN53rHaof0oCtQMMwCCpk_cHxVAYqv0CPK_H5CbIH8eYLxcpd7y6xRQWVCHrZ0q7f2NFNiM7mYsS7AaVWTkYceNvTVEdUfGyvdk72CGQSYqKR1p4W3Bc3KsndlhZgBdIqIbp3cnocUUzjrqYb7d1c83yqCBNhxTx22KBFkHSWlwClVE3iiE"/>
+<span class="text-xs text-gray-400 font-bold">Marta Red</span>
+</div>
+<div class="mt-5 flex items-center justify-between border-t border-gray-50 pt-4">
+<span class="text-[10px] text-green-600 flex items-center gap-1.5 font-black uppercase tracking-widest">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path></svg>
+                                Finalizado
+                            </span>
+</div>
+</article>
+<!-- Add Task Button -->
+<button class="w-full py-4 border-2 border-dashed border-gray-200 rounded-2xl text-gray-500 text-sm font-bold hover:border-ops-accent/40 hover:text-ops-accent transition-all flex items-center justify-center gap-2 bg-white/40">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-width="3"></path></svg>
+                        Añadir tarea
+                    </button>
+</div>
+</div>
+</div>
+</div>
+<!-- END: Kanban Board Container -->
+</main>
+<!-- END: Main Dashboard Content -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+  @media (min-width: 1024px) {
+    #sffalcon-back-btn {
+      display: none !important;
+    }
+  }
+</style>
+<div id="sffalcon-back-btn" style="
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 1000000;
+  pointer-events: auto;
+  line-height: 0;
+  display: flex;
+">
+  <a
+    href="javascript:void(0)"
+    id="back-link"
+    title="Cerrar vista previa"
+    style="
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      color: #FFFFFF;
+      text-decoration: none;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    "
+    onmouseover="
+      this.style.background='#2563eb';
+      this.style.transform='scale(1.1)';
+      this.style.boxShadow='0 0 15px rgba(37, 99, 235, 0.4)';
+    "
+    onmouseout="
+      this.style.background='rgba(15, 23, 42, 0.85)';
+      this.style.transform='scale(1)';
+      this.style.boxShadow='0 8px 20px rgba(0,0,0,0.3)';
+    "
+  >
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="3.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="M18 6L6 18M6 6l12 12"/>
+    </svg>
+  </a>
+</div>
+
+<script>
+  (function() {
+    const btn = document.getElementById('back-link');
+    if (btn) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (window.history.length > 1 && document.referrer !== '') {
+          window.history.back();
+        } else {
+          if (!window.close()) {
+            window.location.href = '/';
+          }
+        }
+      });
+    }
+  })();
+</script>
+
+</body></html>
