@@ -21,6 +21,10 @@ export function SaaSPremiumCard({ example }: { example: Example }) {
 
   return (
     <div className="group bg-white rounded-[1.5rem] border border-slate-200 p-6 md:p-8 hover:border-slate-300 transition-all duration-300 hover:shadow-xl flex flex-col lg:flex-row gap-8 mb-8 relative overflow-hidden">
+      {/* Badge Demo Visual */}
+      <div className="absolute top-4 right-4 z-20 bg-[#F1F5F9] text-[#64748B] border border-[#E2E8F0] rounded-full px-3 py-1 text-[11px] font-medium">
+        Demo visual
+      </div>
       {/* Columna Izquierda */}
       <div className="flex-1 lg:w-[55%] flex flex-col justify-center relative z-10">
         <div className="mb-4">

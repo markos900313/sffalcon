@@ -11,7 +11,8 @@ import {
   CheckCircle2,
   ChevronRight,
   ArrowLeft,
-  Sparkles
+  Sparkles,
+  Info
 } from "lucide-react";
 
 
@@ -85,13 +86,26 @@ export default function IaIntegratedShowcase() {
             Demos interactivas: descubre cómo integrar agentes inteligentes en tu operativa diaria para ahorrar cientos de horas al mes.
           </p>
         </div>
+        <div className="space-y-8">
+          {/* Bloque Informativo */}
+          <div className="bg-[#EFF6FF] border-l-[3px] border-[#1B4FD8] rounded-lg p-[16px_20px] mb-6 shadow-sm">
+            <div className="flex items-start gap-3">
+              <Info className="w-5 h-5 text-[#1B4FD8] shrink-0 mt-0.5" />
+              <div>
+                <h3 className="text-[14px] font-bold text-[#1B4FD8] mb-1">Ejemplos de proyectos realizados</h3>
+                <p className="text-[13px] text-[#64748B] leading-[1.6]">
+                  Estas demos muestran el tipo de soluciones que desarrollamos a medida para cada cliente. No son productos genéricos — cada proyecto se construye desde cero adaptado a tu negocio, sector y objetivos.
+                </p>
+              </div>
+            </div>
+          </div>
 
-        {/* Grid Demos */}
-        <div className="grid grid-cols-1 mb-16 md:mb-20">
-          {aiExamples.map((example, index) => (
-            <AIPremiumCard key={index} example={example as any} />
-          ))}
-</div>
+          <div className="grid grid-cols-1 mb-16 md:mb-20">
+            {aiExamples.map((example, index) => (
+              <AIPremiumCard key={index} example={example as any} />
+            ))}
+          </div>
+        </div>
 
         {/* Value Proposition */}
         <div className="bg-indigo-600 bg-gradient-to-br from-indigo-600 to-indigo-700 rounded-[2.5rem] md:rounded-[3rem] p-12 text-white relative overflow-hidden shadow-2xl shadow-indigo-900/20">

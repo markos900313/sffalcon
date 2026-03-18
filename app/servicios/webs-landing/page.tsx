@@ -1,6 +1,6 @@
 "use client";
 
-import { Utensils, Stethoscope, GraduationCap, ArrowRight, ArrowLeft, CheckCircle2 } from "lucide-react";
+import { Utensils, Stethoscope, GraduationCap, ArrowRight, ArrowLeft, CheckCircle2, Info } from "lucide-react";
 import Link from "next/link";
 import { WebPremiumCard } from "@/components/servicios/WebPremiumCard";
 
@@ -75,6 +75,19 @@ export default function WebsLandingPage() {
         </div>
 
         <div className="space-y-12">
+          {/* Bloque Informativo */}
+          <div className="bg-[#EFF6FF] border-l-[3px] border-[#1B4FD8] rounded-lg p-[16px_20px] mb-6 shadow-sm">
+            <div className="flex items-start gap-3">
+              <Info className="w-5 h-5 text-[#1B4FD8] shrink-0 mt-0.5" />
+              <div>
+                <h3 className="text-[14px] font-bold text-[#1B4FD8] mb-1">Ejemplos de proyectos realizados</h3>
+                <p className="text-[13px] text-[#64748B] leading-[1.6]">
+                  Estas demos muestran el tipo de soluciones que desarrollamos a medida para cada cliente. No son productos genéricos — cada proyecto se construye desde cero adaptado a tu negocio, sector y objetivos.
+                </p>
+              </div>
+            </div>
+          </div>
+
           <div className="grid grid-cols-1 gap-8 md:gap-12">
             {examples.map((example, index) => (
               <WebPremiumCard key={index} example={example as any} />

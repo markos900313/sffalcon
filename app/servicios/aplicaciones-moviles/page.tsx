@@ -13,7 +13,8 @@ import {
   Layout,
   Layers,
   Code2,
-  Globe
+  Globe,
+  Info
 } from "lucide-react";
 import { MobilePremiumCard } from "@/components/servicios/MobilePremiumCard";
 
@@ -70,12 +71,26 @@ export default function MobileAppsPage() {
             Aplicaciones nativas diseñadas para optimizar tus procesos, fidelizar a tus clientes y escalar tu operativa diaria.
           </p>
         </div>
+        <div className="space-y-8">
+          {/* Bloque Informativo */}
+          <div className="bg-[#EFF6FF] border-l-[3px] border-[#1B4FD8] rounded-lg p-[16px_20px] mb-6 shadow-sm">
+            <div className="flex items-start gap-3">
+              <Info className="w-5 h-5 text-[#1B4FD8] shrink-0 mt-0.5" />
+              <div>
+                <h3 className="text-[14px] font-bold text-[#1B4FD8] mb-1">Ejemplos de proyectos realizados</h3>
+                <p className="text-[13px] text-[#64748B] leading-[1.6]">
+                  Estas demos muestran el tipo de soluciones que desarrollamos a medida para cada cliente. No son productos genéricos — cada proyecto se construye desde cero adaptado a tu negocio, sector y objetivos.
+                </p>
+              </div>
+            </div>
+          </div>
 
-        <div className="grid grid-cols-1 gap-8 md:gap-12">
+          <div className="grid grid-cols-1 gap-8 md:gap-12">
           {examples.map((example, index) => (
             <MobilePremiumCard key={index} example={example as any} />
           ))}
         </div>
+      </div>
 
         {/* CTA Section */}
         <div className="mt-24 p-12 bg-blue-600 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-[2.5rem] md:rounded-[3rem] text-white text-center relative overflow-hidden shadow-2xl shadow-blue-900/20">

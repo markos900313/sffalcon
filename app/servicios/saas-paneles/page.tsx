@@ -10,7 +10,8 @@ import {
   Layout, 
   CheckCircle2,
   ChevronRight,
-  ArrowLeft
+  ArrowLeft,
+  Info
 } from "lucide-react";
 
 const saasExamples = [
@@ -73,13 +74,27 @@ export default function SaasShowcasePage() {
             Demos funcionales: descubre cómo el software a medida centraliza tu operativa, ahorra costes y profesionaliza tus decisiones.
           </p>
         </div>
+        <div className="space-y-8">
+          {/* Bloque Informativo */}
+          <div className="bg-[#EFF6FF] border-l-[3px] border-[#1B4FD8] rounded-lg p-[16px_20px] mb-6 shadow-sm">
+            <div className="flex items-start gap-3">
+              <Info className="w-5 h-5 text-[#1B4FD8] shrink-0 mt-0.5" />
+              <div>
+                <h3 className="text-[14px] font-bold text-[#1B4FD8] mb-1">Ejemplos de proyectos realizados</h3>
+                <p className="text-[13px] text-[#64748B] leading-[1.6]">
+                  Estas demos muestran el tipo de soluciones que desarrollamos a medida para cada cliente. No son productos genéricos — cada proyecto se construye desde cero adaptado a tu negocio, sector y objetivos.
+                </p>
+              </div>
+            </div>
+          </div>
 
-        {/* Improved Grid for better "above the fold" visibility */}
-        <div className="grid grid-cols-1 mb-16">
-          {saasExamples.map((example, index) => (
-            <SaaSPremiumCard key={index} example={example as any} />
-          ))}
-</div>
+          {/* Improved Grid for better "above the fold" visibility */}
+          <div className="grid grid-cols-1 mb-16">
+            {saasExamples.map((example, index) => (
+              <SaaSPremiumCard key={index} example={example as any} />
+            ))}
+          </div>
+        </div>
 
         {/* Integrated Technical Brief */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
