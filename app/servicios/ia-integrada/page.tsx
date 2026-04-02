@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { AIPremiumCard } from '@/components/servicios/AIPremiumCard';
+import WhatsAppButton from "@/components/WhatsAppButton";
 import { 
   ArrowRight, 
   MessageSquare, 
@@ -169,6 +170,7 @@ export default function IaIntegratedShowcase() {
               </div>
           </div>
       </footer>
+      <WhatsAppButton />
     </div>
   );
 }

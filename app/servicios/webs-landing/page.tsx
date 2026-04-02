@@ -3,6 +3,7 @@
 import { Utensils, Stethoscope, GraduationCap, ArrowRight, ArrowLeft, CheckCircle2, Info } from "lucide-react";
 import Link from "next/link";
 import { WebPremiumCard } from "@/components/servicios/WebPremiumCard";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const examples = [
   {
@@ -124,6 +125,7 @@ export default function WebsLandingPage() {
               </div>
           </div>
       </footer>
+      <WhatsAppButton />
     </div>
   );
 }

@@ -17,6 +17,7 @@ import {
   Info
 } from "lucide-react";
 import { MobilePremiumCard } from "@/components/servicios/MobilePremiumCard";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 export default function MobileAppsPage() {
   const examples = [
@@ -125,6 +126,7 @@ export default function MobileAppsPage() {
               </div>
           </div>
       </footer>
+      <WhatsAppButton />
     </div>
   );
 }

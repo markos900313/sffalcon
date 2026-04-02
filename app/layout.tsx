@@ -84,7 +84,7 @@ export default function RootLayout({
               "url": "https://sffalcon.com",
               "logo": "https://sffalcon.com/icon.svg",
               "email": "admin@sffalcon.com",
-              "telephone": "+34604989742",
+              "telephone": "+34653743545",
               "founder": {
                 "@type": "Person",
                 "name": "Marcos Antonio Falcón Hernández"

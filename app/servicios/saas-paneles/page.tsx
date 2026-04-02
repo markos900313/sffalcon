@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { SaaSPremiumCard } from '@/components/servicios/SaaSPremiumCard';
+import WhatsAppButton from "@/components/WhatsAppButton";
 import { 
   ArrowRight, 
   Calendar, 
@@ -143,6 +144,7 @@ export default function SaasShowcasePage() {
               </div>
           </div>
       </footer>
+      <WhatsAppButton />
     </div>
   );
 }
