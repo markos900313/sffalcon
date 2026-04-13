@@ -136,9 +136,10 @@ export default function SaasShowcasePage() {
                           <span className="text-xs md:text-sm font-bold text-slate-500 uppercase tracking-wider">Coste Operativo</span>
                           <span className="text-base md:text-lg font-black text-slate-900">-45%</span>
                       </div>
-                      <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
-                          <div className="bg-emerald-500 h-full w-[45%] rounded-full"></div>
-                      </div>
+                    <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                        <div className="bg-emerald-500 h-full w-[45%] rounded-full"></div>
+                    </div>
+                  </div>
                 </div>
                 <a 
                   href="https://wa.me/34651398878" 
