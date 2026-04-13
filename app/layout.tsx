@@ -2,26 +2,21 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://sffalcon.com'),
-  title: {
-    default: 'SFFALCON | Agencia Digital Murcia',
-    template: '%s | SFFALCON'
-  },
-  description: 'Agencia digital especializada en webs profesionales, apps y SaaS con IA para negocios locales españoles. Murcia, España.',
+  metadataBase: new URL('https://www.sffalcon.com'),
+  title: "SFFALCON | Desarrollo Web, Apps e IA para Empresas en Murcia y España",
+  description: "Soluciones digitales a medida en Murcia: webs de alto rendimiento, apps móviles, SaaS y agentes de IA que automatizan tu negocio 24/7. Presupuesto gratis sin compromiso.",
   keywords: [
-    'agencia digital murcia',
-    'diseño web murcia',
-    'aplicaciones moviles murcia',
-    'SaaS empresas locales',
-    'inteligencia artificial negocios',
-    'SFFALCON',
-    'desarrollo web españa',
-    'agencia digital españa',
-    'webs profesionales murcia'
+    "desarrollo web Murcia", 
+    "aplicaciones móviles España",
+    "automatización con IA empresas",
+    "agencia digital Murcia",
+    "software a medida España",
+    "SaaS personalizado",
+    "SFFALCON"
   ],
   authors: [{ 
     name: 'Marcos Antonio Falcón Hernández',
-    url: 'https://sffalcon.com'
+    url: 'https://www.sffalcon.com'
   }],
   creator: 'SFFALCON',
   publisher: 'SFFALCON',
@@ -39,27 +34,27 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'es_ES',
-    url: 'https://sffalcon.com',
+    url: 'https://www.sffalcon.com',
     siteName: 'SFFALCON',
-    title: 'SFFALCON | Agencia Digital Murcia',
-    description: 'Transformamos negocios locales con tecnología digital. Webs, apps y SaaS con IA para empresas españolas.',
+    title: "SFFALCON | Desarrollo Web, Apps e IA para Empresas en Murcia y España",
+    description: "Soluciones digitales a medida en Murcia: webs de alto rendimiento, apps móviles, SaaS y agentes de IA que automatizan tu negocio 24/7.",
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'SFFALCON Agencia Digital Murcia'
+        alt: 'SFFALCON | Desarrollo Web, Apps e IA'
       }
     ]
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'SFFALCON | Agencia Digital Murcia',
-    description: 'Webs, apps y SaaS con IA para negocios locales españoles.',
+    title: "SFFALCON | Desarrollo Web, Apps e IA para Empresas en Murcia y España",
+    description: "Soluciones digitales a medida en Murcia: webs de alto rendimiento, apps móviles, SaaS y agentes de IA.",
     images: ['/og-image.jpg'],
   },
   alternates: {
-    canonical: 'https://sffalcon.com'
+    canonical: 'https://www.sffalcon.com'
   }
 }
 
@@ -79,43 +74,28 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Organization",
+              "@type": "LocalBusiness",
               "name": "SFFALCON",
-              "url": "https://sffalcon.com",
-              "logo": "https://sffalcon.com/icon.svg",
+              "description": "Desarrollo web, apps e IA para empresas en Murcia y España",
+              "url": "https://www.sffalcon.com",
+              "telephone": "+34651398878",
               "email": "admin@sffalcon.com",
-              "telephone": "+34 651 39 88 78",
-              "founder": {
-                "@type": "Person",
-                "name": "Marcos Antonio Falcón Hernández"
-              },
               "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "Calle Párroco y Poeta Francisco Aroca 2",
                 "addressLocality": "Murcia",
-                "addressRegion": "Murcia",
+                "addressRegion": "Región de Murcia",
+                "postalCode": "30007",
                 "addressCountry": "ES"
               },
-              "areaServed": [
-                {
-                  "@type": "Country",
-                  "name": "España"
-                },
-                {
-                  "@type": "City",
-                  "name": "Miami"
-                }
-              ],
-              "serviceType": [
-                "Diseño web profesional",
-                "Desarrollo de aplicaciones móviles",
-                "Plataformas SaaS",
-                "Inteligencia Artificial",
-                "Automatización de negocios"
-              ],
-              "sameAs": [
-                "https://sffalcon.com"
-              ]
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 37.9838,
+                "longitude": -1.1284
+              },
+              "openingHours": "Mo-Fr 09:00-18:00",
+              "priceRange": "€€",
+              "areaServed": "España"
             })
           }}
         />

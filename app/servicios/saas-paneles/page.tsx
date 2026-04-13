@@ -99,7 +99,7 @@ export default function SaasShowcasePage() {
 
         {/* Integrated Technical Brief */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
-            <div className="bg-[#0f1d33] rounded-[2rem] md:rounded-[2.5rem] p-8 md:p-10 text-white relative overflow-hidden group">
+            <div className="bg-[#0f1d33] rounded-[2rem] md:rounded-[2.5rem] p-8 md:p-10 text-white relative overflow-hidden group flex flex-col">
                 <div className="absolute top-0 right-0 w-40 h-40 bg-blue-500/10 rounded-full blur-3xl group-hover:bg-blue-500/20 transition-all"></div>
                 <h3 className="text-xl md:text-2xl font-black mb-4">
                    Navegación Privada
@@ -107,31 +107,48 @@ export default function SaasShowcasePage() {
                 <p className="text-sm md:text-base text-slate-400 font-medium mb-8 leading-relaxed">
                     Nuestros paneles SaaS se alojan en tu propia infraestructura, garantizando que el 100% de los datos te pertenecen.
                 </p>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 mb-8">
                     {["React", "Next.js", "Tailwind"].map(t => (
                         <span key={t} className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[9px] font-bold text-blue-400 uppercase tracking-widest leading-none">{t}</span>
                     ))}
                 </div>
+                <a 
+                  href="mailto:admin@sffalcon.com" 
+                  className="mt-auto inline-flex items-center justify-center gap-2 px-6 py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-all shadow-lg text-sm group"
+                >
+                  Consultar proyecto SaaS
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </a>
             </div>
 
-            <div className="bg-white border border-slate-200 rounded-[2rem] md:rounded-[2.5rem] p-8 md:p-10 relative overflow-hidden group shadow-sm">
-                <h3 className="text-xl md:text-2xl font-black mb-6 text-[#0f3460]">Impacto de Negocio</h3>
-                <div className="space-y-5">
-                    <div className="flex items-center justify-between">
-                        <span className="text-xs md:text-sm font-bold text-slate-500 uppercase tracking-wider">Automatización</span>
-                        <span className="text-base md:text-lg font-black text-slate-900">+80%</span>
-                    </div>
-                    <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
-                        <div className="bg-blue-600 h-full w-[80%] rounded-full"></div>
-                    </div>
-                    <div className="flex items-center justify-between pt-2">
-                        <span className="text-xs md:text-sm font-bold text-slate-500 uppercase tracking-wider">Coste Operativo</span>
-                        <span className="text-base md:text-lg font-black text-slate-900">-45%</span>
-                    </div>
-                    <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
-                        <div className="bg-emerald-500 h-full w-[45%] rounded-full"></div>
-                    </div>
+            <div className="bg-white border border-slate-200 rounded-[2rem] md:rounded-[2.5rem] p-8 md:p-10 relative overflow-hidden group shadow-sm flex flex-col justify-between">
+                <div>
+                  <h3 className="text-xl md:text-2xl font-black mb-6 text-[#0f3460]">Impacto de Negocio</h3>
+                  <div className="space-y-5">
+                      <div className="flex items-center justify-between">
+                          <span className="text-xs md:text-sm font-bold text-slate-500 uppercase tracking-wider">Automatización</span>
+                          <span className="text-base md:text-lg font-black text-slate-900">+80%</span>
+                      </div>
+                      <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                          <div className="bg-blue-600 h-full w-[80%] rounded-full"></div>
+                      </div>
+                      <div className="flex items-center justify-between pt-2">
+                          <span className="text-xs md:text-sm font-bold text-slate-500 uppercase tracking-wider">Coste Operativo</span>
+                          <span className="text-base md:text-lg font-black text-slate-900">-45%</span>
+                      </div>
+                      <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                          <div className="bg-emerald-500 h-full w-[45%] rounded-full"></div>
+                      </div>
                 </div>
+                <a 
+                  href="https://wa.me/34651398878" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-10 inline-flex items-center justify-center gap-2 px-6 py-4 bg-emerald-500 text-white font-bold rounded-xl hover:bg-emerald-600 transition-all shadow-lg text-sm group"
+                >
+                   Hablar por WhatsApp
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </a>
             </div>
         </div>
       </div>

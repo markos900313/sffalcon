@@ -6,10 +6,10 @@ import { Sparkles, ArrowRight, Search, Code2, Rocket, Zap, Bot } from 'lucide-re
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Transformación Digital',
-  description: 'Transformamos negocios locales con tecnología digital a medida. Conoce nuestro proceso de transformación.',
+  title: "Transformación Digital para Empresas | SFFALCON Murcia",
+  description: "Auditoría digital gratuita para empresas en Murcia. Identificamos cuellos de botella y automatizamos con IA para multiplicar tu rentabilidad.",
   alternates: {
-    canonical: 'https://sffalcon.com/transformacion'
+    canonical: 'https://www.sffalcon.com/transformacion'
   }
 }
 

@@ -32,13 +32,17 @@ export default function LandingPage() {
               </div>
 
               <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-slate-900 leading-[1.15] tracking-tight">
-                <span className="block">La tecnología que hace</span>
-                <span className="block text-gradient">crecer tu negocio</span>
-                <span className="block">mientras tú lo diriges.</span>
+                <span className="block">Desarrollo Web, Apps e IA</span>
+                <span className="block text-gradient">para Empresas</span>
+                <span className="block">en Murcia y España</span>
               </h1>
 
               <p className="text-base md:text-xl text-slate-600 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium opacity-90">
                 Soluciones de software personalizadas, IA y marketing que trabajan 24/7 para aumentar tu rentabilidad y liberar tu tiempo.
+              </p>
+              
+              <p className="text-sm md:text-base text-slate-500 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium opacity-80">
+                SFFALCON es una agencia de desarrollo digital en Murcia especializada en webs de alto rendimiento, aplicaciones móviles, plataformas SaaS y agentes de inteligencia artificial para empresas que quieren automatizar y crecer.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 md:gap-5 justify-center lg:justify-start">
@@ -160,6 +164,7 @@ export default function LandingPage() {
               <LayoutTemplate className="w-8 h-8 text-[#0f3460] mb-6" strokeWidth={1.5} />
               <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-2">Webs y Landing Pages</h3>
               <p className="text-sm text-slate-500 mb-6 leading-relaxed">Diseño profesional de alta conversión para que tus campañas y anuncios se traduzcan en clientes.</p>
+              <p className="text-[11px] text-slate-400 mb-6 leading-relaxed italic">Diseñamos y desarrollamos webs profesionales en Murcia y para toda España. Alto rendimiento, SEO técnico incluido y orientadas a convertir visitas en clientes.</p>
               <div className="text-[#0f3460] font-bold text-sm flex items-center gap-2 group-hover:gap-3 transition-all mt-auto">Explorar <ArrowRight className="w-4 h-4" strokeWidth={2} /></div>
             </Link>
             {/* Card 2 */}
@@ -167,6 +172,7 @@ export default function LandingPage() {
               <Smartphone className="w-8 h-8 text-[#0f3460] mb-6" strokeWidth={1.5} />
               <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-2">Aplicaciones móviles y web</h3>
               <p className="text-sm text-slate-500 mb-6 leading-relaxed">Apps nativas y multiplataforma a medida para que tus clientes te lleven siempre en el bolsillo.</p>
+              <p className="text-[11px] text-slate-400 mb-6 leading-relaxed italic">Desarrollo de aplicaciones iOS y Android a medida. Apps nativas y multiplataforma con React Native para empresas españolas.</p>
               <div className="text-[#0f3460] font-bold text-sm flex items-center gap-2 group-hover:gap-3 transition-all mt-auto">Explorar <ArrowRight className="w-4 h-4" strokeWidth={2} /></div>
             </Link>
             {/* Card 3 */}
@@ -174,6 +180,7 @@ export default function LandingPage() {
               <BarChart3 className="w-8 h-8 text-[#0f3460] mb-6" strokeWidth={1.5} />
               <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-2">SaaS y paneles de gestión</h3>
               <p className="text-sm text-slate-500 mb-6 leading-relaxed">Plataformas con panel propio para gestionar reservas, clientes y operaciones sin depender de terceros.</p>
+              <p className="text-[11px] text-slate-400 mb-6 leading-relaxed italic">Plataformas SaaS personalizadas con panel de gestión propio. Reservas, clientes y operaciones centralizadas sin depender de software genérico.</p>
               <div className="text-[#0f3460] font-bold text-sm flex items-center gap-2 group-hover:gap-3 transition-all mt-auto">Explorar <ArrowRight className="w-4 h-4" strokeWidth={2} /></div>
             </Link>
             {/* Card 4 */}
@@ -181,6 +188,7 @@ export default function LandingPage() {
               <Bot className="w-8 h-8 text-[#0f3460] mb-6" strokeWidth={1.5} />
               <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-2">IA integrada</h3>
               <p className="text-sm text-slate-500 mb-6 leading-relaxed">Agentes y automatizaciones 24/7 que atienden, responden y ejecutan tareas mientras tú te centras en dirigir.</p>
+              <p className="text-[11px] text-slate-400 mb-6 leading-relaxed italic">Agentes de inteligencia artificial y automatizaciones con IA para empresas. Atención al cliente 24/7, generación de leads y gestión automática de tareas.</p>
               <div className="text-[#0f3460] font-bold text-sm flex items-center gap-2 group-hover:gap-3 transition-all mt-auto">Explorar <ArrowRight className="w-4 h-4" strokeWidth={2} /></div>
             </Link>
           </div>
@@ -266,6 +274,45 @@ export default function LandingPage() {
             <Mail className="w-5 h-5" strokeWidth={2} />
             Quiero mi diagnóstico gratuito
           </a>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 md:py-24 bg-[#f5f7f8]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">Preguntas Frecuentes</h2>
+            <p className="text-slate-500 font-medium">Todo lo que necesitas saber para empezar</p>
+          </div>
+          <div className="space-y-6">
+            {[
+              {
+                q: "¿Dónde está ubicado SFFALCON?",
+                a: "Estamos en Murcia, Calle Párroco y Poeta Francisco Aroca 2, aunque trabajamos con empresas de toda España de forma remota."
+              },
+              {
+                q: "¿Cuánto cuesta una web profesional?",
+                a: "Cada proyecto es único. Ofrecemos presupuesto gratuito y sin compromiso adaptado a tus necesidades reales."
+              },
+              {
+                q: "¿Cuánto tarda en estar lista mi web o app?",
+                a: "Entre 15 y 30 días para proyectos estándar. Proyectos más complejos con IA integrada entre 30 y 60 días."
+              },
+              {
+                q: "¿Ofrecéis mantenimiento después del lanzamiento?",
+                a: "Sí. Ofrecemos soporte continuo, actualizaciones y evolución del producto para que tu tecnología siempre sea competitiva."
+              },
+              {
+                q: "¿Trabajáis con empresas de fuera de Murcia?",
+                a: "Sí, trabajamos con empresas de toda España y también internacionalmente, especialmente con el mercado hispanohablante."
+              }
+            ].map((faq, index) => (
+              <div key={index} className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-100">
+                <h3 className="text-lg font-bold text-[#0f3460] mb-3">{faq.q}</h3>
+                <p className="text-slate-600 text-sm md:text-base leading-relaxed">{faq.a}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

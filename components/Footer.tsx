@@ -41,7 +41,12 @@ export default function Footer({ active }: FooterProps) {
           </div>
           <div className="text-sm font-bold text-slate-400 text-center md:text-right">
             <div>© 2026 SFFALCON</div>
-            <div className="text-[10px] text-slate-400 font-medium">www.sffalcon.com · España</div>
+            <div className="text-[10px] text-slate-400 font-medium">
+              Calle Párroco y Poeta Francisco Aroca 2, 30007 Murcia, España
+            </div>
+            <div className="text-[10px] text-slate-400 font-medium tracking-tight mt-1 opacity-70">
+              admin@sffalcon.com · www.sffalcon.com
+            </div>
           </div>
         </div>
       </div>

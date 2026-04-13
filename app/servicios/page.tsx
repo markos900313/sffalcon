@@ -5,10 +5,10 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 import { LayoutTemplate, Smartphone, BarChart3, Bot, ArrowRight, Sparkles } from 'lucide-react'
 import Link from 'next/link'
 export const metadata: Metadata = {
-  title: 'Servicios Digitales',
-  description: 'Webs profesionales, aplicaciones móviles, plataformas SaaS e IA integrada para negocios locales. SFFALCON Murcia.',
+  title: "Servicios Digitales | Webs, Apps, SaaS e IA — SFFALCON Murcia",
+  description: "Desarrollo web profesional, apps móviles, plataformas SaaS y agentes de IA para empresas en Murcia y España. Tecnología a medida con resultados reales.",
   alternates: {
-    canonical: 'https://sffalcon.com/servicios'
+    canonical: 'https://www.sffalcon.com/servicios'
   }
 }
 

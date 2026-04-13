@@ -6,10 +6,10 @@ import { Phone, FileText, Code2, CheckCircle2, LifeBuoy, ArrowRight, Sparkles, C
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Nuestro Proceso de Trabajo',
-  description: 'Conoce cómo trabajamos en SFFALCON. Proceso claro, transparente y orientado a resultados para tu negocio.',
+  title: "Cómo Trabajamos | Metodología Ágil — SFFALCON",
+  description: "Proceso transparente en 5 fases: diagnóstico, estrategia, desarrollo, lanzamiento y soporte continuo. Plazos reales y comunicación constante.",
   alternates: {
-    canonical: 'https://sffalcon.com/proceso'
+    canonical: 'https://www.sffalcon.com/proceso'
   }
 }
 

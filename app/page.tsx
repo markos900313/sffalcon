@@ -2,10 +2,10 @@ import { Metadata } from 'next'
 import LandingPage from './page-client'
 
 export const metadata: Metadata = {
-  title: 'SFFALCON | Agencia Digital Murcia',
-  description: 'Agencia digital en Murcia especializada en webs profesionales, apps móviles y SaaS con IA para negocios locales españoles.',
+  title: "SFFALCON | Desarrollo Web, Apps e IA para Empresas en Murcia y España",
+  description: "Especialistas en desarrollo web, apps móviles y agentes de IA en Murcia. Automatizamos y hacemos crecer tu negocio con tecnología a medida.",
   alternates: {
-    canonical: 'https://sffalcon.com'
+    canonical: 'https://www.sffalcon.com'
   }
 }
 

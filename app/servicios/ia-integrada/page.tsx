@@ -135,28 +135,37 @@ export default function IaIntegratedShowcase() {
                         </div>
                     </div>
                 </div>
-                <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-[2rem]">
-                    <h4 className="text-xl font-bold mb-6">Impacto Estimado</h4>
-                    <div className="space-y-6">
-                        <div>
-                            <div className="flex justify-between text-sm font-bold mb-2">
-                                <span>Ahorro de Tiempo en Soporte</span>
-                                <span>92%</span>
-                            </div>
-                            <div className="w-full bg-white/10 h-2 rounded-full overflow-hidden">
-                                <div className="bg-white h-full w-[92%]"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div className="flex justify-between text-sm font-bold mb-2">
-                                <span>Precisión en Automatización</span>
-                                <span>99.8%</span>
-                            </div>
-                            <div className="w-full bg-white/10 h-2 rounded-full overflow-hidden">
-                                <div className="bg-white h-full w-[99.8%]"></div>
-                            </div>
-                        </div>
+                <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-[2rem] flex flex-col justify-between">
+                    <div>
+                      <h4 className="text-xl font-bold mb-6">Impacto Estimado</h4>
+                      <div className="space-y-6 mb-8">
+                          <div>
+                              <div className="flex justify-between text-sm font-bold mb-2">
+                                  <span>Ahorro de Tiempo en Soporte</span>
+                                  <span>92%</span>
+                              </div>
+                              <div className="w-full bg-white/10 h-2 rounded-full overflow-hidden">
+                                  <div className="bg-white h-full w-[92%]"></div>
+                              </div>
+                          </div>
+                          <div>
+                              <div className="flex justify-between text-sm font-bold mb-2">
+                                  <span>Precisión en Automatización</span>
+                                  <span>99.8%</span>
+                              </div>
+                              <div className="w-full bg-white/10 h-2 rounded-full overflow-hidden">
+                                  <div className="bg-white h-full w-[99.8%]"></div>
+                              </div>
+                          </div>
+                      </div>
                     </div>
+                    <a 
+                      href="mailto:admin@sffalcon.com" 
+                      className="inline-flex items-center justify-center gap-2 px-6 py-4 bg-white text-indigo-600 font-bold rounded-xl hover:bg-slate-50 transition-all shadow-lg text-sm group"
+                    >
+                      Solicitar auditoría IA 
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </a>
                 </div>
             </div>
         </div>
