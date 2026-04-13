@@ -16,8 +16,8 @@ export const metadata: Metadata = {
 const blocks = [
   {
     icon: Search,
-    title: "Auditoría de Procesos",
-    text: "Mapeamos tu operativa actual para detectar ineficiencias y puntos de fricción que la tecnología puede resolver de inmediato."
+    title: "Auditoría Total de Negocio",
+    text: "Realizamos una radiografía exhaustiva de tu operativa actual para identificar cuellos de botella y oportunidades críticas de automatización con IA que maximicen tu rentabilidad."
   },
   {
     icon: Code2,
