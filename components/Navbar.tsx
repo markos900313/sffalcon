@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,9 +24,20 @@ export default function Navbar() {
             <Link className="text-sm font-semibold text-slate-600 hover:text-[#0f3460] transition-colors" href="/servicios">Servicios</Link>
             <Link className="text-sm font-semibold text-slate-600 hover:text-[#0f3460] transition-colors" href="/transformacion">Transformación</Link>
             <Link className="text-sm font-semibold text-slate-600 hover:text-[#0f3460] transition-colors" href="/proceso">Proceso</Link>
-            <Link className="bg-[#0f3460] text-white px-6 py-2.5 rounded-full text-sm font-bold hover:shadow-lg hover:shadow-[#0f3460]/30 transition-all active:scale-95" href="https://admin.sffalcon.com">
-              Conectar Admin
-            </Link>
+            <div className="relative group">
+              <button className="bg-[#0f3460] text-white px-6 py-2.5 rounded-full text-sm font-bold hover:shadow-lg hover:shadow-[#0f3460]/30 transition-all active:scale-95 flex items-center gap-1.5">
+                Productos
+                <ChevronDown className="w-4 h-4" strokeWidth={2.5} />
+              </button>
+              <div className="absolute top-full right-0 mt-2 w-48 bg-white/95 backdrop-blur-md border border-slate-100 rounded-2xl shadow-xl shadow-slate-200/50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden flex flex-col p-1.5">
+                <Link href="https://admin.sffalcon.com" className="px-4 py-2.5 text-sm font-bold text-slate-700 hover:bg-slate-50 hover:text-[#0f3460] rounded-xl transition-colors">
+                  SFFALCON Admin
+                </Link>
+                <Link href="https://app.sffalcon.com" className="px-4 py-2.5 text-sm font-bold text-slate-700 hover:bg-slate-50 hover:text-[#0f3460] rounded-xl transition-colors">
+                  SFFALCON App
+                </Link>
+              </div>
+            </div>
           </div>
           <div className="md:hidden flex items-center">
             <button
@@ -45,7 +56,11 @@ export default function Navbar() {
             <Link href="/servicios" onClick={() => setIsMenuOpen(false)} className="text-sm font-semibold text-slate-600 hover:text-[#0f3460] px-2">Servicios</Link>
             <Link href="/transformacion" onClick={() => setIsMenuOpen(false)} className="text-sm font-semibold text-slate-600 hover:text-[#0f3460] px-2">Transformación</Link>
             <Link href="/proceso" onClick={() => setIsMenuOpen(false)} className="text-sm font-semibold text-slate-600 hover:text-[#0f3460] px-2">Proceso</Link>
-            <Link href="https://admin.sffalcon.com" onClick={() => setIsMenuOpen(false)} className="bg-[#0f3460] text-white px-6 py-2.5 rounded-full text-sm font-bold w-max ml-2 mt-2">Conectar Admin</Link>
+            <div className="pt-2 flex flex-col gap-2">
+              <span className="text-xs font-bold text-slate-400 px-2 uppercase tracking-wider">Productos</span>
+              <Link href="https://admin.sffalcon.com" onClick={() => setIsMenuOpen(false)} className="bg-[#0f3460] text-white px-6 py-2.5 rounded-full text-sm font-bold w-max ml-2">SFFALCON Admin</Link>
+              <Link href="https://app.sffalcon.com" onClick={() => setIsMenuOpen(false)} className="bg-[#0f3460] text-white px-6 py-2.5 rounded-full text-sm font-bold w-max ml-2">SFFALCON App</Link>
+            </div>
           </div>
         )}
       </div>
